@@ -2,535 +2,1670 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cuaderno de Trabajo | SOMOS G.E.N.I.O.S.</title>
-  <meta name="description" content="Portal de uso para lectores del Cuaderno de Trabajo SOMOS G.E.N.I.O.S. Definiciones actualizadas, 24 afirmaciones, herramientas, experimento de seis semanas y PDF descargable." />
-  <meta property="og:title" content="Cuaderno de Trabajo SOMOS G.E.N.I.O.S." />
-  <meta property="og:description" content="Una letra. Una definición. Cuatro afirmaciones. Usa el cuaderno, descarga el PDF y empieza con una acción concreta." />
-  <meta property="og:image" content="assets/og-cover.png" />
-  <meta name="theme-color" content="#14283F" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cuaderno G.E.N.I.O.S. · Web móvil</title>
+  <meta name="description" content="Cuaderno G.E.N.I.O.S. adaptado para celular: diagnóstico, herramientas, auditorías y plan de seis semanas." />
+  <style>
+    :root{
+      --bg:#fbf7ef;
+      --paper:#fffdf8;
+      --ink:#203a5c;
+      --ink-2:#172b45;
+      --text:#242424;
+      --muted:#686d75;
+      --gold:#b3882b;
+      --gold-2:#eadbbb;
+      --line:#ded3be;
+      --soft:#f3ede3;
+      --white:#fff;
+      --ok:#22715c;
+      --danger:#9d4739;
+      --shadow:0 12px 34px rgba(32,58,92,.10);
+      --radius:20px;
+      --radius-sm:14px;
+      --safe-bottom:env(safe-area-inset-bottom,0px);
+    }
 
-  <header class="topbar" id="inicio">
-    <nav class="nav" aria-label="Navegación principal">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <span class="brand-symbol" aria-hidden="true">✦</span>
-        <span>SOMOS G.E.N.I.O.S.</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">Menú</button>
-      <div class="nav-links" data-nav-links>
-        <a href="#empezar">Empezar</a>
-        <a href="#diagnostico">Diagnóstico</a>
-        <a href="#herramientas">Herramientas</a>
-        <a href="#semanas">6 semanas</a>
-        <a href="#pdf">PDF</a>
-        <a class="nav-download" href="assets/cuaderno-genios.pdf" download>Descargar</a>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 100% -10%, rgba(179,136,43,.13), transparent 18rem),
+        linear-gradient(180deg,var(--bg),#f7f0e6);
+      color:var(--text);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height:1.5;
+      -webkit-text-size-adjust:100%;
+      padding-bottom:calc(86px + var(--safe-bottom));
+    }
+
+    button,input,textarea,select{font:inherit}
+    input,textarea{
+      font-size:16px;
+      border-radius:12px;
+    }
+    textarea{resize:vertical}
+    a{color:inherit}
+
+    .app{
+      width:min(100% - 22px, 1120px);
+      margin:0 auto;
+    }
+
+    .mobile-top{
+      position:sticky;
+      top:0;
+      z-index:60;
+      background:rgba(251,247,239,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(32,58,92,.12);
+    }
+
+    .mobile-top-inner{
+      min-height:58px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      width:min(100% - 22px,1120px);
+      margin:0 auto;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:var(--ink);
+      color:var(--gold);
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:900;
+      font-size:1.05rem;
+      flex:0 0 auto;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-text b{
+      display:block;
+      color:var(--ink);
+      font-size:.86rem;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand-text span{
+      display:block;
+      color:var(--muted);
+      font-size:.72rem;
+      line-height:1.1;
+    }
+
+    .top-actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex:0 0 auto;
+    }
+
+    .icon-btn{
+      min-width:40px;
+      height:40px;
+      border:1px solid rgba(32,58,92,.16);
+      border-radius:999px;
+      background:#fffdf8;
+      color:var(--ink);
+      font-weight:900;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+    }
+
+    .hero{
+      padding:20px 0 16px;
+    }
+
+    .cover{
+      background:var(--paper);
+      border:1px solid rgba(120,95,50,.20);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:24px 16px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cover:before{
+      content:"";
+      position:absolute;
+      inset:9px;
+      border:1px solid rgba(120,95,50,.16);
+      border-radius:18px;
+      pointer-events:none;
+    }
+
+    .cover > *{position:relative}
+
+    .kicker{
+      color:var(--gold);
+      font-weight:950;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      font-size:.72rem;
+      margin-bottom:10px;
+    }
+
+    h1{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--ink);
+      font-size:clamp(2.15rem,11vw,4.7rem);
+      letter-spacing:.035em;
+      line-height:.95;
+    }
+
+    .cover-sub{
+      margin:12px auto 18px;
+      max-width:760px;
+      color:#666;
+      font-family:Georgia,"Times New Roman",serif;
+      font-style:italic;
+      font-size:1rem;
+      line-height:1.35;
+    }
+
+    .letter-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
+      margin:18px auto;
+      max-width:460px;
+    }
+
+    .letter-card{
+      min-height:84px;
+      border-radius:14px;
+      background:var(--ink);
+      color:white;
+      display:grid;
+      place-items:center;
+      padding:10px 6px;
+      box-shadow:inset 0 -4px 0 rgba(0,0,0,.15);
+    }
+
+    .letter-card b{
+      display:block;
+      color:var(--gold);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:2rem;
+      line-height:1;
+      margin-bottom:5px;
+    }
+
+    .letter-card span{
+      display:block;
+      color:rgba(255,255,255,.9);
+      font-size:.70rem;
+      line-height:1.15;
+    }
+
+    .tagline{
+      color:var(--ink);
+      font-family:Georgia,"Times New Roman",serif;
+      font-style:italic;
+      font-size:1.18rem;
+      margin:12px 0 16px;
+    }
+
+    .author{
+      color:var(--ink);
+      font-weight:950;
+      letter-spacing:.04em;
+      margin-top:16px;
+      font-size:1rem;
+    }
+
+    .role{
+      color:var(--muted);
+      font-size:.82rem;
+      margin-top:4px;
+    }
+
+    .start-card{
+      background:linear-gradient(135deg,var(--ink),#2a4b73);
+      color:white;
+      border-radius:22px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      margin:16px 0 8px;
+    }
+
+    .start-card h2{
+      color:white;
+      margin:0 0 8px;
+      font-size:1.55rem;
+    }
+
+    .start-card p{
+      margin:0 0 14px;
+      color:rgba(255,255,255,.80);
+      font-size:.96rem;
+    }
+
+    .primary-btn,.secondary-btn{
+      width:100%;
+      min-height:48px;
+      border:0;
+      border-radius:999px;
+      padding:12px 18px;
+      font-weight:950;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+    }
+
+    .primary-btn{
+      color:#1d1708;
+      background:var(--gold);
+      box-shadow:0 10px 20px rgba(179,136,43,.22);
+    }
+
+    .secondary-btn{
+      color:var(--ink);
+      background:#fff;
+      border:1px solid rgba(32,58,92,.12);
+    }
+
+    .quick-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .progress-card{
+      background:var(--paper);
+      border:1px solid rgba(32,58,92,.12);
+      border-radius:18px;
+      padding:14px;
+      margin:12px 0 16px;
+      box-shadow:0 8px 24px rgba(32,58,92,.06);
+    }
+
+    .progress-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:9px;
+      color:var(--ink);
+      font-weight:900;
+      font-size:.88rem;
+    }
+
+    .track{
+      height:10px;
+      background:#eee5d6;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .track-fill{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--gold),#dfc16f);
+      border-radius:999px;
+      transition:width .25s ease;
+    }
+
+    .section{
+      padding:10px 0;
+      scroll-margin-top:72px;
+    }
+
+    .section-title{
+      margin:8px 0 12px;
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .section-title h2{
+      margin:0;
+      color:var(--ink);
+      font-family:Georgia,"Times New Roman",serif;
+      letter-spacing:-.03em;
+      line-height:1.08;
+      font-size:clamp(1.65rem,7vw,3rem);
+    }
+
+    .section-title span{
+      color:var(--gold);
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.68rem;
+      white-space:nowrap;
+    }
+
+    .card{
+      background:rgba(255,253,248,.94);
+      border:1px solid rgba(32,58,92,.12);
+      border-radius:20px;
+      box-shadow:0 8px 26px rgba(32,58,92,.06);
+      padding:16px;
+      margin:12px 0;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      font-size:.68rem;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+    }
+
+    h2,h3{
+      color:var(--ink);
+      font-family:Georgia,"Times New Roman",serif;
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+
+    h2{font-size:1.9rem;margin:0 0 8px}
+    h3{font-size:1.35rem;margin:0 0 8px}
+
+    .lead{
+      color:#62666b;
+      font-family:Georgia,"Times New Roman",serif;
+      font-style:italic;
+      font-size:1.05rem;
+      margin:0 0 14px;
+    }
+
+    .formula{
+      background:var(--ink);
+      color:white;
+      border-radius:14px;
+      padding:16px;
+      margin:16px 0;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:900;
+      text-align:center;
+      font-size:1.16rem;
+      line-height:1.25;
+    }
+
+    .callout{
+      border-left:4px solid var(--gold);
+      background:#fbf3e6;
+      padding:12px 14px;
+      border-radius:0 14px 14px 0;
+      color:#43382a;
+      margin:14px 0;
+      font-size:.95rem;
+    }
+
+    .six-list{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .six-row{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:12px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+    }
+
+    .mini-letter{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+      background:var(--ink);
+      color:var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:950;
+      font-size:1.35rem;
+      flex:0 0 auto;
+    }
+
+    .six-row strong{
+      display:block;
+      color:var(--ink);
+      margin-bottom:2px;
+    }
+
+    .six-row em{
+      color:#4d4d4d;
+      font-size:.92rem;
+    }
+
+    .field{
+      display:grid;
+      gap:6px;
+      margin:10px 0;
+      color:var(--ink);
+      font-weight:850;
+      font-size:.88rem;
+    }
+
+    .field input,.field textarea{
+      width:100%;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      padding:12px;
+      min-height:46px;
+      outline:none;
+    }
+
+    .field textarea{min-height:92px}
+
+    .field input:focus,.field textarea:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(179,136,43,.16);
+    }
+
+    details{
+      background:rgba(255,253,248,.94);
+      border:1px solid rgba(32,58,92,.12);
+      border-radius:20px;
+      box-shadow:0 8px 26px rgba(32,58,92,.06);
+      margin:12px 0;
+      overflow:hidden;
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--ink);
+      font-weight:950;
+    }
+
+    summary::-webkit-details-marker{display:none}
+
+    summary:after{
+      content:"+";
+      width:30px;
+      height:30px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:var(--soft);
+      color:var(--ink);
+      font-size:1.25rem;
+      flex:0 0 auto;
+    }
+
+    details[open] summary:after{content:"–"}
+
+    .details-body{
+      padding:0 16px 16px;
+    }
+
+    .scale-grid{
+      display:grid;
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .scale-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:12px;
+      align-items:center;
+    }
+
+    .scale-item b{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      background:var(--ink);
+      color:white;
+      display:grid;
+      place-items:center;
+    }
+
+    .question-group{
+      margin-top:12px;
+    }
+
+    .dim-head{
+      display:grid;
+      grid-template-columns:48px 1fr;
+      gap:12px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    .dim-head strong{
+      color:var(--ink);
+      display:block;
+      font-size:1rem;
+    }
+
+    .dim-head span{
+      color:var(--muted);
+      display:block;
+      font-size:.82rem;
+    }
+
+    .subtotal{
+      display:inline-flex;
+      margin-top:8px;
+      background:#f6ecd7;
+      color:#503914;
+      border:1px solid rgba(179,136,43,.25);
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:950;
+      font-size:.8rem;
+    }
+
+    .question{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:13px;
+      margin:10px 0;
+    }
+
+    .question-text{
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      margin-bottom:12px;
+      color:#2d2d2d;
+    }
+
+    .q-num{
+      min-width:24px;
+      height:24px;
+      border-radius:7px;
+      background:var(--ink);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-weight:950;
+      font-size:.72rem;
+      margin-top:1px;
+    }
+
+    .radio-row{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:6px;
+    }
+
+    .radio-row input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .radio-row label{
+      min-height:44px;
+      border:1.5px solid rgba(32,58,92,.16);
+      border-radius:12px;
+      background:#faf8f3;
+      color:var(--ink);
+      display:grid;
+      place-items:center;
+      font-weight:950;
+      cursor:pointer;
+      user-select:none;
+      transition:.15s ease;
+    }
+
+    .radio-row input:checked + label{
+      background:var(--ink);
+      color:white;
+      border-color:var(--ink);
+      transform:translateY(-1px);
+    }
+
+    .result-panel{
+      background:#fff;
+      border:1px solid rgba(32,58,92,.12);
+      border-radius:20px;
+      padding:16px;
+      margin:12px 0;
+      box-shadow:var(--shadow);
+    }
+
+    .kpis{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin:12px 0;
+    }
+
+    .kpi{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 6px;
+      text-align:center;
+    }
+
+    .kpi span{
+      display:block;
+      color:#68707a;
+      font-size:.58rem;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      line-height:1.1;
+    }
+
+    .kpi b{
+      display:block;
+      color:var(--ink);
+      font-size:1.35rem;
+      line-height:1.1;
+      margin-top:4px;
+    }
+
+    #radar{
+      display:block;
+      width:100%;
+      max-width:320px;
+      height:auto;
+      margin:4px auto 12px;
+    }
+
+    .bar-list{display:grid;gap:8px}
+    .bar-row{
+      display:grid;
+      grid-template-columns:26px 1fr 38px;
+      gap:8px;
+      align-items:center;
+      font-size:.82rem;
+    }
+
+    .bar-row b{color:var(--ink)}
+    .rail{
+      height:8px;
+      border-radius:999px;
+      background:#eee5d6;
+      overflow:hidden;
+    }
+
+    .fill{
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,var(--ink),var(--gold));
+      transition:width .25s ease;
+    }
+
+    .score-table,.entry-table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      margin:12px 0;
+      font-size:.86rem;
+    }
+
+    .score-table th,.entry-table th{
+      background:var(--ink);
+      color:white;
+      text-align:left;
+      padding:10px;
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    .score-table td,.entry-table td{
+      border-top:1px solid var(--line);
+      padding:10px;
+      vertical-align:top;
+    }
+
+    .tool-card{
+      background:#fff;
+      border:1px solid rgba(32,58,92,.12);
+      border-radius:18px;
+      padding:14px;
+      margin:12px 0;
+    }
+
+    .tool-head{
+      display:grid;
+      grid-template-columns:48px 1fr;
+      gap:12px;
+      align-items:center;
+      margin-bottom:8px;
+    }
+
+    .tool-head .mini-letter{
+      width:48px;
+      height:48px;
+      border-radius:12px;
+    }
+
+    .tool-head h3{
+      margin:0;
+      font-size:1.28rem;
+    }
+
+    .tool-head span{
+      color:var(--gold);
+      font-weight:950;
+      font-size:.68rem;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns:32px 1fr;
+      gap:10px;
+      margin:12px 0;
+      align-items:start;
+    }
+
+    .step-num{
+      width:32px;
+      height:32px;
+      border-radius:9px;
+      background:var(--ink);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-weight:950;
+    }
+
+    .step strong{
+      display:block;
+      color:var(--ink);
+      margin-bottom:4px;
+    }
+
+    .step small{
+      display:block;
+      color:#666;
+      font-style:italic;
+      margin-bottom:5px;
+    }
+
+    .week-card{
+      background:#fff;
+      border:1px solid rgba(32,58,92,.12);
+      border-radius:18px;
+      padding:14px;
+      margin:12px 0;
+    }
+
+    .week-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .week-head h3{margin:0;font-size:1.25rem}
+    .week-pill{
+      background:var(--ink);
+      color:white;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.70rem;
+      font-weight:950;
+      white-space:nowrap;
+    }
+
+    .bottom-nav{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:70;
+      background:rgba(255,253,248,.96);
+      backdrop-filter:blur(16px);
+      border-top:1px solid rgba(32,58,92,.14);
+      padding:8px 8px calc(8px + var(--safe-bottom));
+      box-shadow:0 -10px 28px rgba(32,58,92,.08);
+    }
+
+    .bottom-nav-inner{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:4px;
+      max-width:640px;
+      margin:0 auto;
+    }
+
+    .bottom-nav a{
+      text-decoration:none;
+      color:#68707a;
+      border-radius:14px;
+      min-height:48px;
+      display:grid;
+      place-items:center;
+      gap:2px;
+      font-size:.64rem;
+      font-weight:900;
+      text-align:center;
+      padding:5px 2px;
+    }
+
+    .bottom-nav a b{
+      color:var(--ink);
+      font-size:1rem;
+      line-height:1;
+    }
+
+    .bottom-nav a:hover,.bottom-nav a.active{
+      background:var(--soft);
+      color:var(--ink);
+    }
+
+    .desktop-actions{
+      display:none;
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:calc(82px + var(--safe-bottom));
+      transform:translateX(-50%) translateY(16px);
+      z-index:100;
+      background:var(--ink);
+      color:white;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:850;
+      opacity:0;
+      pointer-events:none;
+      transition:.18s ease;
+      max-width:calc(100% - 24px);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
+    @media (min-width:760px){
+      body{padding-bottom:32px}
+      .app{width:min(100% - 40px,1120px)}
+      .letter-grid{grid-template-columns:repeat(6,1fr);max-width:900px;gap:14px}
+      .letter-card{min-height:105px}
+      .cover{padding:54px 44px}
+      .cover-sub{font-size:1.35rem}
+      .tagline{font-size:1.65rem}
+      .section{padding:20px 0}
+      .card,details,.result-panel{padding:18px}
+      .scale-grid{grid-template-columns:repeat(5,1fr)}
+      .scale-item{grid-template-columns:1fr;text-align:center}
+      .tool-grid,.week-grid,.audit-grid{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+      }
+      .audit-grid{grid-template-columns:repeat(3,1fr)}
+      .continuous-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+      }
+      .context-grid{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:12px;
+      }
+      .quick-actions{display:flex}
+      .quick-actions .primary-btn,.quick-actions .secondary-btn{width:auto}
+      .bottom-nav{display:none}
+      .desktop-actions{
+        display:flex;
+        position:fixed;
+        right:18px;
+        bottom:18px;
+        z-index:70;
+        gap:10px;
+      }
+      .desktop-actions button{
+        min-height:46px;
+        border:0;
+        border-radius:999px;
+        padding:11px 16px;
+        color:white;
+        background:var(--ink);
+        font-weight:950;
+        box-shadow:var(--shadow);
+        cursor:pointer;
+      }
+      .desktop-actions button.secondary{background:var(--gold);color:#1d1708}
+      .toast{bottom:26px}
+    }
+
+    @media (min-width:1040px){
+      .diagnostic-layout{
+        display:grid;
+        grid-template-columns:minmax(0,1fr) 360px;
+        gap:16px;
+        align-items:start;
+      }
+      .result-panel{
+        position:sticky;
+        top:78px;
+      }
+    }
+
+    @media print{
+      body{background:white;padding-bottom:0}
+      .mobile-top,.bottom-nav,.desktop-actions,.toast,.start-card,.progress-card{display:none!important}
+      .app{width:100%;margin:0}
+      .cover,.card,details,.result-panel,.tool-card,.week-card{
+        box-shadow:none;
+        break-inside:avoid;
+      }
+      details{display:block}
+      details:not([open]) .details-body{display:block}
+      summary:after{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="mobile-top">
+    <div class="mobile-top-inner">
+      <div class="brand">
+        <div class="brand-mark">G</div>
+        <div class="brand-text">
+          <b>Cuaderno G.E.N.I.O.S.</b>
+          <span>Versión móvil interactiva</span>
+        </div>
       </div>
-    </nav>
+      <div class="top-actions">
+        <button class="icon-btn" id="btnTopPrint" title="Imprimir o guardar PDF">⤓</button>
+        <button class="icon-btn" id="btnTopReset" title="Borrar respuestas">↺</button>
+      </div>
+    </div>
   </header>
 
-  <main id="contenido">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">Cuaderno de trabajo para lectores</p>
-          <h1>Usa el sistema <em>G.E.N.I.O.S.</em> sin perderte en el documento.</h1>
-          <p class="lead">Una página web clara para abrir el cuaderno, revisar las nuevas definiciones, responder las 24 afirmaciones, practicar una conducta y registrar evidencia real.</p>
+  <main class="app">
+    <section class="hero" id="inicio">
+      <div class="cover">
+        <div class="kicker">Cuaderno de trabajo</div>
+        <h1>SOMOS G.E.N.I.O.S.</h1>
+        <p class="cover-sub">Herramientas prácticas para convertir talento en reputación profesional</p>
 
-          <div class="hero-actions" aria-label="Acciones principales">
-            <a class="btn btn-primary" href="assets/cuaderno-genios.pdf" download>Descargar PDF</a>
-            <a class="btn btn-secondary" href="#empezar">Empezar ahora</a>
-          </div>
-
-          <ul class="stats" aria-label="Contenido del cuaderno">
-            <li><strong>31</strong><span>páginas</span></li>
-            <li><strong>24</strong><span>afirmaciones</span></li>
-            <li><strong>6</strong><span>herramientas</span></li>
-            <li><strong>6</strong><span>semanas</span></li>
-          </ul>
+        <div class="letter-grid">
+          <div class="letter-card"><b>G</b><span>Generar valor</span></div>
+          <div class="letter-card"><b>E</b><span>Escuchar</span></div>
+          <div class="letter-card"><b>N</b><span>Involucrarte</span></div>
+          <div class="letter-card"><b>I</b><span>Detalle</span></div>
+          <div class="letter-card"><b>O</b><span>Crecer</span></div>
+          <div class="letter-card"><b>S</b><span>Consistencia</span></div>
         </div>
 
-        <aside class="reader-card" aria-label="Resumen rápido del cuaderno">
-          <img src="assets/cover.png" alt="Portada del Cuaderno de Trabajo SOMOS G.E.N.I.O.S." />
-          <div class="reader-card-body">
-            <p class="small-label">Pregunta central</p>
-            <p class="reader-question">¿Qué evidencia debe dejar mi próxima acción?</p>
-            <a class="text-link" href="#accion">Registrar mi primera evidencia →</a>
+        <p class="tagline">Una letra. Una conducta. Una evidencia.</p>
+        <div class="author">KEVIN LÜCK</div>
+        <div class="role">Psicólogo Organizacional · Headhunter · Coach Ejecutivo</div>
+      </div>
+
+      <div class="start-card">
+        <h2>Empieza en 3 pasos</h2>
+        <p>Lee la guía breve, completa el diagnóstico y luego trabaja una herramienta por letra. Tus respuestas se guardan automáticamente en este navegador.</p>
+        <div class="quick-actions">
+          <a class="primary-btn" href="#diagnostico">Comenzar diagnóstico</a>
+          <a class="secondary-btn" href="#herramientas">Ver herramientas</a>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-row">
+          <span>Avance del diagnóstico</span>
+          <span id="progressText">0 / 24</span>
+        </div>
+        <div class="track"><div class="track-fill" id="progressFill"></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="guia">
+      <div class="section-title">
+        <h2>Antes de empezar</h2>
+        <span>Guía</span>
+      </div>
+
+      <article class="card">
+        <p class="lead">Este cuaderno no resume el libro: lo convierte en evidencia.</p>
+        <p>Está pensado para completarse en pantalla desde el celular. No necesitas hacerlo todo de una vez. Avanza por partes: diagnóstico, herramientas, auditorías y seis semanas.</p>
+
+        <div class="formula">Capital Reputacional = Valor × Consistencia × Visibilidad</div>
+
+        <div class="callout"><strong>Idea central:</strong> la sala no lee tus intenciones; lee la experiencia que otros pueden describir cuando tú no estás presente.</div>
+
+        <label class="field">Empiezo este cuaderno el
+          <input data-save="fecha_inicio" placeholder="dd/mm/aaaa" />
+        </label>
+      </article>
+
+      <details open>
+        <summary>Las seis letras de un vistazo</summary>
+        <div class="details-body">
+          <div class="six-list">
+            <div class="six-row"><div class="mini-letter">G</div><div><strong>Generar valor</strong><em>Mover decisiones, no solo informar.</em></div></div>
+            <div class="six-row"><div class="mini-letter">E</div><div><strong>Escuchar</strong><em>No responder rápido al problema equivocado.</em></div></div>
+            <div class="six-row"><div class="mini-letter">N</div><div><strong>Involucrarte</strong><em>Hacerte cargo sin cargarlo todo.</em></div></div>
+            <div class="six-row"><div class="mini-letter">I</div><div><strong>Detalle</strong><em>Lograr que tu trabajo funcione sin explicaciones.</em></div></div>
+            <div class="six-row"><div class="mini-letter">O</div><div><strong>Crecer</strong><em>Desarrollarte antes de que la siguiente etapa te lo exija.</em></div></div>
+            <div class="six-row"><div class="mini-letter">S</div><div><strong>Consistencia</strong><em>Sostener tu estándar cuando la semana se complica.</em></div></div>
           </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="diagnostico">
+      <div class="section-title">
+        <h2>Diagnóstico</h2>
+        <span>24 conductas</span>
+      </div>
+
+      <article class="card">
+        <div class="eyebrow">Antes de responder</div>
+        <h2>Tu punto de partida</h2>
+        <p>Responde con hechos de tus últimas cuatro semanas, no con intención ni con tu mejor versión posible.</p>
+
+        <div class="callout"><strong>Regla central:</strong> si no puedes recordar una prueba reciente, no puntúes desde la intención. Baja el número hasta que exista evidencia.</div>
+
+        <div class="context-grid">
+          <label class="field">Rol, proyecto o situación
+            <input data-save="contexto_rol" />
+          </label>
+          <label class="field">Últimas 4 semanas
+            <input data-save="contexto_semanas" />
+          </label>
+          <label class="field">Persona que valida
+            <input data-save="contexto_persona" />
+          </label>
+        </div>
+      </article>
+
+      <details>
+        <summary>Escala de respuesta</summary>
+        <div class="details-body">
+          <div class="scale-grid">
+            <div class="scale-item"><b>1</b><span>Casi nunca. No hay evidencia reciente.</span></div>
+            <div class="scale-item"><b>2</b><span>Pocas veces. Aparece solo en situaciones puntuales.</span></div>
+            <div class="scale-item"><b>3</b><span>Algunas veces. Hay señales visibles, pero no patrón confiable.</span></div>
+            <div class="scale-item"><b>4</b><span>Con frecuencia. Se repite con claridad.</span></div>
+            <div class="scale-item"><b>5</b><span>Siempre o casi siempre. Es consistente incluso bajo presión.</span></div>
+          </div>
+        </div>
+      </details>
+
+      <div class="diagnostic-layout">
+        <article class="card">
+          <div class="eyebrow">Paso 1</div>
+          <h2>Responde las afirmaciones</h2>
+          <p>Marca del 1 al 5 según la frecuencia con que realmente actúas así.</p>
+          <div id="questionsRoot"></div>
+        </article>
+
+        <aside class="result-panel">
+          <div class="eyebrow">Resultado en vivo</div>
+          <h3>Tu mapa G.E.N.I.O.S.</h3>
+          <div class="kpis">
+            <div class="kpi"><span>Respondidas</span><b id="answeredCount">0</b></div>
+            <div class="kpi"><span>Puntaje</span><b id="totalScore">0</b></div>
+            <div class="kpi"><span>Nivel</span><b id="levelShort">—</b></div>
+          </div>
+          <svg id="radar" viewBox="0 0 320 320" role="img" aria-label="Mapa G.E.N.I.O.S."></svg>
+          <div class="bar-list" id="barList"></div>
+          <div class="callout" id="levelText">Completa las 24 afirmaciones para ver tu nivel y punto de entrada.</div>
         </aside>
       </div>
-    </section>
 
-    <section class="notice" aria-label="Idea central del cuaderno">
-      <div class="container notice-inner">
-        <p><strong>Capital Reputacional = Valor × Consistencia × Visibilidad.</strong></p>
-        <p>La sala no lee tus intenciones: lee la experiencia que otros pueden describir cuando tú no estás presente.</p>
-      </div>
-    </section>
+      <details>
+        <summary>Calcular y leer mi nivel</summary>
+        <div class="details-body">
+          <table class="score-table">
+            <thead><tr><th>Letra</th><th>Suma</th><th>Promedio</th></tr></thead>
+            <tbody id="scoreTable"></tbody>
+          </table>
 
-    <section class="section" id="empezar">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Ruta de uso</p>
-          <h2>Elige cómo usarlo hoy</h2>
-          <p>No necesitas completar todo en una sola sesión. Usa la ruta que calce con tu momento.</p>
+          <table class="entry-table">
+            <thead><tr><th>Total</th><th>Nivel</th><th>Lectura práctica</th></tr></thead>
+            <tbody>
+              <tr><td>24–43</td><td>N1 · Operador</td><td>Elige una letra y practica una conducta visible.</td></tr>
+              <tr><td>44–62</td><td>N2 · Cumplidor</td><td>Convierte una fortaleza en algo reconocible.</td></tr>
+              <tr><td>63–81</td><td>N3 · Confiable</td><td>Fortalece tus letras más bajas.</td></tr>
+              <tr><td>82–101</td><td>N4 · Impacto</td><td>Convierte tus fortalezas en un patrón sostenible.</td></tr>
+              <tr><td>102–120</td><td>N5 · Genio</td><td>Contrasta que los demás vivan la misma experiencia.</td></tr>
+            </tbody>
+          </table>
+
+          <label class="field">Mi nivel hoy es
+            <input data-save="mi_nivel_hoy" />
+          </label>
         </div>
+      </details>
 
-        <div class="route-grid">
-          <article class="route-card">
-            <span class="route-number">10 min</span>
-            <h3>Entrada rápida</h3>
-            <p>Lee las nuevas definiciones, elige una letra y registra una evidencia para las próximas 48 horas.</p>
-            <a href="#manual">Ir al manual de bolsillo</a>
-          </article>
-          <article class="route-card featured">
-            <span class="route-number">30 min</span>
-            <h3>Diagnóstico inicial</h3>
-            <p>Define el contexto, responde las 24 afirmaciones actualizadas y detecta tu letra prioritaria.</p>
-            <a href="#diagnostico">Hacer diagnóstico</a>
-          </article>
-          <article class="route-card">
-            <span class="route-number">6 sem</span>
-            <h3>Programa completo</h3>
-            <p>Trabaja una definición por semana, registra evidencia y contrasta tu avance con otra persona.</p>
-            <a href="#semanas">Ver plan</a>
-          </article>
-        </div>
-      </div>
-    </section>
+      <details>
+        <summary>Punto de entrada y compromiso</summary>
+        <div class="details-body">
+          <table class="entry-table">
+            <thead><tr><th>Letra</th><th>Pregunta de entrada</th></tr></thead>
+            <tbody>
+              <tr><td>G</td><td>¿Qué decisión, solución o avance debe producir mi trabajo?</td></tr>
+              <tr><td>E</td><td>¿Qué necesito comprender antes de resolver?</td></tr>
+              <tr><td>N</td><td>¿Qué necesita el resultado de mí ahora?</td></tr>
+              <tr><td>I</td><td>¿Qué necesita el receptor para actuar sin perseguirme?</td></tr>
+              <tr><td>O</td><td>¿Qué capacidad debo desarrollar antes de que limite mi siguiente etapa?</td></tr>
+              <tr><td>S</td><td>¿Qué estándar puedo sostener aunque el día no ayude?</td></tr>
+            </tbody>
+          </table>
 
-    <section class="section section-muted" id="diagnostico">
-      <div class="container split">
-        <div>
-          <p class="kicker">Parte I</p>
-          <h2>Diagnóstico G.E.N.I.O.S.</h2>
-          <p class="body-large">Una fotografía honesta de tu comportamiento promedio en las últimas cuatro semanas. Cada letra tiene una definición simple y cuatro afirmaciones observables. No evalúa tu valor personal: señala por dónde comenzar.</p>
-          <div class="check-panel">
-            <h3>Antes de responder</h3>
-            <ul>
-              <li>Elige un contexto específico: trabajo, proyecto, cliente, liderazgo o búsqueda laboral.</li>
-              <li>Responde cada afirmación con evidencia reciente, no con intención.</li>
-              <li>Si no recuerdas una prueba concreta, baja el puntaje.</li>
-              <li>Si hay empate, elige la letra cuya definición hoy afecta más tu resultado.</li>
-            </ul>
-          </div>
+          <label class="field">Mi perfil actual es
+            <input data-save="perfil_actual" />
+          </label>
+          <label class="field">Letra prioritaria
+            <input data-save="compromiso_letra" />
+          </label>
+          <label class="field">Situación real donde la practicaré
+            <input data-save="compromiso_situacion" />
+          </label>
+          <label class="field">Evidencia que quiero producir
+            <textarea data-save="compromiso_evidencia"></textarea>
+          </label>
+          <label class="field">Fecha de revisión
+            <input data-save="compromiso_fecha" />
+          </label>
         </div>
-        <figure class="image-panel">
-          <img src="assets/mapa.png" alt="Página del cuaderno para calcular el mapa G.E.N.I.O.S." />
-          <figcaption>Calcula cada letra, ubica el promedio y observa qué definición reduce hoy el efecto de tus fortalezas.</figcaption>
-        </figure>
-      </div>
-
-        <div class="section-head" style="margin-top:32px;">
-          <p class="kicker">Afirmaciones actualizadas</p>
-          <h2>Las 24 conductas que mide el cuaderno</h2>
-          <p>Responde cada afirmación de 1 a 5 según lo que hiciste de forma observable en las últimas cuatro semanas.</p>
-        </div>
-
-        <div class="tools-grid" aria-label="Afirmaciones actualizadas del diagnóstico G.E.N.I.O.S.">
-          <article class="tool-card">
-            <span class="letter-badge">G</span>
-            <h3>Generar valor</h3>
-            <p class="question">Mover decisiones, no solo informar.</p>
-            <ol>
-              <li>Antes de entregar, pienso para qué le sirve a otros.</li>
-              <li>Busco el resultado, no solo la tarea.</li>
-              <li>Convierto información en un paso claro.</li>
-              <li>Puedo decir qué cambió gracias a mi trabajo.</li>
-            </ol>
-          </article>
-          <article class="tool-card">
-            <span class="letter-badge">E</span>
-            <h3>Escuchar</h3>
-            <p class="question">No responder rápido al problema equivocado.</p>
-            <ol>
-              <li>Me detengo y pienso antes de responder.</li>
-              <li>Busco entender qué necesita la otra persona.</li>
-              <li>Pregunto antes de proponer.</li>
-              <li>Puedo resumir lo que la otra persona necesita.</li>
-            </ol>
-          </article>
-          <article class="tool-card">
-            <span class="letter-badge">N</span>
-            <h3>Involucrarte</h3>
-            <p class="question">Hacerte cargo sin cargarlo todo.</p>
-            <ol>
-              <li>Si veo un problema, lo digo.</li>
-              <li>Si algo se puede mejorar, propongo cómo empezar.</li>
-              <li>Me hago responsable del resultado completo.</li>
-              <li>Tomo iniciativa con aportes útiles sin que me lo pidan.</li>
-            </ol>
-          </article>
-          <article class="tool-card">
-            <span class="letter-badge">I</span>
-            <h3>Detalle</h3>
-            <p class="question">Lograr que tu trabajo funcione sin explicaciones.</p>
-            <ol>
-              <li>Antes de entregar, verifico que se entienda.</li>
-              <li>Anticipo dudas sobre mi trabajo.</li>
-              <li>Verifico cifras, nombres y fechas.</li>
-              <li>Mis entregas se entienden solas.</li>
-            </ol>
-          </article>
-          <article class="tool-card">
-            <span class="letter-badge">O</span>
-            <h3>Crecer</h3>
-            <p class="question">Desarrollarte antes de que la siguiente etapa te lo exija.</p>
-            <ol>
-              <li>Desarrollo activamente una habilidad.</li>
-              <li>Practico algo que aún no domino.</li>
-              <li>Pido feedback honesto.</li>
-              <li>Sé qué debo mejorar.</li>
-            </ol>
-          </article>
-          <article class="tool-card">
-            <span class="letter-badge">S</span>
-            <h3>Consistencia</h3>
-            <p class="question">Sostener tu estándar cuando la semana se complica.</p>
-            <ol>
-              <li>Mantengo mi estándar incluso en semanas difíciles.</li>
-              <li>En semanas difíciles, cumplo lo prometido.</li>
-              <li>La gente sabe qué esperar de mí.</li>
-              <li>Mantengo mi estándar en el tiempo.</li>
-            </ol>
-          </article>
-        </div>
+      </details>
     </section>
 
     <section class="section" id="herramientas">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Parte II</p>
-          <h2>Activa la letra correcta</h2>
-          <p>Elige una situación. La página te muestra qué letra trabajar, su definición y la pregunta que convierte intención en evidencia.</p>
-        </div>
+      <div class="section-title">
+        <h2>Herramientas</h2>
+        <span>6 letras</span>
+      </div>
+      <div id="toolsRoot"></div>
+    </section>
 
-        <div class="chooser" aria-label="Selector de situación">
-          <button class="choice active" type="button" data-choice="G">Necesito mover una decisión</button>
-          <button class="choice" type="button" data-choice="E">Estoy respondiendo rápido</button>
-          <button class="choice" type="button" data-choice="N">Necesito hacerme cargo sin cargarlo todo</button>
-          <button class="choice" type="button" data-choice="I">Mi trabajo debe funcionar solo</button>
-          <button class="choice" type="button" data-choice="O">La siguiente etapa me exige crecer</button>
-          <button class="choice" type="button" data-choice="S">La semana se complicó</button>
-        </div>
+    <section class="section" id="auditorias">
+      <div class="section-title">
+        <h2>Auditorías</h2>
+        <span>Contraste</span>
+      </div>
 
-        <div class="tool-display" id="tool-display" aria-live="polite"></div>
+      <div class="audit-grid">
+        <details open>
+          <summary>Auditoría del Capital Reputacional</summary>
+          <div class="details-body">
+            <p>Elige tres personas que conozcan tu trabajo desde contextos distintos. Busca palabras repetidas, ejemplos concretos y reservas.</p>
+            <label class="field">Persona 1<textarea data-save="audit1_p1"></textarea></label>
+            <label class="field">Persona 2<textarea data-save="audit1_p2"></textarea></label>
+            <label class="field">Persona 3<textarea data-save="audit1_p3"></textarea></label>
+            <label class="field">Mis tres conclusiones<textarea data-save="audit1_conclusiones"></textarea></label>
+          </div>
+        </details>
 
-        <div class="tools-grid" aria-label="Resumen de las seis herramientas">
-          <article class="tool-card" id="tool-G">
-            <span class="letter-badge">G</span>
-            <h3>Generar valor</h3>
-            <p class="question">Mover decisiones, no solo informar.</p>
-            <p><strong>Pregunta:</strong> ¿Qué decisión, solución o avance debe producir mi trabajo?</p>
-            <p><strong>Herramienta:</strong> Mapa de Valor.</p>
-            <p><strong>Evidencia:</strong> alguien avanza con menos fricción.</p>
-          </article>
-          <article class="tool-card" id="tool-E">
-            <span class="letter-badge">E</span>
-            <h3>Escuchar</h3>
-            <p class="question">No responder rápido al problema equivocado.</p>
-            <p><strong>Pregunta:</strong> ¿Qué necesito comprender antes de resolver?</p>
-            <p><strong>Herramienta:</strong> la segunda pregunta.</p>
-            <p><strong>Evidencia:</strong> el problema queda mejor nombrado.</p>
-          </article>
-          <article class="tool-card" id="tool-N">
-            <span class="letter-badge">N</span>
-            <h3>Involucrarte</h3>
-            <p class="question">Hacerte cargo sin cargarlo todo.</p>
-            <p><strong>Pregunta:</strong> ¿Qué necesita el resultado de mí ahora?</p>
-            <p><strong>Herramienta:</strong> cinco movimientos para hacer visible un riesgo.</p>
-            <p><strong>Evidencia:</strong> el problema se mueve sin convertirte en su único responsable.</p>
-          </article>
-          <article class="tool-card" id="tool-I">
-            <span class="letter-badge">I</span>
-            <h3>Detalle</h3>
-            <p class="question">Lograr que tu trabajo funcione sin explicaciones.</p>
-            <p><strong>Pregunta:</strong> ¿Qué necesita el receptor para actuar sin perseguirme?</p>
-            <p><strong>Herramienta:</strong> Prueba de Ausencia.</p>
-            <p><strong>Evidencia:</strong> entiende qué importa, qué hacer y por qué confiar.</p>
-          </article>
-          <article class="tool-card" id="tool-O">
-            <span class="letter-badge">O</span>
-            <h3>Crecer</h3>
-            <p class="question">Desarrollarte antes de que la siguiente etapa te lo exija.</p>
-            <p><strong>Pregunta:</strong> ¿Qué capacidad debo desarrollar antes de que limite mi siguiente etapa?</p>
-            <p><strong>Herramienta:</strong> Ciclo O.</p>
-            <p><strong>Evidencia:</strong> una nueva capacidad modifica un resultado real.</p>
-          </article>
-          <article class="tool-card" id="tool-S">
-            <span class="letter-badge">S</span>
-            <h3>Consistencia</h3>
-            <p class="question">Sostener tu estándar cuando la semana se complica.</p>
-            <p><strong>Pregunta:</strong> ¿Qué estándar puedo sostener aunque el día no ayude?</p>
-            <p><strong>Herramienta:</strong> estándar mínimo visible.</p>
-            <p><strong>Evidencia:</strong> otros saben qué esperar también bajo presión.</p>
-          </article>
-        </div>
+        <details>
+          <summary>Auditoría de la evitación</summary>
+          <div class="details-body">
+            <p>Para detectar la gravedad del promedio, no preguntes si trabajas mucho. Pregunta qué decisión estás evitando.</p>
+            <label class="field">¿Qué movimiento llevo meses diciendo que debo hacer?<textarea data-save="audit2_1"></textarea></label>
+            <label class="field">¿Qué emoción estoy intentando no sentir?<textarea data-save="audit2_2"></textarea></label>
+            <label class="field">¿Qué costo ya está produciendo la espera?<textarea data-save="audit2_3"></textarea></label>
+            <label class="field">Mi decisión<textarea data-save="audit2_decision" placeholder="Estoy evitando ___ porque ___. Antes de ___ realizaré ___."></textarea></label>
+          </div>
+        </details>
+
+        <details>
+          <summary>Define tu Sello Profesional</summary>
+          <div class="details-body">
+            <p>No inventes una frase impresionante. Observa las evidencias que ya existen.</p>
+            <label class="field">Ayudo a ___ cuando ___.<textarea data-save="sello_1"></textarea></label>
+            <label class="field">Mi forma reconocible de aportar consiste en ___.<textarea data-save="sello_2"></textarea></label>
+            <label class="field">Después de mi intervención, queda ___.<textarea data-save="sello_3"></textarea></label>
+            <label class="field">Lo que necesito transferir para poder avanzar<textarea data-save="sello_transferir"></textarea></label>
+          </div>
+        </details>
       </div>
     </section>
 
-    <section class="section section-muted" id="plantillas">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Plantillas clave</p>
-          <h2>Usa estas páginas primero</h2>
-          <p>Para lectores, estas son las páginas más útiles cuando quieren aplicar el sistema sin releer todo.</p>
-        </div>
-        <div class="template-grid">
-          <article class="template-card">
-            <img src="assets/mapa-valor.png" alt="Vista previa del Mapa de Valor" />
-            <div>
-              <h3>Mapa de Valor</h3>
-              <p>Úsalo antes de una entrega importante para definir receptor, decisión, fricción, aporte y evidencia.</p>
-            </div>
-          </article>
-          <article class="template-card">
-            <img src="assets/prueba-ausencia.png" alt="Vista previa de la Prueba de Ausencia" />
-            <div>
-              <h3>Prueba de Ausencia</h3>
-              <p>Úsala antes de enviar un correo, informe o presentación que otro debe usar sin perseguirte.</p>
-            </div>
-          </article>
-          <article class="template-card" id="manual">
-            <img src="assets/manual-bolsillo.png" alt="Vista previa del Manual de bolsillo" />
-            <div>
-              <h3>Manual de bolsillo</h3>
-              <p>Úsalo antes de una reunión, entrega o semana que perdió dirección. Decide una acción mínima visible.</p>
-            </div>
-          </article>
-        </div>
+    <section class="section" id="semanas">
+      <div class="section-title">
+        <h2>6 semanas</h2>
+        <span>Práctica</span>
       </div>
+
+      <article class="card">
+        <div class="eyebrow">Semana 0</div>
+        <h2>Elige el terreno</h2>
+        <p>Elige un contexto suficientemente importante como para que otra persona experimente una diferencia.</p>
+        <div class="context-grid">
+          <label class="field">Aplicaré el sistema en<input data-save="sem0_contexto"></label>
+          <label class="field">Quien observará el efecto es<input data-save="sem0_observador"></label>
+          <label class="field">La diferencia que quiero producir es<input data-save="sem0_diferencia"></label>
+        </div>
+      </article>
+
+      <div class="week-grid" id="weeksRoot"></div>
+
+      <details>
+        <summary>Cerrar el experimento</summary>
+        <div class="details-body">
+          <label class="field">¿Qué conducta notaste?<textarea data-save="cierre_1"></textarea></label>
+          <label class="field">¿Qué efecto produjo en tu trabajo o en el resultado?<textarea data-save="cierre_2"></textarea></label>
+          <label class="field">¿Qué debería sostener o ajustar?<textarea data-save="cierre_3"></textarea></label>
+          <label class="field">Letra de expansión<input data-save="letra_expansion"></label>
+          <label class="field">Letra de protección<input data-save="letra_proteccion"></label>
+        </div>
+      </details>
     </section>
 
-    <section class="section dark" id="semanas">
-      <div class="container split">
-        <div>
-          <p class="kicker gold">Parte IV</p>
-          <h2>Experimento de seis semanas</h2>
-          <p class="body-large">Una definición principal por semana. El foco no es pensar más en la conducta, sino practicarla y registrar qué ocurrió gracias a ella.</p>
-          <ol class="week-list">
-            <li><span>G</span> Generar valor</li>
-            <li><span>E</span> Escuchar</li>
-            <li><span>N</span> Involucrarte</li>
-            <li><span>I</span> Detalle</li>
-            <li><span>O</span> Crecer</li>
-            <li><span>S</span> Consistencia</li>
+    <section class="section" id="uso">
+      <div class="section-title">
+        <h2>Uso continuo</h2>
+        <span>Bolsillo</span>
+      </div>
+
+      <div class="continuous-grid">
+        <article class="card">
+          <div class="eyebrow">Manual de bolsillo</div>
+          <h2>60 segundos</h2>
+          <ol>
+            <li>Nombra el resultado que necesita moverse.</li>
+            <li>Identifica la conducta que hoy lo está limitando.</li>
+            <li>Elige la acción mínima visible que puedes ejecutar ahora.</li>
+            <li>Decide qué evidencia quedará para otra persona.</li>
           </ol>
-        </div>
-        <div class="dark-panel">
-          <h3>Regla de uso</h3>
-          <p>Practica dentro del trabajo real. Registra evidencia, no esfuerzo: qué decisión, avance o experiencia produjo esa definición en acción.</p>
-          <p>Si rompes el patrón, no reinicies. Reduce la conducta, repara y retoma dentro de 24 horas.</p>
-        </div>
-      </div>
-    </section>
+          <div class="callout">Pregunta central: ¿qué evidencia debe dejar mi próxima acción?</div>
+        </article>
 
-    <section class="section" id="accion">
-      <div class="container split">
-        <div>
-          <p class="kicker">Primera evidencia</p>
-          <h2>Deja una decisión escrita antes de cerrar la página</h2>
-          <p class="body-large">Completa este bloque. Se guarda en tu navegador para que puedas volver luego. También puedes imprimir la página.</p>
-        </div>
-        <form class="action-form" data-action-form>
-          <label>
-            Letra que trabajaré
-            <select name="letter" required>
-              <option value="">Selecciona una letra</option>
-              <option value="G - Generar valor">G - Generar valor</option>
-              <option value="E - Escuchar">E - Escuchar</option>
-              <option value="N - Involucrarte">N - Involucrarte</option>
-              <option value="I - Detalle">I - Detalle</option>
-              <option value="O - Crecer">O - Crecer</option>
-              <option value="S - Consistencia">S - Consistencia</option>
-            </select>
-          </label>
-          <label>
-            Situación donde la practicaré
-            <input name="situation" type="text" placeholder="Ej.: reunión con cliente, entrega semanal, seguimiento..." />
-          </label>
-          <label>
-            Evidencia que quiero producir
-            <textarea name="evidence" rows="4" placeholder="Ej.: alguien puede decidir, avanzar o entender sin pedirme contexto adicional."></textarea>
-          </label>
-          <label>
-            Cuándo lo haré
-            <input name="date" type="text" placeholder="Ej.: mañana 10:00 / viernes / próxima reunión" />
-          </label>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Guardar decisión</button>
-            <button class="btn btn-secondary" type="button" data-clear>Limpiar</button>
-          </div>
-          <p class="saved-msg" data-saved-msg role="status" aria-live="polite"></p>
-        </form>
+        <article class="card">
+          <div class="eyebrow">Cada semana</div>
+          <h2>Cierre de 5 minutos</h2>
+          <label class="field">Semana del<input data-save="cierre_semana_fecha_1"></label>
+          <label class="field">La evidencia más útil que dejé fue<textarea data-save="cierre_semana_ev_1"></textarea></label>
+          <label class="field">La letra que debo reforzar es<input data-save="cierre_semana_letra_1"></label>
+          <label class="field">La conducta que repetiré y dónde la practicaré<textarea data-save="cierre_semana_conducta_1"></textarea></label>
+        </article>
       </div>
-    </section>
 
-    <section class="section section-muted" id="pdf">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Documento completo</p>
-          <h2>Ver, descargar o imprimir el cuaderno</h2>
-          <p>Abre el PDF en pantalla completa para escribirlo digitalmente o descárgalo para imprimirlo.</p>
-        </div>
-        <div class="pdf-actions">
-          <a class="btn btn-primary" href="assets/cuaderno-genios.pdf" target="_blank" rel="noopener">Abrir PDF</a>
-          <a class="btn btn-secondary" href="assets/cuaderno-genios.pdf" download>Descargar PDF</a>
-          <button class="btn btn-ghost" type="button" onclick="window.print()">Imprimir esta página</button>
-        </div>
-        <div class="pdf-frame pdf-dark-preview">
-          <div class="pdf-preview-copy">
-            <p class="kicker">Vista del cuaderno</p>
-            <h3>El PDF conserva páginas claras para lectura e impresión.</h3>
-            <p>Para que la web no se vea blanca, la vista incrustada fue reemplazada por una tarjeta oscura. Abre el PDF en pantalla completa o descárgalo cuando quieras trabajarlo.</p>
-            <div class="pdf-actions inline">
-              <a class="btn btn-primary" href="assets/cuaderno-genios.pdf" target="_blank" rel="noopener">Abrir PDF</a>
-              <a class="btn btn-secondary" href="assets/cuaderno-genios.pdf" download>Descargar</a>
-            </div>
-          </div>
-          <img src="assets/cover.png" alt="Portada del Cuaderno de Trabajo SOMOS G.E.N.I.O.S." />
-        </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <div class="container closing-grid">
-        <div>
-          <p class="kicker">Cierre</p>
-          <h2>No cierres con una intención. Cierra con una decisión.</h2>
-          <p>Mientras lees estas líneas, en algún lugar vuelve a reunirse una sala. Decide qué experiencia estás produciendo hoy para quien mañana deberá describirte.</p>
-          <a class="btn btn-primary" href="#accion">Registrar mi primera evidencia</a>
-        </div>
-        <img src="assets/cierre.png" alt="Página final del cuaderno con el cierre Sigue construyendo evidencia" />
-      </div>
+      <article class="card">
+        <div class="eyebrow">Una última cosa</div>
+        <h2>Tu primera evidencia</h2>
+        <p>Define tu primer movimiento. Debe ser pequeño, observable y concreto para ejecutarlo durante las próximas cuarenta y ocho horas.</p>
+        <label class="field">Letra que trabajaré<input data-save="primera_letra"></label>
+        <label class="field">Situación donde la practicaré<input data-save="primera_situacion"></label>
+        <label class="field">Evidencia que quiero producir<textarea data-save="primera_evidencia"></textarea></label>
+        <label class="field">Cuándo lo haré<input data-save="primera_cuando"></label>
+        <p class="lead" style="text-align:center;margin-top:18px">No cierres este cuaderno con una intención. Ciérralo con una decisión.</p>
+      </article>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© Kevin Lück · Cuaderno de trabajo SOMOS G.E.N.I.O.S.</p>
-      <p><span>Instagram · @somosgenios</span><span>LinkedIn · Kevin Lück</span></p>
+  <nav class="bottom-nav" aria-label="Navegación inferior">
+    <div class="bottom-nav-inner">
+      <a href="#inicio"><b>⌂</b>Inicio</a>
+      <a href="#diagnostico"><b>◇</b>Diagnóstico</a>
+      <a href="#herramientas"><b>G</b>Herramientas</a>
+      <a href="#semanas"><b>6</b>Semanas</a>
+      <a href="#uso"><b>✓</b>Cierre</a>
     </div>
-  </footer>
+  </nav>
 
-  <!-- Contenido actualizado: nuevas definiciones G.E.N.I.O.S. y 24 afirmaciones del diagnóstico. -->
-  <script src="script.js"></script>
+  <div class="desktop-actions">
+    <button id="btnPrint">Imprimir / Guardar PDF</button>
+    <button class="secondary" id="btnReset">Reiniciar</button>
+  </div>
+
+  <div class="toast" id="toast">Guardado</div>
+
   <script>
-    (() => {
-      const GENIOS_CONTENT = {
-        G: {
-          title: 'Generar valor',
-          definition: 'Mover decisiones, no solo informar.',
-          question: '¿Qué decisión, solución o avance debe producir mi trabajo?',
-          tool: 'Mapa de Valor',
-          evidence: 'Alguien avanza con menos fricción.',
-          affirmations: [
-            'Antes de entregar, pienso para qué le sirve a otros.',
-            'Busco el resultado, no solo la tarea.',
-            'Convierto información en un paso claro.',
-            'Puedo decir qué cambió gracias a mi trabajo.'
-          ]
-        },
-        E: {
-          title: 'Escuchar',
-          definition: 'No responder rápido al problema equivocado.',
-          question: '¿Qué necesito comprender antes de resolver?',
-          tool: 'La segunda pregunta',
-          evidence: 'El problema queda mejor nombrado.',
-          affirmations: [
-            'Me detengo y pienso antes de responder.',
-            'Busco entender qué necesita la otra persona.',
-            'Pregunto antes de proponer.',
-            'Puedo resumir lo que la otra persona necesita.'
-          ]
-        },
-        N: {
-          title: 'Involucrarte',
-          definition: 'Hacerte cargo sin cargarlo todo.',
-          question: '¿Qué necesita el resultado de mí ahora?',
-          tool: 'Cinco movimientos para hacer visible un riesgo',
-          evidence: 'El problema se mueve sin convertirte en su único responsable.',
-          affirmations: [
-            'Si veo un problema, lo digo.',
-            'Si algo se puede mejorar, propongo cómo empezar.',
-            'Me hago responsable del resultado completo.',
-            'Tomo iniciativa con aportes útiles sin que me lo pidan.'
-          ]
-        },
-        I: {
-          title: 'Detalle',
-          definition: 'Lograr que tu trabajo funcione sin explicaciones.',
-          question: '¿Qué necesita el receptor para actuar sin perseguirme?',
-          tool: 'Prueba de Ausencia',
-          evidence: 'Entiende qué importa, qué hacer y por qué confiar.',
-          affirmations: [
-            'Antes de entregar, verifico que se entienda.',
-            'Anticipo dudas sobre mi trabajo.',
-            'Verifico cifras, nombres y fechas.',
-            'Mis entregas se entienden solas.'
-          ]
-        },
-        O: {
-          title: 'Crecer',
-          definition: 'Desarrollarte antes de que la siguiente etapa te lo exija.',
-          question: '¿Qué capacidad debo desarrollar antes de que limite mi siguiente etapa?',
-          tool: 'Ciclo O',
-          evidence: 'Una nueva capacidad modifica un resultado real.',
-          affirmations: [
-            'Desarrollo activamente una habilidad.',
-            'Practico algo que aún no domino.',
-            'Pido feedback honesto.',
-            'Sé qué debo mejorar.'
-          ]
-        },
-        S: {
-          title: 'Consistencia',
-          definition: 'Sostener tu estándar cuando la semana se complica.',
-          question: '¿Qué estándar puedo sostener aunque el día no ayude?',
-          tool: 'Estándar mínimo visible',
-          evidence: 'Otros saben qué esperar también bajo presión.',
-          affirmations: [
-            'Mantengo mi estándar incluso en semanas difíciles.',
-            'En semanas difíciles, cumplo lo prometido.',
-            'La gente sabe qué esperar de mí.',
-            'Mantengo mi estándar en el tiempo.'
-          ]
-        }
-      };
+    const STORAGE_KEY = "cuaderno_genios_mobile_reader_v2";
 
-      window.GENIOS_UPDATED_CONTENT = GENIOS_CONTENT;
-
-      function renderTool(letter) {
-        const item = GENIOS_CONTENT[letter] || GENIOS_CONTENT.G;
-        const target = document.getElementById('tool-display');
-        if (!target) return;
-        target.innerHTML = `
-          <article class="tool-card active-tool">
-            <span class="letter-badge">${letter}</span>
-            <h3>${item.title}</h3>
-            <p class="question">${item.definition}</p>
-            <p><strong>Pregunta:</strong> ${item.question}</p>
-            <p><strong>Herramienta:</strong> ${item.tool}.</p>
-            <p><strong>Evidencia:</strong> ${item.evidence}</p>
-            <ol>${item.affirmations.map(text => `<li>${text}</li>`).join('')}</ol>
-          </article>
-        `;
+    const dimensions = [
+      {
+        letter:"G", name:"Generar valor", short:"Mover decisiones, no solo informar.",
+        questions:[
+          "Antes de entregar, pienso para qué le sirve a otros.",
+          "Busco el resultado, no solo la tarea.",
+          "Convierto información en un paso claro.",
+          "Puedo decir qué cambió gracias a mi trabajo."
+        ]
+      },
+      {
+        letter:"E", name:"Escuchar para entender", short:"No responder rápido al problema equivocado.",
+        questions:[
+          "Me detengo y pienso antes de responder.",
+          "Busco entender qué necesita la otra persona.",
+          "Pregunto antes de proponer.",
+          "Puedo resumir lo que la otra persona necesita."
+        ]
+      },
+      {
+        letter:"N", name:"Nivel de involucramiento", short:"Hacerte cargo sin cargarlo todo.",
+        questions:[
+          "Si veo un problema, lo digo.",
+          "Si algo se puede mejorar, propongo cómo empezar.",
+          "Me hago responsable del resultado completo.",
+          "Tomo iniciativa con aportes útiles sin que me lo pidan."
+        ]
+      },
+      {
+        letter:"I", name:"Intención en el detalle", short:"Lograr que tu trabajo funcione sin explicaciones.",
+        questions:[
+          "Antes de entregar, verifico que se entienda.",
+          "Anticipo dudas sobre mi trabajo.",
+          "Verifico cifras, nombres y fechas.",
+          "Mis entregas se entienden solas."
+        ]
+      },
+      {
+        letter:"O", name:"Obsesión por crecer", short:"Desarrollarte antes de que la siguiente etapa te lo exija.",
+        questions:[
+          "Desarrollo activamente una habilidad.",
+          "Practico algo que aún no domino.",
+          "Pido feedback honesto.",
+          "Sé qué debo mejorar."
+        ]
+      },
+      {
+        letter:"S", name:"Sostener la consistencia", short:"Sostener tu estándar cuando la semana se complica.",
+        questions:[
+          "Mantengo mi estándar incluso en semanas difíciles.",
+          "En semanas difíciles, cumplo lo prometido.",
+          "La gente sabe qué esperar de mí.",
+          "Mantengo mi estándar en el tiempo."
+        ]
       }
+    ];
 
-      document.querySelectorAll('.choice[data-choice]').forEach((button) => {
-        button.addEventListener('click', () => {
-          document.querySelectorAll('.choice[data-choice]').forEach((el) => el.classList.remove('active'));
-          button.classList.add('active');
-          renderTool(button.dataset.choice);
+    const tools = [
+      ["G","Generar valor","Mapa de Valor","Antes de tocar el documento, define qué debería poder hacer otra persona al recibirlo.",[
+        ["Receptor","¿Quién usará esto?"],["Decisión","¿Qué debe poder decidir?"],["Fricción","¿Qué debería dejar de interpretar?"],["Aporte","¿Qué cambio produce?"],["Evidencia","¿Cómo sabré que fue útil?"]
+      ]],
+      ["E","Escuchar","Segunda pregunta","Antes de proponer una solución, haz una pausa, formula una segunda pregunta y comprueba lo que entendiste.",[
+        ["Con quién / sobre qué",""],["Mi primera pregunta",""],["Mi segunda pregunta","Intención, prioridad o tensión no dicha."],["Comprobación","“Lo que estoy entendiendo es ___. ¿Es correcto?”"]
+      ]],
+      ["N","Involucrarte","Cinco movimientos","No ignoras, no dramatizas y tampoco lo absorbes: ayudas a que el sistema reaccione.",[
+        ["Comprueba","¿La persona responsable ya conoce la situación?"],["Haz visible","Describe el hecho y su impacto."],["Activa","Identifica quién debe participar."],["Contribuye","¿Qué puedes aportar desde tu rol?"],["Cierra el ciclo","Confirma responsable, siguiente paso y revisión."]
+      ]],
+      ["I","Detalle","Prueba de Ausencia","Antes de enviar, revisa si tu entrega puede ser usada aunque tú no estés para explicarla.",[
+        ["¿Se entiende sin que yo lo explique?",""],["¿Muestra primero lo que permite decidir?",""],["¿Permite decidir, actuar o avanzar?",""],["¿Reduce preguntas innecesarias?",""],["¿Puede sostenerse si yo no estoy presente?",""]
+      ]],
+      ["O","Crecer","Ciclo O","Convierte aprendizaje en conducta visible. Una brecha se vuelve relevante cuando limita tu contribución.",[
+        ["Brecha","¿Qué todavía no puedo ejecutar?"],["Conducta","¿Qué comportamiento demostraría esa capacidad?"],["Práctica","¿Cómo y cuándo la practicaré?"],["Retroalimentación","¿A quién le pediré una señal externa?"],["Repetición","¿Dónde volveré a practicarla?"]
+      ]],
+      ["S","Consistencia","Estándar mínimo visible","Define esa parte de tu forma de trabajar que no desaparece cuando estás cansado, presionado o saturado.",[
+        ["Responsabilidad que protegeré",""],["Mi máximo, cuando todo acompaña",""],["Mi estándar, en un día normal",""],["Mi mínimo no negociable",""],["Si fallo, recupero el patrón dentro de 24 horas",""]
+      ]]
+    ];
+
+    const weeks = [
+      ["Semana 1","G — Generar valor","Antes de una entrega importante, define qué decisión, solución o avance debe facilitar.","Alguien pudo avanzar con menos fricción."],
+      ["Semana 2","E — Escuchar","Formula una segunda pregunta antes de proponer tu solución.","Apareció información que modificó tu respuesta."],
+      ["Semana 3","N — Involucrarte","Activa un primer paso frente a un riesgo que afecta el resultado.","El problema avanzó hacia una conversación o responsable."],
+      ["Semana 4","I — Detalle","Revisa una entrega con la Prueba de Ausencia antes de enviarla.","La persona pudo actuar sin reconstruir el contexto."],
+      ["Semana 5","O — Crecer","Practica una capacidad vinculada con una brecha de valor.","Hiciste algo que antes evitabas o no sabías sostener."],
+      ["Semana 6","S — Consistencia","Protege un estándar realista durante la semana que tienes.","Otros pudieron anticipar cómo responderías bajo presión."]
+    ];
+
+    let state = loadState();
+
+    function loadState(){
+      try{return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}}
+      catch{return {}}
+    }
+    function saveState(){localStorage.setItem(STORAGE_KEY, JSON.stringify(state))}
+    function toast(msg="Guardado"){
+      const el=document.getElementById("toast");
+      el.textContent=msg;
+      el.classList.add("show");
+      clearTimeout(window.__toast);
+      window.__toast=setTimeout(()=>el.classList.remove("show"),1200);
+    }
+
+    function bindSavedFields(){
+      document.querySelectorAll("[data-save]").forEach(el=>{
+        const key=el.dataset.save;
+        if(state[key] !== undefined) el.value = state[key];
+        el.addEventListener("input",()=>{
+          state[key]=el.value;
+          saveState();
         });
+        el.addEventListener("change",()=>toast());
+      });
+    }
+
+    function renderQuestions(){
+      const root=document.getElementById("questionsRoot");
+      root.innerHTML="";
+      let idx=0;
+      dimensions.forEach((dim,dIdx)=>{
+        const det=document.createElement("details");
+        det.open = dIdx === 0;
+        det.innerHTML = `
+          <summary>
+            <span>
+              ${dim.letter} — ${dim.name}
+              <span class="subtotal" id="subtotal-${dim.letter}">0 / 20</span>
+            </span>
+          </summary>
+          <div class="details-body question-group">
+            <div class="dim-head">
+              <div class="mini-letter">${dim.letter}</div>
+              <div><strong>${dim.name}</strong><span>${dim.short}</span></div>
+            </div>
+          </div>
+        `;
+        const body=det.querySelector(".details-body");
+        dim.questions.forEach((q,i)=>{
+          idx++;
+          const key=`q_${dim.letter}_${i}`;
+          const article=document.createElement("article");
+          article.className="question";
+          const radios=[1,2,3,4,5].map(v=>`
+            <span>
+              <input type="radio" id="${key}_${v}" name="${key}" value="${v}" ${state[key] == v ? "checked":""}>
+              <label for="${key}_${v}">${v}</label>
+            </span>
+          `).join("");
+          article.innerHTML=`
+            <div class="question-text"><span class="q-num">${idx}</span><span>${q}</span></div>
+            <div class="radio-row">${radios}</div>
+          `;
+          article.querySelectorAll("input").forEach(input=>{
+            input.addEventListener("change",()=>{
+              state[key]=Number(input.value);
+              saveState();
+              updateScores();
+              toast("Respuesta guardada");
+            });
+          });
+          body.appendChild(article);
+        });
+        root.appendChild(det);
+      });
+    }
+
+    function renderTools(){
+      const root=document.getElementById("toolsRoot");
+      root.innerHTML=tools.map((tool,tIdx)=>`
+        <details ${tIdx===0 ? "open":""}>
+          <summary>${tool[0]} — ${tool[1]}</summary>
+          <div class="details-body">
+            <div class="tool-card">
+              <div class="tool-head">
+                <div class="mini-letter">${tool[0]}</div>
+                <div><h3>${tool[2]}</h3><span>${tool[1]}</span></div>
+              </div>
+              <p>${tool[3]}</p>
+              ${tool[4].map((s,i)=>`
+                <div class="step">
+                  <div class="step-num">${i+1}</div>
+                  <label class="field" style="margin:0">
+                    <strong>${s[0]}</strong>
+                    ${s[1] ? `<small>${s[1]}</small>`:""}
+                    <textarea data-save="tool_${tool[0]}_${i}"></textarea>
+                  </label>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </details>
+      `).join("");
+    }
+
+    function renderWeeks(){
+      const root=document.getElementById("weeksRoot");
+      root.innerHTML=weeks.map((w,i)=>`
+        <article class="week-card">
+          <div class="week-head">
+            <h3>${w[1]}</h3>
+            <span class="week-pill">${w[0]}</span>
+          </div>
+          <p><strong>Conducta:</strong> ${w[2]}</p>
+          <p><strong>Evidencia:</strong> ${w[3]}</p>
+          <label class="field">Situación real<input data-save="week_${i}_situacion"></label>
+          <label class="field">Conducta que practiqué<textarea data-save="week_${i}_conducta"></textarea></label>
+          <label class="field">Evidencia producida<textarea data-save="week_${i}_evidencia"></textarea></label>
+          <label class="field">Próxima repetición<textarea data-save="week_${i}_repeticion"></textarea></label>
+        </article>
+      `).join("");
+    }
+
+    function getScores(){
+      const scores=dimensions.map(dim=>{
+        const score=dim.questions.reduce((sum,_,i)=>sum+(Number(state[`q_${dim.letter}_${i}`])||0),0);
+        return {...dim, score, avg:score/4};
+      });
+      const answered=dimensions.reduce((sum,dim)=>sum+dim.questions.filter((_,i)=>Number(state[`q_${dim.letter}_${i}`])).length,0);
+      const total=scores.reduce((s,d)=>s+d.score,0);
+      return {scores,answered,total};
+    }
+
+    function levelFor(total,complete){
+      if(!complete) return {short:"—", text:"Completa las 24 afirmaciones para ver tu nivel y punto de entrada."};
+      if(total>=102) return {short:"N5", text:"N5 · Genio. Alta frecuencia en tu autoevaluación. Contrasta: que los demás vivan la misma experiencia."};
+      if(total>=82) return {short:"N4", text:"N4 · Impacto. Tu trabajo produce valor más allá de la tarea. Convierte tus fortalezas en patrón sostenible."};
+      if(total>=63) return {short:"N3", text:"N3 · Confiable. Saben que pueden contar contigo; fortalece tus letras más bajas."};
+      if(total>=44) return {short:"N2", text:"N2 · Cumplidor. Respondes y entregas, pero necesitas señales que te diferencien."};
+      return {short:"N1", text:"N1 · Operador. Empieza por elegir una letra y practicar una conducta visible."};
+    }
+
+    function updateScores(){
+      const {scores,answered,total}=getScores();
+      document.getElementById("answeredCount").textContent=answered;
+      document.getElementById("totalScore").textContent=total;
+      document.getElementById("progressText").textContent=`${answered} / 24`;
+      document.getElementById("progressFill").style.width=`${answered/24*100}%`;
+
+      const level=levelFor(total, answered===24);
+      document.getElementById("levelShort").textContent=level.short;
+      document.getElementById("levelText").textContent=level.text;
+
+      scores.forEach(d=>{
+        const el=document.getElementById(`subtotal-${d.letter}`);
+        if(el) el.textContent=`${d.score} / 20`;
       });
 
-      const active = document.querySelector('.choice.active[data-choice]');
-      renderTool(active ? active.dataset.choice : 'G');
-    })();
+      document.getElementById("scoreTable").innerHTML=scores.map(d=>`
+        <tr><td>${d.letter} — ${d.name}</td><td>${d.score}/20</td><td>${d.avg.toFixed(1)}/5</td></tr>
+      `).join("");
+
+      document.getElementById("barList").innerHTML=scores.map(d=>`
+        <div class="bar-row"><b>${d.letter}</b><div class="rail"><div class="fill" style="width:${(d.avg/5)*100}%"></div></div><span>${d.avg.toFixed(1)}</span></div>
+      `).join("");
+
+      drawRadar(scores);
+    }
+
+    function drawRadar(scores){
+      const svg=document.getElementById("radar");
+      const cx=160, cy=160, maxR=104, n=6;
+      const angle=i=>-Math.PI/2 + i*2*Math.PI/n;
+      const point=(i,r)=>[cx+Math.cos(angle(i))*r, cy+Math.sin(angle(i))*r];
+      let html="";
+      for(let ring=1; ring<=5; ring++){
+        const pts=[...Array(n)].map((_,i)=>point(i,maxR*ring/5).join(",")).join(" ");
+        html += `<polygon points="${pts}" fill="none" stroke="rgba(32,58,92,.14)" stroke-width="1"/>`;
+      }
+      for(let i=0;i<n;i++){
+        const [x,y]=point(i,maxR);
+        html += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(32,58,92,.12)" stroke-width="1"/>`;
+      }
+      const shape=scores.map((d,i)=>point(i,maxR*(d.avg/5)).join(",")).join(" ");
+      html += `<polygon points="${shape}" fill="rgba(179,136,43,.28)" stroke="#b3882b" stroke-width="3"/>`;
+      scores.forEach((d,i)=>{
+        const [x,y]=point(i,maxR*(d.avg/5));
+        html += `<circle cx="${x}" cy="${y}" r="4" fill="#203a5c" stroke="white" stroke-width="2"/>`;
+        const [lx,ly]=point(i,maxR+26);
+        html += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="central" fill="#203a5c" font-size="16" font-weight="900">${d.letter}</text>`;
+      });
+      svg.innerHTML=html;
+    }
+
+    function resetAll(){
+      if(confirm("¿Seguro que quieres borrar todas las respuestas guardadas en esta web?")){
+        state={};
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    }
+
+    document.getElementById("btnTopPrint").addEventListener("click",()=>window.print());
+    document.getElementById("btnTopReset").addEventListener("click",resetAll);
+    document.getElementById("btnPrint").addEventListener("click",()=>window.print());
+    document.getElementById("btnReset").addEventListener("click",resetAll);
+
+    renderQuestions();
+    renderTools();
+    renderWeeks();
+    bindSavedFields();
+    updateScores();
   </script>
 </body>
 </html>
