@@ -3,1669 +3,474 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Cuaderno G.E.N.I.O.S. · Web móvil</title>
-  <meta name="description" content="Cuaderno G.E.N.I.O.S. adaptado para celular: diagnóstico, herramientas, auditorías y plan de seis semanas." />
+  <title>Cuaderno G.E.N.I.O.S. · Reporte y plan de acción</title>
+  <meta name="description" content="Cuaderno web mobile-first para practicar el sistema G.E.N.I.O.S.: diagnóstico, Capital Reputacional, reporte personalizado, herramientas, auditorías y plan de seis semanas." />
   <style>
     :root{
-      --bg:#fbf7ef;
-      --paper:#fffdf8;
-      --ink:#203a5c;
-      --ink-2:#172b45;
-      --text:#242424;
-      --muted:#686d75;
-      --gold:#b3882b;
-      --gold-2:#eadbbb;
-      --line:#ded3be;
-      --soft:#f3ede3;
-      --white:#fff;
-      --ok:#22715c;
-      --danger:#9d4739;
-      --shadow:0 12px 34px rgba(32,58,92,.10);
-      --radius:20px;
-      --radius-sm:14px;
-      --safe-bottom:env(safe-area-inset-bottom,0px);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:
-        radial-gradient(circle at 100% -10%, rgba(179,136,43,.13), transparent 18rem),
-        linear-gradient(180deg,var(--bg),#f7f0e6);
-      color:var(--text);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      line-height:1.5;
-      -webkit-text-size-adjust:100%;
-      padding-bottom:calc(86px + var(--safe-bottom));
-    }
-
-    button,input,textarea,select{font:inherit}
-    input,textarea{
-      font-size:16px;
-      border-radius:12px;
-    }
-    textarea{resize:vertical}
-    a{color:inherit}
-
-    .app{
-      width:min(100% - 22px, 1120px);
-      margin:0 auto;
-    }
-
-    .mobile-top{
-      position:sticky;
-      top:0;
-      z-index:60;
-      background:rgba(251,247,239,.94);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(32,58,92,.12);
-    }
-
-    .mobile-top-inner{
-      min-height:58px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      width:min(100% - 22px,1120px);
-      margin:0 auto;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:9px;
-      min-width:0;
-    }
-
-    .brand-mark{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      display:grid;
-      place-items:center;
-      background:var(--ink);
-      color:var(--gold);
-      font-family:Georgia,"Times New Roman",serif;
-      font-weight:900;
-      font-size:1.05rem;
-      flex:0 0 auto;
-    }
-
-    .brand-text{
-      min-width:0;
-    }
-
-    .brand-text b{
-      display:block;
-      color:var(--ink);
-      font-size:.86rem;
-      line-height:1.05;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand-text span{
-      display:block;
-      color:var(--muted);
-      font-size:.72rem;
-      line-height:1.1;
-    }
-
-    .top-actions{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      flex:0 0 auto;
-    }
-
-    .icon-btn{
-      min-width:40px;
-      height:40px;
-      border:1px solid rgba(32,58,92,.16);
-      border-radius:999px;
-      background:#fffdf8;
-      color:var(--ink);
-      font-weight:900;
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-    }
-
-    .hero{
-      padding:20px 0 16px;
-    }
-
-    .cover{
-      background:var(--paper);
-      border:1px solid rgba(120,95,50,.20);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:24px 16px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .cover:before{
-      content:"";
-      position:absolute;
-      inset:9px;
-      border:1px solid rgba(120,95,50,.16);
-      border-radius:18px;
-      pointer-events:none;
-    }
-
-    .cover > *{position:relative}
-
-    .kicker{
-      color:var(--gold);
-      font-weight:950;
-      letter-spacing:.09em;
-      text-transform:uppercase;
-      font-size:.72rem;
-      margin-bottom:10px;
-    }
-
-    h1{
-      margin:0;
-      font-family:Georgia,"Times New Roman",serif;
-      color:var(--ink);
-      font-size:clamp(2.15rem,11vw,4.7rem);
-      letter-spacing:.035em;
-      line-height:.95;
-    }
-
-    .cover-sub{
-      margin:12px auto 18px;
-      max-width:760px;
-      color:#666;
-      font-family:Georgia,"Times New Roman",serif;
-      font-style:italic;
-      font-size:1rem;
-      line-height:1.35;
-    }
-
-    .letter-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:9px;
-      margin:18px auto;
-      max-width:460px;
-    }
-
-    .letter-card{
-      min-height:84px;
-      border-radius:14px;
-      background:var(--ink);
-      color:white;
-      display:grid;
-      place-items:center;
-      padding:10px 6px;
-      box-shadow:inset 0 -4px 0 rgba(0,0,0,.15);
-    }
-
-    .letter-card b{
-      display:block;
-      color:var(--gold);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:2rem;
-      line-height:1;
-      margin-bottom:5px;
-    }
-
-    .letter-card span{
-      display:block;
-      color:rgba(255,255,255,.9);
-      font-size:.70rem;
-      line-height:1.15;
-    }
-
-    .tagline{
-      color:var(--ink);
-      font-family:Georgia,"Times New Roman",serif;
-      font-style:italic;
-      font-size:1.18rem;
-      margin:12px 0 16px;
-    }
-
-    .author{
-      color:var(--ink);
-      font-weight:950;
-      letter-spacing:.04em;
-      margin-top:16px;
-      font-size:1rem;
-    }
-
-    .role{
-      color:var(--muted);
-      font-size:.82rem;
-      margin-top:4px;
-    }
-
-    .start-card{
-      background:linear-gradient(135deg,var(--ink),#2a4b73);
-      color:white;
-      border-radius:22px;
-      padding:20px;
-      box-shadow:var(--shadow);
-      margin:16px 0 8px;
-    }
-
-    .start-card h2{
-      color:white;
-      margin:0 0 8px;
-      font-size:1.55rem;
-    }
-
-    .start-card p{
-      margin:0 0 14px;
-      color:rgba(255,255,255,.80);
-      font-size:.96rem;
-    }
-
-    .primary-btn,.secondary-btn{
-      width:100%;
-      min-height:48px;
-      border:0;
-      border-radius:999px;
-      padding:12px 18px;
-      font-weight:950;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      text-decoration:none;
-    }
-
-    .primary-btn{
-      color:#1d1708;
-      background:var(--gold);
-      box-shadow:0 10px 20px rgba(179,136,43,.22);
-    }
-
-    .secondary-btn{
-      color:var(--ink);
-      background:#fff;
-      border:1px solid rgba(32,58,92,.12);
-    }
-
-    .quick-actions{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .progress-card{
-      background:var(--paper);
-      border:1px solid rgba(32,58,92,.12);
-      border-radius:18px;
-      padding:14px;
-      margin:12px 0 16px;
-      box-shadow:0 8px 24px rgba(32,58,92,.06);
-    }
-
-    .progress-row{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:center;
-      margin-bottom:9px;
-      color:var(--ink);
-      font-weight:900;
-      font-size:.88rem;
-    }
-
-    .track{
-      height:10px;
-      background:#eee5d6;
-      border-radius:999px;
-      overflow:hidden;
-    }
-
-    .track-fill{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg,var(--gold),#dfc16f);
-      border-radius:999px;
-      transition:width .25s ease;
-    }
-
-    .section{
-      padding:10px 0;
-      scroll-margin-top:72px;
-    }
-
-    .section-title{
-      margin:8px 0 12px;
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:12px;
-    }
-
-    .section-title h2{
-      margin:0;
-      color:var(--ink);
-      font-family:Georgia,"Times New Roman",serif;
-      letter-spacing:-.03em;
-      line-height:1.08;
-      font-size:clamp(1.65rem,7vw,3rem);
-    }
-
-    .section-title span{
-      color:var(--gold);
-      font-weight:950;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:.68rem;
-      white-space:nowrap;
-    }
-
-    .card{
-      background:rgba(255,253,248,.94);
-      border:1px solid rgba(32,58,92,.12);
-      border-radius:20px;
-      box-shadow:0 8px 26px rgba(32,58,92,.06);
-      padding:16px;
-      margin:12px 0;
-    }
-
-    .eyebrow{
-      color:var(--gold);
-      font-size:.68rem;
-      font-weight:950;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      margin-bottom:4px;
-    }
-
-    h2,h3{
-      color:var(--ink);
-      font-family:Georgia,"Times New Roman",serif;
-      line-height:1.08;
-      letter-spacing:-.03em;
-    }
-
-    h2{font-size:1.9rem;margin:0 0 8px}
-    h3{font-size:1.35rem;margin:0 0 8px}
-
-    .lead{
-      color:#62666b;
-      font-family:Georgia,"Times New Roman",serif;
-      font-style:italic;
-      font-size:1.05rem;
-      margin:0 0 14px;
-    }
-
-    .formula{
-      background:var(--ink);
-      color:white;
-      border-radius:14px;
-      padding:16px;
-      margin:16px 0;
-      font-family:Georgia,"Times New Roman",serif;
-      font-weight:900;
-      text-align:center;
-      font-size:1.16rem;
-      line-height:1.25;
-    }
-
-    .callout{
-      border-left:4px solid var(--gold);
-      background:#fbf3e6;
-      padding:12px 14px;
-      border-radius:0 14px 14px 0;
-      color:#43382a;
-      margin:14px 0;
-      font-size:.95rem;
-    }
-
-    .six-list{
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .six-row{
-      display:grid;
-      grid-template-columns:42px 1fr;
-      gap:12px;
-      align-items:start;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-    }
-
-    .mini-letter{
-      width:42px;
-      height:42px;
-      border-radius:10px;
-      background:var(--ink);
-      color:var(--gold);
-      display:grid;
-      place-items:center;
-      font-family:Georgia,"Times New Roman",serif;
-      font-weight:950;
-      font-size:1.35rem;
-      flex:0 0 auto;
-    }
-
-    .six-row strong{
-      display:block;
-      color:var(--ink);
-      margin-bottom:2px;
-    }
-
-    .six-row em{
-      color:#4d4d4d;
-      font-size:.92rem;
-    }
-
-    .field{
-      display:grid;
-      gap:6px;
-      margin:10px 0;
-      color:var(--ink);
-      font-weight:850;
-      font-size:.88rem;
-    }
-
-    .field input,.field textarea{
-      width:100%;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--text);
-      padding:12px;
-      min-height:46px;
-      outline:none;
-    }
-
-    .field textarea{min-height:92px}
-
-    .field input:focus,.field textarea:focus{
-      border-color:var(--gold);
-      box-shadow:0 0 0 3px rgba(179,136,43,.16);
-    }
-
-    details{
-      background:rgba(255,253,248,.94);
-      border:1px solid rgba(32,58,92,.12);
-      border-radius:20px;
-      box-shadow:0 8px 26px rgba(32,58,92,.06);
-      margin:12px 0;
-      overflow:hidden;
-    }
-
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding:16px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      color:var(--ink);
-      font-weight:950;
-    }
-
-    summary::-webkit-details-marker{display:none}
-
-    summary:after{
-      content:"+";
-      width:30px;
-      height:30px;
-      border-radius:999px;
-      display:grid;
-      place-items:center;
-      background:var(--soft);
-      color:var(--ink);
-      font-size:1.25rem;
-      flex:0 0 auto;
-    }
-
-    details[open] summary:after{content:"–"}
-
-    .details-body{
-      padding:0 16px 16px;
-    }
-
-    .scale-grid{
-      display:grid;
-      gap:8px;
-      margin-top:12px;
-    }
-
-    .scale-item{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      display:grid;
-      grid-template-columns:36px 1fr;
-      gap:12px;
-      align-items:center;
-    }
-
-    .scale-item b{
-      width:36px;
-      height:36px;
-      border-radius:10px;
-      background:var(--ink);
-      color:white;
-      display:grid;
-      place-items:center;
-    }
-
-    .question-group{
-      margin-top:12px;
-    }
-
-    .dim-head{
-      display:grid;
-      grid-template-columns:48px 1fr;
-      gap:12px;
-      align-items:center;
-      margin-bottom:12px;
-    }
-
-    .dim-head strong{
-      color:var(--ink);
-      display:block;
-      font-size:1rem;
-    }
-
-    .dim-head span{
-      color:var(--muted);
-      display:block;
-      font-size:.82rem;
-    }
-
-    .subtotal{
-      display:inline-flex;
-      margin-top:8px;
-      background:#f6ecd7;
-      color:#503914;
-      border:1px solid rgba(179,136,43,.25);
-      border-radius:999px;
-      padding:6px 10px;
-      font-weight:950;
-      font-size:.8rem;
-    }
-
-    .question{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:13px;
-      margin:10px 0;
-    }
-
-    .question-text{
-      display:flex;
-      gap:8px;
-      align-items:flex-start;
-      margin-bottom:12px;
-      color:#2d2d2d;
-    }
-
-    .q-num{
-      min-width:24px;
-      height:24px;
-      border-radius:7px;
-      background:var(--ink);
-      color:white;
-      display:grid;
-      place-items:center;
-      font-weight:950;
-      font-size:.72rem;
-      margin-top:1px;
-    }
-
-    .radio-row{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:6px;
-    }
-
-    .radio-row input{
-      position:absolute;
-      opacity:0;
-      pointer-events:none;
-    }
-
-    .radio-row label{
-      min-height:44px;
-      border:1.5px solid rgba(32,58,92,.16);
-      border-radius:12px;
-      background:#faf8f3;
-      color:var(--ink);
-      display:grid;
-      place-items:center;
-      font-weight:950;
-      cursor:pointer;
-      user-select:none;
-      transition:.15s ease;
-    }
-
-    .radio-row input:checked + label{
-      background:var(--ink);
-      color:white;
-      border-color:var(--ink);
-      transform:translateY(-1px);
-    }
-
-    .result-panel{
-      background:#fff;
-      border:1px solid rgba(32,58,92,.12);
-      border-radius:20px;
-      padding:16px;
-      margin:12px 0;
-      box-shadow:var(--shadow);
-    }
-
-    .kpis{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:8px;
-      margin:12px 0;
-    }
-
-    .kpi{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:10px 6px;
-      text-align:center;
-    }
-
-    .kpi span{
-      display:block;
-      color:#68707a;
-      font-size:.58rem;
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      line-height:1.1;
-    }
-
-    .kpi b{
-      display:block;
-      color:var(--ink);
-      font-size:1.35rem;
-      line-height:1.1;
-      margin-top:4px;
-    }
-
-    #radar{
-      display:block;
-      width:100%;
-      max-width:320px;
-      height:auto;
-      margin:4px auto 12px;
-    }
-
-    .bar-list{display:grid;gap:8px}
-    .bar-row{
-      display:grid;
-      grid-template-columns:26px 1fr 38px;
-      gap:8px;
-      align-items:center;
-      font-size:.82rem;
-    }
-
-    .bar-row b{color:var(--ink)}
-    .rail{
-      height:8px;
-      border-radius:999px;
-      background:#eee5d6;
-      overflow:hidden;
-    }
-
-    .fill{
-      height:100%;
-      width:0;
-      background:linear-gradient(90deg,var(--ink),var(--gold));
-      transition:width .25s ease;
-    }
-
-    .score-table,.entry-table{
-      width:100%;
-      border-collapse:separate;
-      border-spacing:0;
-      overflow:hidden;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:#fff;
-      margin:12px 0;
-      font-size:.86rem;
-    }
-
-    .score-table th,.entry-table th{
-      background:var(--ink);
-      color:white;
-      text-align:left;
-      padding:10px;
-      font-size:.72rem;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-
-    .score-table td,.entry-table td{
-      border-top:1px solid var(--line);
-      padding:10px;
-      vertical-align:top;
-    }
-
-    .tool-card{
-      background:#fff;
-      border:1px solid rgba(32,58,92,.12);
-      border-radius:18px;
-      padding:14px;
-      margin:12px 0;
-    }
-
-    .tool-head{
-      display:grid;
-      grid-template-columns:48px 1fr;
-      gap:12px;
-      align-items:center;
-      margin-bottom:8px;
-    }
-
-    .tool-head .mini-letter{
-      width:48px;
-      height:48px;
-      border-radius:12px;
-    }
-
-    .tool-head h3{
-      margin:0;
-      font-size:1.28rem;
-    }
-
-    .tool-head span{
-      color:var(--gold);
-      font-weight:950;
-      font-size:.68rem;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-    }
-
-    .step{
-      display:grid;
-      grid-template-columns:32px 1fr;
-      gap:10px;
-      margin:12px 0;
-      align-items:start;
-    }
-
-    .step-num{
-      width:32px;
-      height:32px;
-      border-radius:9px;
-      background:var(--ink);
-      color:white;
-      display:grid;
-      place-items:center;
-      font-weight:950;
-    }
-
-    .step strong{
-      display:block;
-      color:var(--ink);
-      margin-bottom:4px;
-    }
-
-    .step small{
-      display:block;
-      color:#666;
-      font-style:italic;
-      margin-bottom:5px;
-    }
-
-    .week-card{
-      background:#fff;
-      border:1px solid rgba(32,58,92,.12);
-      border-radius:18px;
-      padding:14px;
-      margin:12px 0;
-    }
-
-    .week-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:8px;
-    }
-
-    .week-head h3{margin:0;font-size:1.25rem}
-    .week-pill{
-      background:var(--ink);
-      color:white;
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:.70rem;
-      font-weight:950;
-      white-space:nowrap;
-    }
-
-    .bottom-nav{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      z-index:70;
-      background:rgba(255,253,248,.96);
-      backdrop-filter:blur(16px);
-      border-top:1px solid rgba(32,58,92,.14);
-      padding:8px 8px calc(8px + var(--safe-bottom));
-      box-shadow:0 -10px 28px rgba(32,58,92,.08);
-    }
-
-    .bottom-nav-inner{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:4px;
-      max-width:640px;
-      margin:0 auto;
-    }
-
-    .bottom-nav a{
-      text-decoration:none;
-      color:#68707a;
-      border-radius:14px;
-      min-height:48px;
-      display:grid;
-      place-items:center;
-      gap:2px;
-      font-size:.64rem;
-      font-weight:900;
-      text-align:center;
-      padding:5px 2px;
-    }
-
-    .bottom-nav a b{
-      color:var(--ink);
-      font-size:1rem;
-      line-height:1;
-    }
-
-    .bottom-nav a:hover,.bottom-nav a.active{
-      background:var(--soft);
-      color:var(--ink);
-    }
-
-    .desktop-actions{
-      display:none;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:calc(82px + var(--safe-bottom));
-      transform:translateX(-50%) translateY(16px);
-      z-index:100;
-      background:var(--ink);
-      color:white;
-      border-radius:999px;
-      padding:10px 14px;
-      font-weight:850;
-      opacity:0;
-      pointer-events:none;
-      transition:.18s ease;
-      max-width:calc(100% - 24px);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translateX(-50%) translateY(0);
-    }
-
-    @media (min-width:760px){
-      body{padding-bottom:32px}
-      .app{width:min(100% - 40px,1120px)}
-      .letter-grid{grid-template-columns:repeat(6,1fr);max-width:900px;gap:14px}
-      .letter-card{min-height:105px}
-      .cover{padding:54px 44px}
-      .cover-sub{font-size:1.35rem}
-      .tagline{font-size:1.65rem}
-      .section{padding:20px 0}
-      .card,details,.result-panel{padding:18px}
-      .scale-grid{grid-template-columns:repeat(5,1fr)}
-      .scale-item{grid-template-columns:1fr;text-align:center}
-      .tool-grid,.week-grid,.audit-grid{
-        display:grid;
-        grid-template-columns:repeat(2,1fr);
-        gap:14px;
-      }
-      .audit-grid{grid-template-columns:repeat(3,1fr)}
-      .continuous-grid{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:14px;
-      }
-      .context-grid{
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:12px;
-      }
-      .quick-actions{display:flex}
-      .quick-actions .primary-btn,.quick-actions .secondary-btn{width:auto}
-      .bottom-nav{display:none}
-      .desktop-actions{
-        display:flex;
-        position:fixed;
-        right:18px;
-        bottom:18px;
-        z-index:70;
-        gap:10px;
-      }
-      .desktop-actions button{
-        min-height:46px;
-        border:0;
-        border-radius:999px;
-        padding:11px 16px;
-        color:white;
-        background:var(--ink);
-        font-weight:950;
-        box-shadow:var(--shadow);
-        cursor:pointer;
-      }
-      .desktop-actions button.secondary{background:var(--gold);color:#1d1708}
-      .toast{bottom:26px}
-    }
-
-    @media (min-width:1040px){
-      .diagnostic-layout{
-        display:grid;
-        grid-template-columns:minmax(0,1fr) 360px;
-        gap:16px;
-        align-items:start;
-      }
-      .result-panel{
-        position:sticky;
-        top:78px;
-      }
-    }
-
-    @media print{
-      body{background:white;padding-bottom:0}
-      .mobile-top,.bottom-nav,.desktop-actions,.toast,.start-card,.progress-card{display:none!important}
-      .app{width:100%;margin:0}
-      .cover,.card,details,.result-panel,.tool-card,.week-card{
-        box-shadow:none;
-        break-inside:avoid;
-      }
-      details{display:block}
-      details:not([open]) .details-body{display:block}
-      summary:after{display:none}
-    }
+      --bg:#f4f1eb; --paper:#fffdf8; --card:#ffffff; --soft:#fbfaf7;
+      --ink:#172033; --muted:#687086; --line:#ded6c8;
+      --navy:#1c335c; --navy2:#172033; --gold:#b88a3b; --gold2:#f0ddba;
+      --green:#22715c; --red:#a84538; --shadow:0 16px 42px rgba(28,51,92,.13);
+      --radius:22px; --max:1120px;
+      --safe-bottom:env(safe-area-inset-bottom, 0px);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+    body.nav-open{overflow:hidden} a{color:inherit;text-decoration:none} button,input,textarea,select{font:inherit} .wrap{width:min(var(--max), calc(100% - 28px));margin:0 auto}.serif{font-family:Georgia,"Times New Roman",serif}.muted{color:var(--muted)}.small{font-size:.88rem}.micro{font-size:.78rem}.gold{color:var(--gold)}.hidden{display:none!important}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#141f32 0%,#1c335c 64%,#203c5e 100%);color:white;padding:34px 0 24px;border-radius:0 0 28px 28px}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 18%,rgba(184,138,59,.28),transparent 32%),radial-gradient(circle at 8% 88%,rgba(255,255,255,.08),transparent 28%);pointer-events:none}.hero .wrap{position:relative;z-index:1}.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border-radius:999px;background:rgba(184,138,59,.18);border:1px solid rgba(184,138,59,.35);color:#f0ddba;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem}.badge:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(184,138,59,.22)}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,12vw,5.4rem);line-height:.9;letter-spacing:-.055em;margin:20px 0 14px}h1 em{font-style:normal;color:#f0ddba}.hero p{max-width:760px;color:rgba(255,255,255,.78);font-size:1rem;margin:0 0 20px}.hero-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:20px}.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}.btn:active{transform:translateY(1px)}.btn-primary{background:var(--gold);color:#17120b;box-shadow:0 10px 24px rgba(184,138,59,.28)}.btn-dark{background:var(--navy);color:white}.btn-light{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.18)}.btn-outline{background:white;color:var(--navy);border:1px solid rgba(28,51,92,.18)}.btn-danger{background:#fff0ed;color:var(--red);border:1px solid rgba(168,69,56,.22)}.btn-sm{min-height:38px;padding:8px 12px;font-size:.82rem}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.stat{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);border-radius:16px;padding:11px 8px;text-align:center}.stat b{display:block;color:#f0ddba;font-size:1.35rem;line-height:1}.stat span{display:block;margin-top:3px;color:rgba(255,255,255,.6);font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(28,51,92,.97);backdrop-filter:blur(12px);color:white;border-bottom:1px solid rgba(255,255,255,.08)}.topbar-inner{display:flex;align-items:center;gap:10px;padding:9px 0}.tabs{display:flex;gap:6px;overflow:auto;scrollbar-width:none;flex:1}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;padding:7px 11px;border-radius:999px;font-size:.76rem;font-weight:800;color:rgba(255,255,255,.65);border:1px solid transparent}.tab.active{background:rgba(184,138,59,.18);border-color:rgba(184,138,59,.28);color:#f0ddba}.save-pill{display:none;align-items:center;gap:7px;font-size:.75rem;color:#9ee8c9;font-weight:800;white-space:nowrap}.save-pill:before{content:"";width:7px;height:7px;border-radius:50%;background:#7dd9b5}.layout{display:grid;gap:18px;padding:18px 0 96px}.card{background:rgba(255,255,255,.96);border:1px solid rgba(28,51,92,.09);border-radius:var(--radius);box-shadow:0 6px 26px rgba(28,51,92,.06);overflow:hidden}.pad{padding:18px 15px}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:950;margin-bottom:6px}.section-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.65rem,8vw,2.25rem);line-height:1.05;letter-spacing:-.035em;margin:0 0 9px}.section-sub{color:var(--muted);margin:0;font-size:.95rem}.divider{height:1px;background:var(--line);margin:16px 0}.callout{border-left:4px solid var(--gold);background:#fff8e9;border-radius:0 16px 16px 0;padding:12px 13px;color:#463417;font-family:Georgia,"Times New Roman",serif;font-style:italic}.quick-grid{display:grid;gap:8px;margin-top:14px}.quick-item{display:grid;grid-template-columns:42px 1fr;gap:11px;align-items:start;border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px}.letter{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--navy);color:var(--gold);font-family:Georgia,"Times New Roman",serif;font-size:1.45rem;font-weight:900;line-height:1}.quick-item b{display:block;line-height:1.2}.quick-item span{display:block;margin-top:2px;color:var(--muted);font-size:.84rem}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900;color:var(--navy)}.input,textarea,select{width:100%;border:1.5px solid rgba(28,51,92,.14);border-radius:14px;background:#fff;color:var(--ink);padding:12px 13px;outline:0;transition:border .15s ease,box-shadow .15s ease}textarea{min-height:92px;resize:vertical}.input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,138,59,.14)}.context-grid{display:grid;gap:8px;margin-top:12px}
+    .scale-card{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;border:1px solid var(--line);background:var(--soft);border-radius:15px;padding:10px}.scale-num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:950}.scale-card b{font-size:.9rem}.scale-card span{color:var(--muted);font-size:.8rem}.progress-box{display:grid;gap:9px;margin-top:12px}.progress-meta{display:flex;justify-content:space-between;gap:10px;font-size:.83rem;font-weight:850;color:var(--muted)}.progress-track{height:10px;border-radius:99px;background:#ece5da;border:1px solid rgba(28,51,92,.06);overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#d7b86f);transition:width .25s ease}.dim{border:1px solid var(--line);background:white;border-radius:20px;overflow:hidden;margin-top:14px}.dim-head{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;background:var(--navy);color:white;padding:11px 13px}.dim-head .letter{width:33px;height:33px;border-radius:9px;background:rgba(255,255,255,.08);font-size:1.25rem}.dim-head b{font-size:.98rem}.dim-total{font-weight:950;background:rgba(255,255,255,.1);border-radius:999px;padding:6px 10px;font-size:.78rem;color:#f0ddba}.questions{display:grid;gap:11px;padding:13px}.q{border:1px solid #ece4d8;background:#fffdf9;border-radius:16px;padding:12px}.q-top{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}.q-num{width:24px;height:24px;border-radius:8px;background:#f2e8d7;color:#4b3412;display:grid;place-items:center;font-weight:950;font-size:.75rem}.q p{margin:1px 0 10px;font-size:.91rem}.scale-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.score input{position:absolute;opacity:0;pointer-events:none}.score label{display:grid;place-items:center;min-height:44px;border-radius:12px;border:1.5px solid rgba(28,51,92,.13);background:#faf8f4;color:var(--navy);font-weight:950;cursor:pointer}.score input:checked+label{background:var(--navy);border-color:var(--navy);color:white;box-shadow:0 8px 18px rgba(28,51,92,.2)}
+    .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}.kpi{border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px}.kpi span{display:block;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.66rem;font-weight:900}.kpi b{display:block;font-size:1.35rem;line-height:1.05;color:var(--navy);margin-top:5px}.kpi.full{grid-column:1/-1}.level-card{margin-top:12px;border:1px solid rgba(184,138,59,.35);background:#fff8e9;border-radius:18px;padding:14px}.level-card h3{margin:0 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:1.35rem}.bars{display:grid;gap:8px;margin-top:14px}.bar{display:grid;grid-template-columns:26px 1fr 42px;gap:8px;align-items:center}.bar span:first-child{font-weight:950;color:var(--navy)}.bar-rail{height:9px;border-radius:999px;background:#eee6dc;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--navy),var(--gold));transition:width .25s ease}.bar small{text-align:right;color:var(--muted);font-weight:800}.capital-grid{display:grid;gap:8px;margin-top:12px}.capital-note{background:var(--navy);color:white;border-radius:16px;padding:12px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:900}.capital-factor{border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px}.capital-factor span{display:block;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}.capital-factor b{display:block;font-size:1.25rem;color:var(--navy);margin-top:4px}.reading{display:grid;gap:6px;margin-top:10px}.reading-item{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-size:.84rem}.reading-item.active{border-color:rgba(184,138,59,.55);background:#fff8e9}.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#f4ead8;border:1px solid rgba(184,138,59,.3);color:#4b3412;font-weight:900;padding:5px 9px;font-size:.72rem}.accord{display:grid;gap:10px;margin-top:14px}.tool{border:1px solid var(--line);background:white;border-radius:18px;overflow:hidden}.tool summary{list-style:none;display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;padding:13px;cursor:pointer}.tool summary::-webkit-details-marker{display:none}.tool summary .letter{width:38px;height:38px;border-radius:11px}.tool summary b{display:block}.tool summary span{color:var(--muted);font-size:.8rem}.tool summary:after{content:"+";font-size:1.3rem;font-weight:800;color:var(--muted)}.tool[open] summary:after{content:"–"}.tool-body{padding:0 13px 13px;border-top:1px solid var(--line)}.step-list{display:grid;gap:8px;margin:12px 0}.mini-step{display:grid;grid-template-columns:30px 1fr;gap:9px;align-items:start;border:1px solid #eee6dc;border-radius:14px;background:#fffdf9;padding:10px}.mini-step i{font-style:normal;width:30px;height:30px;border-radius:9px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:900}.mini-step b{display:block}.mini-step span{display:block;color:var(--muted);font-size:.82rem;margin-top:1px}.week-list{display:grid;gap:12px;margin-top:14px}.week{border:1px solid var(--line);border-radius:20px;background:white;overflow:hidden}.week-head{background:var(--navy);color:white;padding:12px 14px;display:grid;grid-template-columns:1fr 38px;gap:8px;align-items:center}.week-head small{display:block;color:#d5b675;text-transform:uppercase;font-weight:950;letter-spacing:.08em}.week-head b{font-family:Georgia,"Times New Roman",serif;font-size:1.18rem}.week-head .letter{width:38px;height:38px;background:rgba(255,255,255,.08)}.week-body{padding:13px}.hint{border:1px dashed #d6c8ae;background:#fffaf0;color:#4b3412;border-radius:14px;padding:11px;font-size:.84rem}.two-actions{display:grid;gap:8px;margin-top:12px}.sticky-bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,253,248,.96);backdrop-filter:blur(14px);border-top:1px solid rgba(28,51,92,.1);padding:8px 10px calc(8px + var(--safe-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.bottom-btn{display:grid;place-items:center;gap:2px;border:0;background:transparent;color:var(--muted);font-weight:850;font-size:.65rem;padding:6px 4px;border-radius:14px;min-height:48px}.bottom-btn b{font-size:1.05rem;line-height:1}.bottom-btn.active{background:#f4ead8;color:#4b3412}.toast{position:fixed;left:14px;right:14px;bottom:calc(78px + var(--safe-bottom));z-index:100;background:var(--navy);color:white;border-radius:16px;padding:12px 14px;text-align:center;font-weight:800;box-shadow:var(--shadow);transform:translateY(20px);opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:translateY(0);opacity:1}.desktop-side{display:none}.print-only{display:none}.outcome-grid{display:grid;gap:10px;margin-top:14px}.outcome-card{border:1px solid var(--line);background:linear-gradient(180deg,#fffdf9,#fbfaf7);border-radius:18px;padding:14px}.outcome-card b{display:block;color:var(--navy);margin-bottom:4px}.outcome-card span{display:block;color:var(--muted);font-size:.86rem}.insight-card{margin-top:12px;border:1px solid rgba(28,51,92,.12);background:linear-gradient(135deg,#fbfaf7,#fff8e9);border-radius:18px;padding:14px}.insight-card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.28rem;margin:0 0 6px}.insight-card p{margin:0;color:var(--muted);font-size:.9rem}.dimension-reading-grid{display:grid;gap:8px;margin-top:12px}.dimension-read{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px}.dimension-read strong{display:flex;justify-content:space-between;gap:10px;color:var(--navy);font-size:.9rem}.dimension-read span{display:block;margin-top:4px;color:var(--muted);font-size:.82rem}.report-actions{display:grid;gap:8px;margin-top:12px}.report-preview{white-space:pre-wrap;border:1px solid var(--line);background:#fffdf9;border-radius:16px;padding:14px;color:var(--ink);font-size:.88rem;line-height:1.5;max-height:420px;overflow:auto}.report-note{border:1px dashed #d6c8ae;background:#fffaf0;color:#4b3412;border-radius:14px;padding:11px;font-size:.84rem;margin-top:10px}.factor-reading{display:grid;gap:8px;margin-top:10px}.factor-pill{border:1px solid var(--line);background:white;border-radius:14px;padding:10px}.factor-pill b{display:block;color:var(--navy);font-size:.9rem}.factor-pill span{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
+    @media (min-width:760px){.hero{padding:58px 0 46px;border-radius:0}.hero-actions{display:flex}.hero-stats{max-width:430px}.layout{grid-template-columns:minmax(0,1fr) 340px;align-items:start;gap:22px;padding-bottom:64px}.desktop-side{display:grid;gap:14px;position:sticky;top:62px}.sticky-bottom{display:none}.pad{padding:24px}.save-pill{display:inline-flex}.context-grid,.capital-grid,.two-actions,.outcome-grid,.report-actions,.factor-reading{grid-template-columns:repeat(2,1fr)}.result-grid{grid-template-columns:repeat(4,1fr)}.kpi.full{grid-column:auto}.week-list,.dimension-reading-grid{grid-template-columns:repeat(2,1fr)}.scale-row{max-width:360px;margin-left:auto}.hero p{font-size:1.1rem}.tabs .tab{font-size:.82rem}.quick-grid{grid-template-columns:repeat(2,1fr)}}
+    @media print{.hero,.topbar,.sticky-bottom,.toast,.desktop-side,.no-print{display:none!important}body{background:white}.wrap{width:100%;max-width:none}.layout{display:block;padding:0}.card{box-shadow:none;border-color:#ddd;break-inside:avoid;margin-bottom:12px}.pad{padding:14px}.tool:not([open]) .tool-body{display:block}.score label{min-height:28px}.input,textarea{border-bottom:1px solid #999;border-radius:0}.print-only{display:block}.report-preview{max-height:none;overflow:visible}.outcome-grid,.dimension-reading-grid,.factor-reading{grid-template-columns:1fr 1fr}}
   </style>
 </head>
-
 <body>
-  <header class="mobile-top">
-    <div class="mobile-top-inner">
-      <div class="brand">
-        <div class="brand-mark">G</div>
-        <div class="brand-text">
-          <b>Cuaderno G.E.N.I.O.S.</b>
-          <span>Versión móvil interactiva</span>
-        </div>
+  <header class="hero" id="inicio">
+    <div class="wrap">
+      <div class="badge">Cuaderno de trabajo</div>
+      <h1>SOMOS<br><em>G·E·N·I·O·S</em></h1>
+      <p>Un cuaderno web para convertir el diagnóstico en acción: mide tus conductas, interpreta tu Capital Reputacional, define una letra de entrada y transforma el resultado en evidencia profesional durante seis semanas.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#diagnostico">Empezar diagnóstico</a>
+        <a class="btn btn-light" href="#seis-semanas">Plan 6 semanas</a>
+        <button class="btn btn-light" id="btnPrintTop" type="button">Guardar / imprimir</button>
       </div>
-      <div class="top-actions">
-        <button class="icon-btn" id="btnTopPrint" title="Imprimir o guardar PDF">⤓</button>
-        <button class="icon-btn" id="btnTopReset" title="Borrar respuestas">↺</button>
+      <div class="hero-stats">
+        <div class="stat"><b>24</b><span>conductas</span></div>
+        <div class="stat"><b>6</b><span>dimensiones</span></div>
+        <div class="stat"><b>CR</b><span>Capital Reputacional</span></div>
       </div>
     </div>
   </header>
 
-  <main class="app">
-    <section class="hero" id="inicio">
-      <div class="cover">
-        <div class="kicker">Cuaderno de trabajo</div>
-        <h1>SOMOS G.E.N.I.O.S.</h1>
-        <p class="cover-sub">Herramientas prácticas para convertir talento en reputación profesional</p>
-
-        <div class="letter-grid">
-          <div class="letter-card"><b>G</b><span>Generar valor</span></div>
-          <div class="letter-card"><b>E</b><span>Escuchar</span></div>
-          <div class="letter-card"><b>N</b><span>Involucrarte</span></div>
-          <div class="letter-card"><b>I</b><span>Detalle</span></div>
-          <div class="letter-card"><b>O</b><span>Crecer</span></div>
-          <div class="letter-card"><b>S</b><span>Consistencia</span></div>
-        </div>
-
-        <p class="tagline">Una letra. Una conducta. Una evidencia.</p>
-        <div class="author">KEVIN LÜCK</div>
-        <div class="role">Psicólogo Organizacional · Headhunter · Coach Ejecutivo</div>
+  <nav class="topbar" aria-label="Navegación">
+    <div class="wrap topbar-inner">
+      <div class="tabs" id="tabs">
+        <a class="tab active" href="#inicio">Inicio</a>
+        <a class="tab" href="#diagnostico">Diagnóstico</a>
+        <a class="tab" href="#resultado">Resultado</a>
+        <a class="tab" href="#reporte">Reporte</a>
+        <a class="tab" href="#herramientas">Herramientas</a>
+        <a class="tab" href="#auditorias">Auditorías</a>
+        <a class="tab" href="#seis-semanas">6 semanas</a>
+        <a class="tab" href="#continuo">Uso continuo</a>
       </div>
-
-      <div class="start-card">
-        <h2>Empieza en 3 pasos</h2>
-        <p>Lee la guía breve, completa el diagnóstico y luego trabaja una herramienta por letra. Tus respuestas se guardan automáticamente en este navegador.</p>
-        <div class="quick-actions">
-          <a class="primary-btn" href="#diagnostico">Comenzar diagnóstico</a>
-          <a class="secondary-btn" href="#herramientas">Ver herramientas</a>
-        </div>
-      </div>
-
-      <div class="progress-card">
-        <div class="progress-row">
-          <span>Avance del diagnóstico</span>
-          <span id="progressText">0 / 24</span>
-        </div>
-        <div class="track"><div class="track-fill" id="progressFill"></div></div>
-      </div>
-    </section>
-
-    <section class="section" id="guia">
-      <div class="section-title">
-        <h2>Antes de empezar</h2>
-        <span>Guía</span>
-      </div>
-
-      <article class="card">
-        <p class="lead">Este cuaderno no resume el libro: lo convierte en evidencia.</p>
-        <p>Está pensado para completarse en pantalla desde el celular. No necesitas hacerlo todo de una vez. Avanza por partes: diagnóstico, herramientas, auditorías y seis semanas.</p>
-
-        <div class="formula">Capital Reputacional = Valor × Consistencia × Visibilidad</div>
-
-        <div class="callout"><strong>Idea central:</strong> la sala no lee tus intenciones; lee la experiencia que otros pueden describir cuando tú no estás presente.</div>
-
-        <label class="field">Empiezo este cuaderno el
-          <input data-save="fecha_inicio" placeholder="dd/mm/aaaa" />
-        </label>
-      </article>
-
-      <details open>
-        <summary>Las seis letras de un vistazo</summary>
-        <div class="details-body">
-          <div class="six-list">
-            <div class="six-row"><div class="mini-letter">G</div><div><strong>Generar valor</strong><em>Mover decisiones, no solo informar.</em></div></div>
-            <div class="six-row"><div class="mini-letter">E</div><div><strong>Escuchar</strong><em>No responder rápido al problema equivocado.</em></div></div>
-            <div class="six-row"><div class="mini-letter">N</div><div><strong>Involucrarte</strong><em>Hacerte cargo sin cargarlo todo.</em></div></div>
-            <div class="six-row"><div class="mini-letter">I</div><div><strong>Detalle</strong><em>Lograr que tu trabajo funcione sin explicaciones.</em></div></div>
-            <div class="six-row"><div class="mini-letter">O</div><div><strong>Crecer</strong><em>Desarrollarte antes de que la siguiente etapa te lo exija.</em></div></div>
-            <div class="six-row"><div class="mini-letter">S</div><div><strong>Consistencia</strong><em>Sostener tu estándar cuando la semana se complica.</em></div></div>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <section class="section" id="diagnostico">
-      <div class="section-title">
-        <h2>Diagnóstico</h2>
-        <span>24 conductas</span>
-      </div>
-
-      <article class="card">
-        <div class="eyebrow">Antes de responder</div>
-        <h2>Tu punto de partida</h2>
-        <p>Responde con hechos de tus últimas cuatro semanas, no con intención ni con tu mejor versión posible.</p>
-
-        <div class="callout"><strong>Regla central:</strong> si no puedes recordar una prueba reciente, no puntúes desde la intención. Baja el número hasta que exista evidencia.</div>
-
-        <div class="context-grid">
-          <label class="field">Rol, proyecto o situación
-            <input data-save="contexto_rol" />
-          </label>
-          <label class="field">Últimas 4 semanas
-            <input data-save="contexto_semanas" />
-          </label>
-          <label class="field">Persona que valida
-            <input data-save="contexto_persona" />
-          </label>
-        </div>
-      </article>
-
-      <details>
-        <summary>Escala de respuesta</summary>
-        <div class="details-body">
-          <div class="scale-grid">
-            <div class="scale-item"><b>1</b><span>Casi nunca. No hay evidencia reciente.</span></div>
-            <div class="scale-item"><b>2</b><span>Pocas veces. Aparece solo en situaciones puntuales.</span></div>
-            <div class="scale-item"><b>3</b><span>Algunas veces. Hay señales visibles, pero no patrón confiable.</span></div>
-            <div class="scale-item"><b>4</b><span>Con frecuencia. Se repite con claridad.</span></div>
-            <div class="scale-item"><b>5</b><span>Siempre o casi siempre. Es consistente incluso bajo presión.</span></div>
-          </div>
-        </div>
-      </details>
-
-      <div class="diagnostic-layout">
-        <article class="card">
-          <div class="eyebrow">Paso 1</div>
-          <h2>Responde las afirmaciones</h2>
-          <p>Marca del 1 al 5 según la frecuencia con que realmente actúas así.</p>
-          <div id="questionsRoot"></div>
-        </article>
-
-        <aside class="result-panel">
-          <div class="eyebrow">Resultado en vivo</div>
-          <h3>Tu mapa G.E.N.I.O.S.</h3>
-          <div class="kpis">
-            <div class="kpi"><span>Respondidas</span><b id="answeredCount">0</b></div>
-            <div class="kpi"><span>Puntaje</span><b id="totalScore">0</b></div>
-            <div class="kpi"><span>Nivel</span><b id="levelShort">—</b></div>
-          </div>
-          <svg id="radar" viewBox="0 0 320 320" role="img" aria-label="Mapa G.E.N.I.O.S."></svg>
-          <div class="bar-list" id="barList"></div>
-          <div class="callout" id="levelText">Completa las 24 afirmaciones para ver tu nivel y punto de entrada.</div>
-        </aside>
-      </div>
-
-      <details>
-        <summary>Calcular y leer mi nivel</summary>
-        <div class="details-body">
-          <table class="score-table">
-            <thead><tr><th>Letra</th><th>Suma</th><th>Promedio</th></tr></thead>
-            <tbody id="scoreTable"></tbody>
-          </table>
-
-          <table class="entry-table">
-            <thead><tr><th>Total</th><th>Nivel</th><th>Lectura práctica</th></tr></thead>
-            <tbody>
-              <tr><td>24–43</td><td>N1 · Operador</td><td>Elige una letra y practica una conducta visible.</td></tr>
-              <tr><td>44–62</td><td>N2 · Cumplidor</td><td>Convierte una fortaleza en algo reconocible.</td></tr>
-              <tr><td>63–81</td><td>N3 · Confiable</td><td>Fortalece tus letras más bajas.</td></tr>
-              <tr><td>82–101</td><td>N4 · Impacto</td><td>Convierte tus fortalezas en un patrón sostenible.</td></tr>
-              <tr><td>102–120</td><td>N5 · Genio</td><td>Contrasta que los demás vivan la misma experiencia.</td></tr>
-            </tbody>
-          </table>
-
-          <label class="field">Mi nivel hoy es
-            <input data-save="mi_nivel_hoy" />
-          </label>
-        </div>
-      </details>
-
-      <details>
-        <summary>Punto de entrada y compromiso</summary>
-        <div class="details-body">
-          <table class="entry-table">
-            <thead><tr><th>Letra</th><th>Pregunta de entrada</th></tr></thead>
-            <tbody>
-              <tr><td>G</td><td>¿Qué decisión, solución o avance debe producir mi trabajo?</td></tr>
-              <tr><td>E</td><td>¿Qué necesito comprender antes de resolver?</td></tr>
-              <tr><td>N</td><td>¿Qué necesita el resultado de mí ahora?</td></tr>
-              <tr><td>I</td><td>¿Qué necesita el receptor para actuar sin perseguirme?</td></tr>
-              <tr><td>O</td><td>¿Qué capacidad debo desarrollar antes de que limite mi siguiente etapa?</td></tr>
-              <tr><td>S</td><td>¿Qué estándar puedo sostener aunque el día no ayude?</td></tr>
-            </tbody>
-          </table>
-
-          <label class="field">Mi perfil actual es
-            <input data-save="perfil_actual" />
-          </label>
-          <label class="field">Letra prioritaria
-            <input data-save="compromiso_letra" />
-          </label>
-          <label class="field">Situación real donde la practicaré
-            <input data-save="compromiso_situacion" />
-          </label>
-          <label class="field">Evidencia que quiero producir
-            <textarea data-save="compromiso_evidencia"></textarea>
-          </label>
-          <label class="field">Fecha de revisión
-            <input data-save="compromiso_fecha" />
-          </label>
-        </div>
-      </details>
-    </section>
-
-    <section class="section" id="herramientas">
-      <div class="section-title">
-        <h2>Herramientas</h2>
-        <span>6 letras</span>
-      </div>
-      <div id="toolsRoot"></div>
-    </section>
-
-    <section class="section" id="auditorias">
-      <div class="section-title">
-        <h2>Auditorías</h2>
-        <span>Contraste</span>
-      </div>
-
-      <div class="audit-grid">
-        <details open>
-          <summary>Auditoría del Capital Reputacional</summary>
-          <div class="details-body">
-            <p>Elige tres personas que conozcan tu trabajo desde contextos distintos. Busca palabras repetidas, ejemplos concretos y reservas.</p>
-            <label class="field">Persona 1<textarea data-save="audit1_p1"></textarea></label>
-            <label class="field">Persona 2<textarea data-save="audit1_p2"></textarea></label>
-            <label class="field">Persona 3<textarea data-save="audit1_p3"></textarea></label>
-            <label class="field">Mis tres conclusiones<textarea data-save="audit1_conclusiones"></textarea></label>
-          </div>
-        </details>
-
-        <details>
-          <summary>Auditoría de la evitación</summary>
-          <div class="details-body">
-            <p>Para detectar la gravedad del promedio, no preguntes si trabajas mucho. Pregunta qué decisión estás evitando.</p>
-            <label class="field">¿Qué movimiento llevo meses diciendo que debo hacer?<textarea data-save="audit2_1"></textarea></label>
-            <label class="field">¿Qué emoción estoy intentando no sentir?<textarea data-save="audit2_2"></textarea></label>
-            <label class="field">¿Qué costo ya está produciendo la espera?<textarea data-save="audit2_3"></textarea></label>
-            <label class="field">Mi decisión<textarea data-save="audit2_decision" placeholder="Estoy evitando ___ porque ___. Antes de ___ realizaré ___."></textarea></label>
-          </div>
-        </details>
-
-        <details>
-          <summary>Define tu Sello Profesional</summary>
-          <div class="details-body">
-            <p>No inventes una frase impresionante. Observa las evidencias que ya existen.</p>
-            <label class="field">Ayudo a ___ cuando ___.<textarea data-save="sello_1"></textarea></label>
-            <label class="field">Mi forma reconocible de aportar consiste en ___.<textarea data-save="sello_2"></textarea></label>
-            <label class="field">Después de mi intervención, queda ___.<textarea data-save="sello_3"></textarea></label>
-            <label class="field">Lo que necesito transferir para poder avanzar<textarea data-save="sello_transferir"></textarea></label>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="section" id="semanas">
-      <div class="section-title">
-        <h2>6 semanas</h2>
-        <span>Práctica</span>
-      </div>
-
-      <article class="card">
-        <div class="eyebrow">Semana 0</div>
-        <h2>Elige el terreno</h2>
-        <p>Elige un contexto suficientemente importante como para que otra persona experimente una diferencia.</p>
-        <div class="context-grid">
-          <label class="field">Aplicaré el sistema en<input data-save="sem0_contexto"></label>
-          <label class="field">Quien observará el efecto es<input data-save="sem0_observador"></label>
-          <label class="field">La diferencia que quiero producir es<input data-save="sem0_diferencia"></label>
-        </div>
-      </article>
-
-      <div class="week-grid" id="weeksRoot"></div>
-
-      <details>
-        <summary>Cerrar el experimento</summary>
-        <div class="details-body">
-          <label class="field">¿Qué conducta notaste?<textarea data-save="cierre_1"></textarea></label>
-          <label class="field">¿Qué efecto produjo en tu trabajo o en el resultado?<textarea data-save="cierre_2"></textarea></label>
-          <label class="field">¿Qué debería sostener o ajustar?<textarea data-save="cierre_3"></textarea></label>
-          <label class="field">Letra de expansión<input data-save="letra_expansion"></label>
-          <label class="field">Letra de protección<input data-save="letra_proteccion"></label>
-        </div>
-      </details>
-    </section>
-
-    <section class="section" id="uso">
-      <div class="section-title">
-        <h2>Uso continuo</h2>
-        <span>Bolsillo</span>
-      </div>
-
-      <div class="continuous-grid">
-        <article class="card">
-          <div class="eyebrow">Manual de bolsillo</div>
-          <h2>60 segundos</h2>
-          <ol>
-            <li>Nombra el resultado que necesita moverse.</li>
-            <li>Identifica la conducta que hoy lo está limitando.</li>
-            <li>Elige la acción mínima visible que puedes ejecutar ahora.</li>
-            <li>Decide qué evidencia quedará para otra persona.</li>
-          </ol>
-          <div class="callout">Pregunta central: ¿qué evidencia debe dejar mi próxima acción?</div>
-        </article>
-
-        <article class="card">
-          <div class="eyebrow">Cada semana</div>
-          <h2>Cierre de 5 minutos</h2>
-          <label class="field">Semana del<input data-save="cierre_semana_fecha_1"></label>
-          <label class="field">La evidencia más útil que dejé fue<textarea data-save="cierre_semana_ev_1"></textarea></label>
-          <label class="field">La letra que debo reforzar es<input data-save="cierre_semana_letra_1"></label>
-          <label class="field">La conducta que repetiré y dónde la practicaré<textarea data-save="cierre_semana_conducta_1"></textarea></label>
-        </article>
-      </div>
-
-      <article class="card">
-        <div class="eyebrow">Una última cosa</div>
-        <h2>Tu primera evidencia</h2>
-        <p>Define tu primer movimiento. Debe ser pequeño, observable y concreto para ejecutarlo durante las próximas cuarenta y ocho horas.</p>
-        <label class="field">Letra que trabajaré<input data-save="primera_letra"></label>
-        <label class="field">Situación donde la practicaré<input data-save="primera_situacion"></label>
-        <label class="field">Evidencia que quiero producir<textarea data-save="primera_evidencia"></textarea></label>
-        <label class="field">Cuándo lo haré<input data-save="primera_cuando"></label>
-        <p class="lead" style="text-align:center;margin-top:18px">No cierres este cuaderno con una intención. Ciérralo con una decisión.</p>
-      </article>
-    </section>
-  </main>
-
-  <nav class="bottom-nav" aria-label="Navegación inferior">
-    <div class="bottom-nav-inner">
-      <a href="#inicio"><b>⌂</b>Inicio</a>
-      <a href="#diagnostico"><b>◇</b>Diagnóstico</a>
-      <a href="#herramientas"><b>G</b>Herramientas</a>
-      <a href="#semanas"><b>6</b>Semanas</a>
-      <a href="#uso"><b>✓</b>Cierre</a>
+      <span class="save-pill" id="savePill">Guardado</span>
     </div>
   </nav>
 
-  <div class="desktop-actions">
-    <button id="btnPrint">Imprimir / Guardar PDF</button>
-    <button class="secondary" id="btnReset">Reiniciar</button>
-  </div>
+  <div class="wrap layout">
+    <main class="main">
+      <section class="card pad" id="como-usarlo">
+        <div class="eyebrow">Antes de empezar</div>
+        <h2 class="section-title">El cuaderno no se lee. Se practica.</h2>
+        <p class="section-sub">Úsalo como una ruta de evidencia: responde, decide una conducta y vuelve al trabajo real. Cada bloque está pensado para avanzar desde celular, sin perderte en páginas largas.</p>
+        <div class="callout" style="margin-top:14px">La pregunta central no es “¿qué entendí?”, sino: <strong>¿qué evidencia voy a dejar?</strong></div>
+        <div class="outcome-grid">
+          <div class="outcome-card"><b>1. Diagnóstico</b><span>Identifica tu promedio real y la dimensión que hoy más limita tu reputación observable.</span></div>
+          <div class="outcome-card"><b>2. Lectura</b><span>Convierte números en una interpretación clara de Valor, Consistencia, Visibilidad y Capital Reputacional.</span></div>
+          <div class="outcome-card"><b>3. Decisión</b><span>Elige una conducta concreta para practicar en una situación profesional real.</span></div>
+          <div class="outcome-card"><b>4. Evidencia</b><span>Registra qué cambió para otros gracias a tu forma de trabajar.</span></div>
+        </div>
+        <div class="divider"></div>
+        <div class="quick-grid" id="lettersOverview"></div>
+      </section>
 
-  <div class="toast" id="toast">Guardado</div>
+      <section class="card pad" id="diagnostico">
+        <div class="eyebrow">Diagnóstico G.E.N.I.O.S.</div>
+        <h2 class="section-title">Tu promedio real</h2>
+        <p class="section-sub">Responde por hechos recientes, no por intención. Si dudas entre dos números, elige el más bajo.</p>
+        <div class="context-grid">
+          <div class="field"><label for="ctxRole">Rol, proyecto o situación</label><input class="input js-save" data-key="ctxRole" id="ctxRole" placeholder="Ej.: proceso, equipo, cliente, proyecto" /></div>
+          <div class="field"><label for="planPersonName">Nombre para el reporte final</label><input class="input js-save" data-key="planPersonName" id="planPersonName" placeholder="Escribe tu nombre" /></div>
+        </div>
+        <div class="divider"></div>
+        <div class="eyebrow">Escala de puntuación</div>
+        <div class="quick-grid" id="scaleGrid"></div>
+        <div class="progress-box">
+          <div class="progress-meta"><span>Avance del diagnóstico</span><span id="progressLabel">0 / 24</span></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div id="questionBlocks"></div>
+      </section>
 
-  <script>
-    const STORAGE_KEY = "cuaderno_genios_mobile_reader_v2";
+      <section class="card pad" id="resultado">
+        <div class="eyebrow">Resultado en vivo</div>
+        <h2 class="section-title">Tu foto G.E.N.I.O.S.</h2>
+        <p class="section-sub">El total orienta, pero la letra más baja muestra dónde empezar.</p>
+        <div class="result-grid">
+          <div class="kpi"><span>Total</span><b id="totalScore">0 / 120</b></div>
+          <div class="kpi"><span>Respondidas</span><b id="answeredCount">0 / 24</b></div>
+          <div class="kpi"><span>Letra más baja</span><b id="lowestLetter">—</b></div>
+          <div class="kpi"><span>Capital Reputacional</span><b id="capitalIndex">—</b></div>
+        </div>
+        <div class="level-card" id="levelCard">
+          <span class="chip">Completa el diagnóstico</span>
+          <h3>Resultado pendiente</h3>
+          <p class="muted small" id="levelText">Cuando respondas las 24 afirmaciones, aparecerá tu nivel, tu punto de entrada y tu lectura de Capital Reputacional.</p>
+        </div>
+        <div class="insight-card" id="mainInsight"><h3>Lectura pendiente</h3><p>Completa el diagnóstico para recibir una interpretación clara, no solo un puntaje.</p></div>
+        <div class="bars" id="bars"></div>
+        <div class="dimension-reading-grid" id="dimensionReadings"></div>
+        <div class="divider"></div>
+        <h3 class="serif" style="font-size:1.45rem;margin:0 0 8px">Capital Reputacional aproximado</h3>
+        <div class="capital-note">Valor × Consistencia × Visibilidad</div>
+        <div class="capital-grid">
+          <div class="capital-factor"><span>Valor aproximado</span><b id="capValor">— / 20</b></div>
+          <div class="capital-factor"><span>Consistencia aproximada</span><b id="capConsistencia">— / 20</b></div>
+          <div class="capital-factor"><span>Visibilidad aproximada</span><b id="capVisibilidad">— / 20</b></div>
+          <div class="capital-factor"><span>Capital Reputacional bruto</span><b id="capBruto">— / 8.000</b></div>
+        </div>
+        <p class="small muted">El índice /100 resume cómo se combinan Valor, Consistencia y Visibilidad. No es una nota definitiva: es una lectura práctica para decidir qué conducta trabajar primero.</p>
+        <div class="factor-reading" id="factorReading"></div>
+        <div class="reading" id="capitalReading"></div>
+        <div class="report-actions no-print">
+          <button class="btn btn-dark" id="btnCopyReport" type="button">Copiar reporte claro</button>
+          <a class="btn btn-outline" href="#reporte">Ver reporte final</a>
+        </div>
+      </section>
 
-    const dimensions = [
-      {
-        letter:"G", name:"Generar valor", short:"Mover decisiones, no solo informar.",
-        questions:[
-          "Antes de entregar, pienso para qué le sirve a otros.",
-          "Busco el resultado, no solo la tarea.",
-          "Convierto información en un paso claro.",
-          "Puedo decir qué cambió gracias a mi trabajo."
-        ]
-      },
-      {
-        letter:"E", name:"Escuchar para entender", short:"No responder rápido al problema equivocado.",
-        questions:[
-          "Me detengo y pienso antes de responder.",
-          "Busco entender qué necesita la otra persona.",
-          "Pregunto antes de proponer.",
-          "Puedo resumir lo que la otra persona necesita."
-        ]
-      },
-      {
-        letter:"N", name:"Nivel de involucramiento", short:"Hacerte cargo sin cargarlo todo.",
-        questions:[
-          "Si veo un problema, lo digo.",
-          "Si algo se puede mejorar, propongo cómo empezar.",
-          "Me hago responsable del resultado completo.",
-          "Tomo iniciativa con aportes útiles sin que me lo pidan."
-        ]
-      },
-      {
-        letter:"I", name:"Intención en el detalle", short:"Lograr que tu trabajo funcione sin explicaciones.",
-        questions:[
-          "Antes de entregar, verifico que se entienda.",
-          "Anticipo dudas sobre mi trabajo.",
-          "Verifico cifras, nombres y fechas.",
-          "Mis entregas se entienden solas."
-        ]
-      },
-      {
-        letter:"O", name:"Obsesión por crecer", short:"Desarrollarte antes de que la siguiente etapa te lo exija.",
-        questions:[
-          "Desarrollo activamente una habilidad.",
-          "Practico algo que aún no domino.",
-          "Pido feedback honesto.",
-          "Sé qué debo mejorar."
-        ]
-      },
-      {
-        letter:"S", name:"Sostener la consistencia", short:"Sostener tu estándar cuando la semana se complica.",
-        questions:[
-          "Mantengo mi estándar incluso en semanas difíciles.",
-          "En semanas difíciles, cumplo lo prometido.",
-          "La gente sabe qué esperar de mí.",
-          "Mantengo mi estándar en el tiempo."
-        ]
-      }
-    ];
+      <section class="card pad" id="compromiso">
+        <div class="eyebrow">Decisión de trabajo</div>
+        <h2 class="section-title">Tu conducta de 6 semanas</h2>
+        <p class="section-sub">El diagnóstico termina cuando eliges una conducta. Practícala en una situación real, deja evidencia y repítela.</p>
+        <div class="field"><label>Mi letra más baja es</label><input class="input js-save" data-key="decisionLetter" id="decisionLetter" placeholder="Se puede completar automáticamente desde el resultado" /></div>
+        <div class="field"><label>La conducta que practicaré durante las próximas 6 semanas</label><textarea class="js-save" data-key="decisionBehavior" placeholder="Ej.: hacer visible el riesgo antes de que impacte el resultado"></textarea></div>
+        <div class="field"><label>Situación real donde se verá</label><textarea class="js-save" data-key="decisionSituation" placeholder="Ej.: reunión semanal con cliente / cierre de terna / entrega de informe"></textarea></div>
+        <div class="field"><label>Evidencia que debería dejar</label><textarea class="js-save" data-key="decisionEvidence" placeholder="Ej.: alguien puede decidir, avanzar o confiar sin perseguirme"></textarea></div>
+        <div class="field"><label>Frase de sala que quiero empezar a construir</label><input class="input js-save" data-key="decisionPhrase" placeholder="Ej.: Con él/ella, esto no se cae." /></div>
+        <div class="two-actions no-print">
+          <button class="btn btn-dark" id="btnUseLowest" type="button">Usar letra más baja</button>
+          <button class="btn btn-outline" id="btnCopySummary" type="button">Copiar resumen</button>
+        </div>
+      </section>
 
-    const tools = [
-      ["G","Generar valor","Mapa de Valor","Antes de tocar el documento, define qué debería poder hacer otra persona al recibirlo.",[
-        ["Receptor","¿Quién usará esto?"],["Decisión","¿Qué debe poder decidir?"],["Fricción","¿Qué debería dejar de interpretar?"],["Aporte","¿Qué cambio produce?"],["Evidencia","¿Cómo sabré que fue útil?"]
-      ]],
-      ["E","Escuchar","Segunda pregunta","Antes de proponer una solución, haz una pausa, formula una segunda pregunta y comprueba lo que entendiste.",[
-        ["Con quién / sobre qué",""],["Mi primera pregunta",""],["Mi segunda pregunta","Intención, prioridad o tensión no dicha."],["Comprobación","“Lo que estoy entendiendo es ___. ¿Es correcto?”"]
-      ]],
-      ["N","Involucrarte","Cinco movimientos","No ignoras, no dramatizas y tampoco lo absorbes: ayudas a que el sistema reaccione.",[
-        ["Comprueba","¿La persona responsable ya conoce la situación?"],["Haz visible","Describe el hecho y su impacto."],["Activa","Identifica quién debe participar."],["Contribuye","¿Qué puedes aportar desde tu rol?"],["Cierra el ciclo","Confirma responsable, siguiente paso y revisión."]
-      ]],
-      ["I","Detalle","Prueba de Ausencia","Antes de enviar, revisa si tu entrega puede ser usada aunque tú no estés para explicarla.",[
-        ["¿Se entiende sin que yo lo explique?",""],["¿Muestra primero lo que permite decidir?",""],["¿Permite decidir, actuar o avanzar?",""],["¿Reduce preguntas innecesarias?",""],["¿Puede sostenerse si yo no estoy presente?",""]
-      ]],
-      ["O","Crecer","Ciclo O","Convierte aprendizaje en conducta visible. Una brecha se vuelve relevante cuando limita tu contribución.",[
-        ["Brecha","¿Qué todavía no puedo ejecutar?"],["Conducta","¿Qué comportamiento demostraría esa capacidad?"],["Práctica","¿Cómo y cuándo la practicaré?"],["Retroalimentación","¿A quién le pediré una señal externa?"],["Repetición","¿Dónde volveré a practicarla?"]
-      ]],
-      ["S","Consistencia","Estándar mínimo visible","Define esa parte de tu forma de trabajar que no desaparece cuando estás cansado, presionado o saturado.",[
-        ["Responsabilidad que protegeré",""],["Mi máximo, cuando todo acompaña",""],["Mi estándar, en un día normal",""],["Mi mínimo no negociable",""],["Si fallo, recupero el patrón dentro de 24 horas",""]
-      ]]
-    ];
+      <section class="card pad" id="reporte">
+        <div class="eyebrow">Reporte final</div>
+        <h2 class="section-title">Tu lectura para volver al trabajo real</h2>
+        <p class="section-sub">Este bloque resume el diagnóstico en lenguaje claro: resultado, Capital Reputacional, fortaleza, letra de entrada y conducta de seis semanas.</p>
+        <div class="report-note">Para que el reporte quede personalizado, escribe tu nombre en el diagnóstico. El contenido se actualiza automáticamente mientras respondes.</div>
+        <div class="report-preview" id="reportPreview">Completa el diagnóstico para generar tu reporte.</div>
+        <div class="report-actions no-print">
+          <button class="btn btn-dark" id="btnCopyReportBottom" type="button">Copiar reporte</button>
+          <button class="btn btn-outline" id="btnPrintReport" type="button">Guardar / imprimir</button>
+        </div>
+      </section>
 
-    const weeks = [
-      ["Semana 1","G — Generar valor","Antes de una entrega importante, define qué decisión, solución o avance debe facilitar.","Alguien pudo avanzar con menos fricción."],
-      ["Semana 2","E — Escuchar","Formula una segunda pregunta antes de proponer tu solución.","Apareció información que modificó tu respuesta."],
-      ["Semana 3","N — Involucrarte","Activa un primer paso frente a un riesgo que afecta el resultado.","El problema avanzó hacia una conversación o responsable."],
-      ["Semana 4","I — Detalle","Revisa una entrega con la Prueba de Ausencia antes de enviarla.","La persona pudo actuar sin reconstruir el contexto."],
-      ["Semana 5","O — Crecer","Practica una capacidad vinculada con una brecha de valor.","Hiciste algo que antes evitabas o no sabías sostener."],
-      ["Semana 6","S — Consistencia","Protege un estándar realista durante la semana que tienes.","Otros pudieron anticipar cómo responderías bajo presión."]
-    ];
+      <section class="card pad" id="herramientas">
+        <div class="eyebrow">Las seis herramientas</div>
+        <h2 class="section-title">Una herramienta por letra</h2>
+        <p class="section-sub">Úsalas dentro del trabajo real, justo cuando la situación la necesita.</p>
+        <div class="accord" id="tools"></div>
+      </section>
 
-    let state = loadState();
-
-    function loadState(){
-      try{return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}}
-      catch{return {}}
-    }
-    function saveState(){localStorage.setItem(STORAGE_KEY, JSON.stringify(state))}
-    function toast(msg="Guardado"){
-      const el=document.getElementById("toast");
-      el.textContent=msg;
-      el.classList.add("show");
-      clearTimeout(window.__toast);
-      window.__toast=setTimeout(()=>el.classList.remove("show"),1200);
-    }
-
-    function bindSavedFields(){
-      document.querySelectorAll("[data-save]").forEach(el=>{
-        const key=el.dataset.save;
-        if(state[key] !== undefined) el.value = state[key];
-        el.addEventListener("input",()=>{
-          state[key]=el.value;
-          saveState();
-        });
-        el.addEventListener("change",()=>toast());
-      });
-    }
-
-    function renderQuestions(){
-      const root=document.getElementById("questionsRoot");
-      root.innerHTML="";
-      let idx=0;
-      dimensions.forEach((dim,dIdx)=>{
-        const det=document.createElement("details");
-        det.open = dIdx === 0;
-        det.innerHTML = `
-          <summary>
-            <span>
-              ${dim.letter} — ${dim.name}
-              <span class="subtotal" id="subtotal-${dim.letter}">0 / 20</span>
-            </span>
-          </summary>
-          <div class="details-body question-group">
-            <div class="dim-head">
-              <div class="mini-letter">${dim.letter}</div>
-              <div><strong>${dim.name}</strong><span>${dim.short}</span></div>
-            </div>
-          </div>
-        `;
-        const body=det.querySelector(".details-body");
-        dim.questions.forEach((q,i)=>{
-          idx++;
-          const key=`q_${dim.letter}_${i}`;
-          const article=document.createElement("article");
-          article.className="question";
-          const radios=[1,2,3,4,5].map(v=>`
-            <span>
-              <input type="radio" id="${key}_${v}" name="${key}" value="${v}" ${state[key] == v ? "checked":""}>
-              <label for="${key}_${v}">${v}</label>
-            </span>
-          `).join("");
-          article.innerHTML=`
-            <div class="question-text"><span class="q-num">${idx}</span><span>${q}</span></div>
-            <div class="radio-row">${radios}</div>
-          `;
-          article.querySelectorAll("input").forEach(input=>{
-            input.addEventListener("change",()=>{
-              state[key]=Number(input.value);
-              saveState();
-              updateScores();
-              toast("Respuesta guardada");
-            });
-          });
-          body.appendChild(article);
-        });
-        root.appendChild(det);
-      });
-    }
-
-    function renderTools(){
-      const root=document.getElementById("toolsRoot");
-      root.innerHTML=tools.map((tool,tIdx)=>`
-        <details ${tIdx===0 ? "open":""}>
-          <summary>${tool[0]} — ${tool[1]}</summary>
-          <div class="details-body">
-            <div class="tool-card">
-              <div class="tool-head">
-                <div class="mini-letter">${tool[0]}</div>
-                <div><h3>${tool[2]}</h3><span>${tool[1]}</span></div>
-              </div>
-              <p>${tool[3]}</p>
-              ${tool[4].map((s,i)=>`
-                <div class="step">
-                  <div class="step-num">${i+1}</div>
-                  <label class="field" style="margin:0">
-                    <strong>${s[0]}</strong>
-                    ${s[1] ? `<small>${s[1]}</small>`:""}
-                    <textarea data-save="tool_${tool[0]}_${i}"></textarea>
-                  </label>
-                </div>
-              `).join("")}
-            </div>
+      <section class="card pad" id="auditorias">
+        <div class="eyebrow">Auditorías</div>
+        <h2 class="section-title">Lo que aparece fuera de ti</h2>
+        <p class="section-sub">Tu autopercepción sirve, pero tu reputación vive en la experiencia que otros pueden describir.</p>
+        <details class="tool" open>
+          <summary><span class="letter">1</span><div><b>Auditoría del Capital Reputacional</b><span>Pregunta a tres personas sin dirigir sus respuestas.</span></div></summary>
+          <div class="tool-body">
+            <div class="field"><label>¿Qué diferencia útil experimentas cuando trabajas conmigo?</label><textarea class="js-save" data-key="auditCapital1"></textarea></div>
+            <div class="field"><label>¿Qué sabes que puedes esperar de mí cuando algo se complica?</label><textarea class="js-save" data-key="auditCapital2"></textarea></div>
+            <div class="field"><label>¿Qué parte de mi contribución debería ser más visible, clara o consistente?</label><textarea class="js-save" data-key="auditCapital3"></textarea></div>
           </div>
         </details>
-      `).join("");
-    }
-
-    function renderWeeks(){
-      const root=document.getElementById("weeksRoot");
-      root.innerHTML=weeks.map((w,i)=>`
-        <article class="week-card">
-          <div class="week-head">
-            <h3>${w[1]}</h3>
-            <span class="week-pill">${w[0]}</span>
+        <details class="tool">
+          <summary><span class="letter">2</span><div><b>Auditoría de la evitación</b><span>No preguntes si trabajas mucho. Pregunta qué decisión estás evitando.</span></div></summary>
+          <div class="tool-body">
+            <div class="field"><label>¿Qué conversación, capacidad, propuesta, límite o movimiento llevo meses postergando?</label><textarea class="js-save" data-key="avoid1"></textarea></div>
+            <div class="field"><label>¿Qué emoción intento no sentir al postergarlo?</label><textarea class="js-save" data-key="avoid2"></textarea></div>
+            <div class="field"><label>¿Qué costo ya está produciendo la espera?</label><textarea class="js-save" data-key="avoid3"></textarea></div>
+            <div class="field"><label>¿Qué evidencia tendría en 30 días si realmente comenzara?</label><textarea class="js-save" data-key="avoid4"></textarea></div>
           </div>
-          <p><strong>Conducta:</strong> ${w[2]}</p>
-          <p><strong>Evidencia:</strong> ${w[3]}</p>
-          <label class="field">Situación real<input data-save="week_${i}_situacion"></label>
-          <label class="field">Conducta que practiqué<textarea data-save="week_${i}_conducta"></textarea></label>
-          <label class="field">Evidencia producida<textarea data-save="week_${i}_evidencia"></textarea></label>
-          <label class="field">Próxima repetición<textarea data-save="week_${i}_repeticion"></textarea></label>
-        </article>
-      `).join("");
-    }
+        </details>
+        <details class="tool">
+          <summary><span class="letter">3</span><div><b>Define tu Sello Profesional</b><span>No inventes una frase. Observa las evidencias que ya existen.</span></div></summary>
+          <div class="tool-body">
+            <div class="field"><label>Ayudo a ___ cuando ___</label><input class="input js-save" data-key="sello1" /></div>
+            <div class="field"><label>Mi forma reconocible de aportar consiste en ___</label><input class="input js-save" data-key="sello2" /></div>
+            <div class="field"><label>Después de mi intervención, queda ___</label><input class="input js-save" data-key="sello3" /></div>
+            <div class="field"><label>¿Qué seguiría funcionando sin que yo estuviera para explicarlo?</label><textarea class="js-save" data-key="ausencia1"></textarea></div>
+            <div class="field"><label>¿Qué criterio, información o decisión existe solo en mi cabeza?</label><textarea class="js-save" data-key="ausencia2"></textarea></div>
+          </div>
+        </details>
+      </section>
 
-    function getScores(){
-      const scores=dimensions.map(dim=>{
-        const score=dim.questions.reduce((sum,_,i)=>sum+(Number(state[`q_${dim.letter}_${i}`])||0),0);
-        return {...dim, score, avg:score/4};
-      });
-      const answered=dimensions.reduce((sum,dim)=>sum+dim.questions.filter((_,i)=>Number(state[`q_${dim.letter}_${i}`])).length,0);
-      const total=scores.reduce((s,d)=>s+d.score,0);
-      return {scores,answered,total};
-    }
+      <section class="card pad" id="seis-semanas">
+        <div class="eyebrow">Experimento de seis semanas</div>
+        <h2 class="section-title">Registra evidencia, no esfuerzo</h2>
+        <p class="section-sub">Una letra principal por semana. No midas cuánto pensaste en la conducta: mide qué ocurrió gracias a ella.</p>
+        <div class="context-grid">
+          <div class="field"><label>Durante seis semanas aplicaré el sistema en</label><input class="input js-save" data-key="sixContext" /></div>
+          <div class="field"><label>Quien podrá observar el efecto es</label><input class="input js-save" data-key="sixObserver" /></div>
+        </div>
+        <div class="field"><label>La diferencia que quiero empezar a producir es</label><textarea class="js-save" data-key="sixDifference"></textarea></div>
+        <div class="hint">Reglas: practica dentro del trabajo real, trabaja una conducta principal por semana, registra evidencia y, si rompes el patrón, retómalo dentro de 24 horas.</div>
+        <div class="week-list" id="weeks"></div>
+      </section>
 
-    function levelFor(total,complete){
-      if(!complete) return {short:"—", text:"Completa las 24 afirmaciones para ver tu nivel y punto de entrada."};
-      if(total>=102) return {short:"N5", text:"N5 · Genio. Alta frecuencia en tu autoevaluación. Contrasta: que los demás vivan la misma experiencia."};
-      if(total>=82) return {short:"N4", text:"N4 · Impacto. Tu trabajo produce valor más allá de la tarea. Convierte tus fortalezas en patrón sostenible."};
-      if(total>=63) return {short:"N3", text:"N3 · Confiable. Saben que pueden contar contigo; fortalece tus letras más bajas."};
-      if(total>=44) return {short:"N2", text:"N2 · Cumplidor. Respondes y entregas, pero necesitas señales que te diferencien."};
-      return {short:"N1", text:"N1 · Operador. Empieza por elegir una letra y practicar una conducta visible."};
-    }
+      <section class="card pad" id="continuo">
+        <div class="eyebrow">Uso continuo</div>
+        <h2 class="section-title">Antes de cualquier momento importante</h2>
+        <p class="section-sub">Abre este bloque antes de una reunión, entrega o semana que perdió dirección.</p>
+        <div class="step-list">
+          <div class="mini-step"><i>1</i><div><b>Nombra el resultado</b><span>¿Qué necesita moverse?</span></div></div>
+          <div class="mini-step"><i>2</i><div><b>Identifica la conducta limitante</b><span>¿Qué letra está faltando?</span></div></div>
+          <div class="mini-step"><i>3</i><div><b>Elige una acción mínima visible</b><span>Algo que puedas ejecutar ahora.</span></div></div>
+          <div class="mini-step"><i>4</i><div><b>Decide la evidencia</b><span>¿Qué quedará para otra persona?</span></div></div>
+        </div>
+        <div class="divider"></div>
+        <h3 class="serif" style="font-size:1.35rem;margin:0 0 8px">¿Qué letra activar?</h3>
+        <div class="quick-grid" id="pocketMap"></div>
+        <div class="divider"></div>
+        <h3 class="serif" style="font-size:1.35rem;margin:0 0 8px">Cierre semanal de 5 minutos</h3>
+        <div class="field"><label>La evidencia más útil que dejé fue</label><textarea class="js-save" data-key="weeklyEvidence"></textarea></div>
+        <div class="field"><label>La letra que más protegí fue</label><input class="input js-save" data-key="weeklyLetter" /></div>
+        <div class="field"><label>El factor que apareció después del “pero” fue</label><textarea class="js-save" data-key="weeklyBut"></textarea></div>
+        <div class="field"><label>La conducta que repetiré y dónde la practicaré</label><textarea class="js-save" data-key="weeklyRepeat"></textarea></div>
+        <div class="divider"></div>
+        <h3 class="serif" style="font-size:1.35rem;margin:0 0 8px">Tu primera evidencia</h3>
+        <p class="small muted">No cierres el cuaderno con una intención. Ciérralo con una decisión.</p>
+        <div class="field"><label>Letra que trabajaré</label><input class="input js-save" data-key="firstLetter" /></div>
+        <div class="field"><label>Situación donde la practicaré</label><textarea class="js-save" data-key="firstSituation"></textarea></div>
+        <div class="field"><label>Evidencia que quiero producir</label><textarea class="js-save" data-key="firstEvidence"></textarea></div>
+        <div class="field"><label>Cuándo lo haré</label><input class="input js-save" data-key="firstWhen" /></div>
+      </section>
 
-    function updateScores(){
-      const {scores,answered,total}=getScores();
-      document.getElementById("answeredCount").textContent=answered;
-      document.getElementById("totalScore").textContent=total;
-      document.getElementById("progressText").textContent=`${answered} / 24`;
-      document.getElementById("progressFill").style.width=`${answered/24*100}%`;
+      <section class="card pad" id="cierre">
+        <div class="eyebrow">Cierre</div>
+        <h2 class="section-title">Sigue construyendo evidencia</h2>
+        <div class="callout">Ser un Genio no es ser extraordinario una vez. Es volverte confiablemente valioso muchas veces.</div>
+        <div class="two-actions no-print">
+          <button class="btn btn-dark" id="btnPrint" type="button">Guardar / imprimir</button>
+          <button class="btn btn-danger" id="btnReset" type="button">Reiniciar cuaderno</button>
+        </div>
+      </section>
+    </main>
 
-      const level=levelFor(total, answered===24);
-      document.getElementById("levelShort").textContent=level.short;
-      document.getElementById("levelText").textContent=level.text;
+    <aside class="desktop-side no-print">
+      <section class="card pad">
+        <div class="eyebrow">Resumen</div>
+        <div class="result-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi"><span>Total</span><b id="sideTotal">0</b></div>
+          <div class="kpi"><span>Capital Reputacional</span><b id="sideCapital">—</b></div>
+        </div>
+        <div class="divider"></div>
+        <p class="small muted" id="sideSummary">Completa el diagnóstico para ver tu punto de entrada.</p>
+        <a class="btn btn-primary" style="width:100%;margin-top:10px" href="#resultado">Ver resultado</a>
+      </section>
+      <section class="card pad">
+        <div class="eyebrow">Recordatorio</div>
+        <p class="small">Una letra. Una conducta. Una situación real. Una evidencia nueva.</p>
+      </section>
+    </aside>
+  </div>
 
-      scores.forEach(d=>{
-        const el=document.getElementById(`subtotal-${d.letter}`);
-        if(el) el.textContent=`${d.score} / 20`;
-      });
+  <nav class="sticky-bottom no-print" aria-label="Navegación móvil">
+    <a class="bottom-btn active" href="#diagnostico"><b>①</b>Diagnóstico</a>
+    <a class="bottom-btn" href="#resultado"><b>②</b>Resultado</a>
+    <a class="bottom-btn" href="#seis-semanas"><b>③</b>6 semanas</a>
+    <a class="bottom-btn" href="#continuo"><b>④</b>Uso</a>
+  </nav>
+  <div class="toast" id="toast">Guardado</div>
 
-      document.getElementById("scoreTable").innerHTML=scores.map(d=>`
-        <tr><td>${d.letter} — ${d.name}</td><td>${d.score}/20</td><td>${d.avg.toFixed(1)}/5</td></tr>
-      `).join("");
+<script>
+const STORE = 'cuadernoGeniosWebMobileV1';
+const dims = [
+  {id:'G', name:'Generar valor', short:'Pasar de completar tareas a producir decisiones, soluciones o avances que otra persona puede usar.', qs:[
+    'Antes de empezar, defino qué decisión, avance o solución debe facilitar mi entrega.',
+    'Mi trabajo ayuda a otros a decidir, avanzar o resolver con mayor claridad.',
+    'Aporto criterio, no solo datos, tareas o información.',
+    'Puedo nombrar qué cambió para otros gracias a mi trabajo.'
+  ]},
+  {id:'E', name:'Escuchar para entender', short:'Evitar que una respuesta rápida resuelva el problema equivocado.', qs:[
+    'Escucho para comprender el problema antes de responder.',
+    'Hago una segunda pregunta antes de proponer una solución.',
+    'Identifico lo que la otra persona dice, necesita y todavía no formula con claridad.',
+    'Confirmo lo que entendí antes de responder, proponer o actuar.'
+  ]},
+  {id:'N', name:'Nivel de involucramiento', short:'Hacerte cargo del resultado sin volverte salvador.', qs:[
+    'Nombro los riesgos antes de que impacten el resultado.',
+    'Doy el primer paso cuando un tema importante está frenado.',
+    'Me involucro hasta dejar el problema encaminado, sin convertirlo en carga propia.',
+    'Coordino con quien corresponde para avanzar sin duplicar esfuerzos.'
+  ]},
+  {id:'I', name:'Intención en el detalle', short:'Cuidar lo que ocurre cuando tu trabajo llega al otro lado.', qs:[
+    'Reviso que mi entrega se entienda sin explicaciones adicionales.',
+    'Anticipo las dudas de quien recibe mi trabajo.',
+    'Presento mis entregas con claridad y dejo visible el siguiente paso.',
+    'Mi trabajo puede usarse correctamente aunque yo no esté presente para explicarlo.'
+  ]},
+  {id:'O', name:'Obsesión por crecer', short:'Desarrollar antes de necesitarlo la capacidad que tu siguiente etapa va a exigir.', qs:[
+    'Identifico qué capacidad debo fortalecer para mi siguiente etapa profesional.',
+    'Practico habilidades que aún no domino, aunque implique exponerme a errores.',
+    'Busco feedback o referentes que me ayuden a mejorar lo que necesito aprender.',
+    'Convierto lo aprendido en una mejora visible en mi próxima entrega, reunión o decisión.'
+  ]},
+  {id:'S', name:'Sostener la consistencia', short:'Proteger un estándar reconocible incluso en semanas difíciles.', qs:[
+    'Tengo definido qué estándar mínimo voy a proteger cuando la semana se vuelve difícil.',
+    'Hago seguimiento activo, aviso a tiempo y dejo claros los próximos pasos.',
+    'Mantengo una forma de trabajar confiable incluso bajo presión, urgencia o desorden.',
+    'Cuando fallo, me atraso o algo cambia, respondo con responsabilidad y recupero el estándar.'
+  ]}
+];
+const scale = [
+  ['1','Nunca','No aparece en mi conducta reciente.'],['2','Casi nunca','Aparece en casos aislados.'],['3','A veces','Depende del día, del contexto o de la presión.'],['4','Casi siempre','Es parte habitual de mi forma de trabajar.'],['5','Siempre o casi siempre','Es un patrón reconocible en mí.']
+];
+const levels = [
+  {min:24,max:47,name:'Nivel 1 · Talento invisible',text:'Tienes capacidad, pero todavía no se traduce con suficiente claridad en conductas observables. Punto de partida: elige una letra y conviértela en una conducta visible esta semana.'},
+  {min:48,max:71,name:'Nivel 2 · Profesional cumplidor',text:'Respondes, avanzas y probablemente haces bien varias cosas, pero tu reputación todavía depende demasiado del contexto. Punto de partida: trabaja la letra más baja hasta que deje de aparecer solo en buenos días.'},
+  {min:72,max:95,name:'Nivel 3 · Profesional confiable',text:'Tu forma de trabajar ya empieza a construir expectativa. Otros pueden reconocer valor, responsabilidad o claridad. Punto de partida: no intentes mejorar todo; protege tu letra más débil.'},
+  {min:96,max:111,name:'Nivel 4 · Referente en construcción',text:'Tu nombre ya empieza a significar algo concreto. Hay señales que se repiten y una reputación que comienza a sostener decisiones. Punto de partida: define qué conducta quieres que otros asocien con tu nombre.'},
+  {min:112,max:120,name:'Nivel 5 · Genio en movimiento',text:'Tu forma de trabajar muestra un patrón fuerte de valor, consistencia y visibilidad. Punto de partida: evita la complacencia y convierte tu letra menos sólida en tu siguiente estándar.'}
+];
+const capitalReadings = [
+  {min:0,max:25,title:'Capital Reputacional débil',text:'Hay capacidad, pero la evidencia no aparece con suficiente fuerza, repetición o visibilidad.'},
+  {min:26,max:50,title:'Capital Reputacional en formación',text:'Hay señales valiosas, pero todavía no forman un patrón suficientemente claro.'},
+  {min:51,max:75,title:'Capital Reputacional funcionando',text:'Tu forma de trabajar ya empieza a dejar una expectativa reconocible.'},
+  {min:76,max:100,title:'Capital Reputacional fuerte',text:'Tu nombre empieza a significar algo concreto para otros. El desafío es sostener el estándar.'}
+];
+const tools = [
+  {id:'G', title:'Mapa de Valor', desc:'Antes de tocar el documento, define qué debería poder hacer otra persona al recibirlo.', fields:[['Receptor','¿Quién usará esto?'],['Decisión','¿Qué debe poder decidir, resolver o destrabar?'],['Fricción','¿Qué le impide avanzar con claridad?'],['Aporte','¿Qué cambio produces?'],['Evidencia','¿Cómo sabrás que fue útil?']]},
+  {id:'E', title:'La segunda pregunta', desc:'Antes de proponer una solución, haz una pausa, formula una segunda pregunta y comprueba lo que entendiste.', fields:[['Con quién / sobre qué','Contexto de la conversación'],['Mi primera pregunta','¿Qué pregunté primero?'],['Mi segunda pregunta','¿Qué pregunta abrió el problema real?'],['Tensión no dicha','Intención, prioridad o tensión que apareció'],['Comprobación','Lo que estoy entendiendo es ___. ¿Es correcto?']]},
+  {id:'N', title:'Involucramiento con criterio', desc:'No ignores, no dramatices y tampoco absorbas: ayuda a que el sistema reaccione.', fields:[['Comprueba','¿La persona responsable ya conoce la situación?'],['Haz visible','Describe el hecho y su impacto.'],['Activa','¿Quién debe participar y cuál es el primer paso?'],['Contribuye','¿Qué puedes aportar desde tu rol?'],['Cierra el ciclo','Responsable, siguiente paso y revisión.']]},
+  {id:'I', title:'Prueba de Ausencia', desc:'Antes de enviar, revisa si tu entrega funciona cuando tú no estás.', fields:[['Comprensión','¿Se entiende sin que yo lo explique?'],['Decisión','¿Muestra primero lo que permite decidir?'],['Uso','¿Permite decidir, actuar o avanzar?'],['Fricción','¿Reduce preguntas innecesarias?'],['Ausencia','¿Puede sostenerse si yo no estoy presente?']]},
+  {id:'O', title:'Ciclo O', desc:'Premia convertir aprendizaje en conducta visible.', fields:[['Brecha','¿Qué todavía no puedo ejecutar al nivel requerido?'],['Conducta','¿Qué comportamiento demostraría esa capacidad?'],['Práctica','¿Cómo y cuándo la practicaré en condiciones reales?'],['Retroalimentación','¿A quién le pediré una señal externa concreta?'],['Repetición','¿Dónde volveré a practicarla hasta que se reconozca?']]},
+  {id:'S', title:'Estándar mínimo', desc:'Define la parte de tu forma de trabajar que no desaparece cuando estás cansado o bajo presión.', fields:[['Responsabilidad','¿Qué responsabilidad protegeré?'],['Máximo','¿Cómo se ve cuando todo acompaña?'],['Estándar','¿Cómo se ve en un día normal?'],['Mínimo no negociable','¿Qué sostendré en una semana difícil?'],['Recuperación','Si fallo, ¿cómo recupero el patrón en 24 horas?']]}
+];
+const weeks = [
+  {n:1,id:'G',title:'Generar valor',conduct:'Antes de una entrega importante, define en una frase qué decisión, solución o avance debe facilitar.',example:'Alguien pudo decidir, comprender o avanzar con menos fricción.'},
+  {n:2,id:'E',title:'Escuchar para entender',conduct:'En una conversación donde sueles responder rápido, formula una segunda pregunta y verifica lo que entendiste antes de proponer.',example:'Apareció información que cambió tu respuesta o tu interpretación del problema.'},
+  {n:3,id:'N',title:'Nivel de involucramiento',conduct:'Frente a un riesgo sin dueño que afecta el resultado, hazlo visible, propón un primer paso e involucra a quien corresponde.',example:'El problema pasó de observación a conversación, decisión o acción.'},
+  {n:4,id:'I',title:'Intención en el detalle',conduct:'Revisa tu entrega más importante desde el lugar de quien la usará: orientación, decisión, fricción y confianza.',example:'El receptor pudo comprender y actuar sin reconstruir el contexto.'},
+  {n:5,id:'O',title:'Obsesión por crecer',conduct:'Practica una capacidad ligada a una brecha de valor, pide retroalimentación específica y aplícala en una situación real.',example:'Hiciste algo que antes evitabas o no podías hacer.'},
+  {n:6,id:'S',title:'Sostener la consistencia',conduct:'Elige una responsabilidad que se deteriora con el cansancio; define tu mínimo y comunica riesgos a tiempo.',example:'Otros pudieron anticipar cómo responderías aun en condiciones no ideales.'}
+];
+const pocket = [
+  ['G','Si no está claro qué debe cambiar.'],['E','Si todavía no comprendes la necesidad.'],['N','Si el resultado está inmóvil.'],['I','Si la entrega generará fricción.'],['O','Si una capacidad limita tu aporte.'],['S','Si el patrón depende de tu energía.']
+];
+let state = JSON.parse(localStorage.getItem(STORE) || '{}');
+state.scores = state.scores || {}; state.fields = state.fields || {};
+const $ = (s,root=document)=>root.querySelector(s); const $$=(s,root=document)=>Array.from(root.querySelectorAll(s));
+function esc(str){return String(str||'').replace(/[&<>'"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));}
+function save(){localStorage.setItem(STORE, JSON.stringify(state)); $('#savePill').textContent='Guardado';}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),1800);}
+function renderStatic(){
+  $('#lettersOverview').innerHTML = dims.map(d=>`<div class="quick-item"><span class="letter">${d.id}</span><div><b>${d.name}</b><span>${d.short}</span></div></div>`).join('');
+  $('#scaleGrid').innerHTML = scale.map(s=>`<div class="scale-card"><span class="scale-num">${s[0]}</span><div><b>${s[1]}</b><br><span>${s[2]}</span></div></div>`).join('');
+  $('#questionBlocks').innerHTML = dims.map(d=>`<div class="dim" id="dim-${d.id}"><div class="dim-head"><span class="letter">${d.id}</span><div><b>${d.name}</b></div><span class="dim-total" id="total-${d.id}">0 / 20</span></div><div class="questions">${d.qs.map((q,i)=>`<div class="q"><div class="q-top"><span class="q-num">${i+1}</span><p>${esc(q)}</p></div><div class="scale-row">${[1,2,3,4,5].map(n=>`<span class="score"><input type="radio" name="${d.id}-${i}" id="${d.id}-${i}-${n}" data-dim="${d.id}" data-idx="${i}" value="${n}"><label for="${d.id}-${i}-${n}">${n}</label></span>`).join('')}</div></div>`).join('')}</div></div>`).join('');
+  $('#bars').innerHTML = dims.map(d=>`<div class="bar"><span>${d.id}</span><div class="bar-rail"><div class="bar-fill" id="bar-${d.id}"></div></div><small id="barVal-${d.id}">0/20</small></div>`).join('');
+  $('#capitalReading').innerHTML = capitalReadings.map(r=>`<div class="reading-item" data-cap-min="${r.min}" data-cap-max="${r.max}"><b>${r.min}–${r.max} · ${r.title}</b><br><span class="muted">${r.text}</span></div>`).join('');
+  $('#tools').innerHTML = tools.map((t,idx)=>`<details class="tool" ${idx===0?'open':''}><summary><span class="letter">${t.id}</span><div><b>${t.title}</b><span>${t.desc}</span></div></summary><div class="tool-body"><div class="step-list">${t.fields.map((f,i)=>`<div class="mini-step"><i>${i+1}</i><div><b>${esc(f[0])}</b><span>${esc(f[1])}</span></div></div>`).join('')}</div>${t.fields.map((f,i)=>`<div class="field"><label>${esc(f[0])}</label><textarea class="js-save" data-key="tool-${t.id}-${i}" placeholder="${esc(f[1])}"></textarea></div>`).join('')}</div></details>`).join('');
+  $('#weeks').innerHTML = weeks.map(w=>`<article class="week"><div class="week-head"><div><small>Semana ${w.n}</small><b>${w.title}</b></div><span class="letter">${w.id}</span></div><div class="week-body"><p class="small"><strong>Conducta:</strong> ${esc(w.conduct)}</p><p class="micro muted"><strong>Ejemplo de evidencia:</strong> ${esc(w.example)}</p><div class="field"><label>Situación real</label><textarea class="js-save" data-key="week-${w.n}-situation"></textarea></div><div class="field"><label>Conducta que practiqué</label><textarea class="js-save" data-key="week-${w.n}-behavior"></textarea></div><div class="field"><label>Evidencia producida</label><textarea class="js-save" data-key="week-${w.n}-evidence"></textarea></div><div class="field"><label>Próxima repetición</label><textarea class="js-save" data-key="week-${w.n}-next"></textarea></div></div></article>`).join('');
+  $('#pocketMap').innerHTML = pocket.map(p=>`<div class="quick-item"><span class="letter">${p[0]}</span><div><b>${dims.find(d=>d.id===p[0]).name}</b><span>${p[1]}</span></div></div>`).join('');
+}
+function restore(){
+  $$('input[type="radio"]').forEach(r=>{ const k=`${r.dataset.dim}${r.dataset.idx}`; if(String(state.scores[k])===r.value) r.checked=true; });
+  $$('.js-save').forEach(el=>{ const k=el.dataset.key; if(state.fields[k]!==undefined) el.value=state.fields[k]; });
+}
+function scores(){
+  const out={}, missing=[]; dims.forEach(d=>{ out[d.id]=0; d.qs.forEach((_,i)=>{ const v=Number(state.scores[`${d.id}${i}`]||0); out[d.id]+=v; if(!v) missing.push(`${d.id}${i}`); }); }); return {out, answered:24-missing.length};
+}
+function levelFor(total, complete){ if(!complete) return null; return levels.find(l=>total>=l.min && total<=l.max) || null; }
+function fmt(n,dec=0){ if(!Number.isFinite(n)) return '—'; return n.toLocaleString('es-CL',{maximumFractionDigits:dec,minimumFractionDigits:dec}); }
+function dimBand(score){
+  if(score>=18) return {name:'Fuerte', text:'Conducta muy reconocible. El desafío es sostenerla y usarla como sello profesional.'};
+  if(score>=14) return {name:'Sólida', text:'Ya aparece con frecuencia. Falta convertirla en un patrón más visible y consistente.'};
+  if(score>=9) return {name:'En desarrollo', text:'Existe intención y algunas señales, pero todavía depende demasiado del contexto.'};
+  return {name:'Prioritaria', text:'Hoy deja poca evidencia. Conviene trabajarla con una conducta simple y repetible.'};
+}
+function factorText(name, value){
+  if(value>=17) return `${name}: fuerte y reconocible.`;
+  if(value>=13) return `${name}: saludable, pero todavía puede ganar claridad.`;
+  if(value>=9) return `${name}: en formación; necesita más repetición observable.`;
+  return `${name}: prioridad de trabajo; hoy aparece con poca fuerza.`;
+}
+function getSnapshot(){
+  const {out,answered}=scores();
+  const total=Object.values(out).reduce((a,b)=>a+b,0);
+  const complete=answered===24;
+  const sorted=dims.map(d=>[d.id,out[d.id],d.name,d.short]).sort((a,b)=>a[1]-b[1] || a[0].localeCompare(b[0]));
+  const lowest=sorted[0];
+  const highest=[...sorted].sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]))[0];
+  const valor=(out.G+out.E)/2, cons=(out.N+out.S)/2, visi=(out.I+out.O)/2, bruto=valor*cons*visi, idx=bruto/80;
+  const lv=levelFor(total,complete);
+  const cap=capitalReadings.find(r=>idx>=r.min && idx<=r.max) || capitalReadings[0];
+  return {out,answered,total,complete,sorted,lowest,highest,valor,cons,visi,bruto,idx,lv,cap};
+}
+function summaryText(){
+  const s=getSnapshot(); const name=(state.fields.planPersonName||'Sin nombre registrado').trim()||'Sin nombre registrado'; const role=(state.fields.ctxRole||'Sin rol, proyecto o situación registrado').trim()||'Sin rol, proyecto o situación registrado';
+  const levelName=s.lv?s.lv.name:'pendiente'; const levelText=s.lv?s.lv.text:'Completa las 24 respuestas para obtener una lectura cerrada.';
+  return `REPORTE CUADERNO G.E.N.I.O.S.
 
-      document.getElementById("barList").innerHTML=scores.map(d=>`
-        <div class="bar-row"><b>${d.letter}</b><div class="rail"><div class="fill" style="width:${(d.avg/5)*100}%"></div></div><span>${d.avg.toFixed(1)}</span></div>
-      `).join("");
+Nombre: ${name}
+Contexto: ${role}
 
-      drawRadar(scores);
-    }
+1. Resultado general
+Total: ${s.total}/120
+Nivel: ${levelName}
+${levelText}
 
-    function drawRadar(scores){
-      const svg=document.getElementById("radar");
-      const cx=160, cy=160, maxR=104, n=6;
-      const angle=i=>-Math.PI/2 + i*2*Math.PI/n;
-      const point=(i,r)=>[cx+Math.cos(angle(i))*r, cy+Math.sin(angle(i))*r];
-      let html="";
-      for(let ring=1; ring<=5; ring++){
-        const pts=[...Array(n)].map((_,i)=>point(i,maxR*ring/5).join(",")).join(" ");
-        html += `<polygon points="${pts}" fill="none" stroke="rgba(32,58,92,.14)" stroke-width="1"/>`;
-      }
-      for(let i=0;i<n;i++){
-        const [x,y]=point(i,maxR);
-        html += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(32,58,92,.12)" stroke-width="1"/>`;
-      }
-      const shape=scores.map((d,i)=>point(i,maxR*(d.avg/5)).join(",")).join(" ");
-      html += `<polygon points="${shape}" fill="rgba(179,136,43,.28)" stroke="#b3882b" stroke-width="3"/>`;
-      scores.forEach((d,i)=>{
-        const [x,y]=point(i,maxR*(d.avg/5));
-        html += `<circle cx="${x}" cy="${y}" r="4" fill="#203a5c" stroke="white" stroke-width="2"/>`;
-        const [lx,ly]=point(i,maxR+26);
-        html += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="central" fill="#203a5c" font-size="16" font-weight="900">${d.letter}</text>`;
-      });
-      svg.innerHTML=html;
-    }
+2. Capital Reputacional aproximado
+Fórmula: Valor × Consistencia × Visibilidad
+Valor: ${fmt(s.valor,1)}/20
+Consistencia: ${fmt(s.cons,1)}/20
+Visibilidad: ${fmt(s.visi,1)}/20
+Capital Reputacional: ${s.complete?fmt(s.idx,0)+'/100':'pendiente'}
+Lectura: ${s.complete?s.cap.title + '. ' + s.cap.text:'Completa el diagnóstico para activar esta lectura.'}
 
-    function resetAll(){
-      if(confirm("¿Seguro que quieres borrar todas las respuestas guardadas en esta web?")){
-        state={};
-        localStorage.removeItem(STORAGE_KEY);
-        location.reload();
-      }
-    }
+3. Fortaleza principal
+${s.highest[0]} · ${s.highest[2]} (${s.highest[1]}/20)
+Esta dimensión muestra dónde ya existe más evidencia a favor de tu reputación profesional.
 
-    document.getElementById("btnTopPrint").addEventListener("click",()=>window.print());
-    document.getElementById("btnTopReset").addEventListener("click",resetAll);
-    document.getElementById("btnPrint").addEventListener("click",()=>window.print());
-    document.getElementById("btnReset").addEventListener("click",resetAll);
+4. Letra de entrada
+${s.lowest[0]} · ${s.lowest[2]} (${s.lowest[1]}/20)
+Esta es la dimensión que conviene trabajar primero, porque puede elevar tu resultado completo con mayor rapidez.
 
-    renderQuestions();
-    renderTools();
-    renderWeeks();
-    bindSavedFields();
-    updateScores();
-  </script>
+5. Lectura por dimensión
+${dims.map(d=>`${d.id} · ${d.name}: ${s.out[d.id]}/20 · ${dimBand(s.out[d.id]).name}`).join('\n')}
+
+6. Decisión de seis semanas
+Conducta elegida: ${(state.fields.decisionBehavior||'Pendiente').trim()||'Pendiente'}
+Situación real: ${(state.fields.decisionSituation||'Pendiente').trim()||'Pendiente'}
+Evidencia esperada: ${(state.fields.decisionEvidence||'Pendiente').trim()||'Pendiente'}
+Frase de sala: ${(state.fields.decisionPhrase||'Pendiente').trim()||'Pendiente'}
+
+Cierre
+No trabajes todo al mismo tiempo. Elige una letra, una conducta, una situación real y una evidencia observable.`;
+}
+function update(){
+  const s=getSnapshot();
+  $('#progressLabel').textContent = `${s.answered} / 24`; $('#answeredCount').textContent = `${s.answered} / 24`; $('#progressFill').style.width = `${s.answered/24*100}%`;
+  $('#totalScore').textContent = `${s.total} / 120`; $('#sideTotal').textContent = s.total;
+  dims.forEach(d=>{ $(`#total-${d.id}`).textContent = `${s.out[d.id]} / 20`; $(`#bar-${d.id}`).style.width = `${s.out[d.id]/20*100}%`; $(`#barVal-${d.id}`).textContent = `${s.out[d.id]}/20`; });
+  $('#lowestLetter').textContent = s.answered ? `${s.lowest[0]} (${s.lowest[1]}/20)` : '—';
+  const card=$('#levelCard');
+  if(s.lv){ card.innerHTML = `<span class="chip">${s.total} / 120</span><h3>${s.lv.name}</h3><p class="muted small">${s.lv.text}</p>`; $('#sideSummary').textContent = `${s.lv.name}. Punto de entrada: ${s.lowest[0]} · ${s.lowest[2]}.`; }
+  else { card.innerHTML = `<span class="chip">Completa el diagnóstico</span><h3>Resultado pendiente</h3><p class="muted small">Cuando respondas las 24 afirmaciones, aparecerá tu nivel, tu punto de entrada y tu lectura de Capital Reputacional.</p>`; $('#sideSummary').textContent = 'Completa el diagnóstico para ver tu punto de entrada.'; }
+  $('#mainInsight').innerHTML = s.complete ? `<h3>Lectura principal</h3><p>Tu fortaleza más visible hoy es <strong>${s.highest[0]} · ${s.highest[2]}</strong>. Tu letra de entrada es <strong>${s.lowest[0]} · ${s.lowest[2]}</strong>: trabajarla primero puede hacer que tu reputación sea más clara, repetible y fácil de reconocer.</p>` : `<h3>Lectura en construcción</h3><p>Has respondido ${s.answered} de 24 afirmaciones. Completa el diagnóstico para obtener una lectura final con fortaleza, punto de entrada y Capital Reputacional.</p>`;
+  $('#dimensionReadings').innerHTML = dims.map(d=>{ const b=dimBand(s.out[d.id]); return `<div class="dimension-read"><strong><span>${d.id} · ${d.name}</span><span>${s.out[d.id]}/20</span></strong><span><b>${b.name}:</b> ${b.text}</span></div>`; }).join('');
+  $('#capValor').textContent = `${fmt(s.valor,1)} / 20`; $('#capConsistencia').textContent = `${fmt(s.cons,1)} / 20`; $('#capVisibilidad').textContent = `${fmt(s.visi,1)} / 20`; $('#capBruto').textContent = `${fmt(s.bruto,0)} / 8.000`;
+  $('#capitalIndex').textContent = s.complete ? `${fmt(s.idx,0)} / 100` : '—'; $('#sideCapital').textContent = s.complete ? `${fmt(s.idx,0)}` : '—';
+  $('#factorReading').innerHTML = `<div class="factor-pill"><b>${factorText('Valor',s.valor)}</b><span>Surge de G + E: valor creado y calidad de escucha.</span></div><div class="factor-pill"><b>${factorText('Consistencia',s.cons)}</b><span>Surge de N + S: involucramiento y estándar sostenido.</span></div><div class="factor-pill"><b>${factorText('Visibilidad',s.visi)}</b><span>Surge de I + O: detalle observable y crecimiento aplicado.</span></div><div class="factor-pill"><b>Capital Reputacional: ${s.complete?fmt(s.idx,0)+'/100':'pendiente'}</b><span>${s.complete?s.cap.title + ': ' + s.cap.text:'Completa el diagnóstico para activar esta lectura.'}</span></div>`;
+  $$('.reading-item').forEach(el=>{ const min=Number(el.dataset.capMin), max=Number(el.dataset.capMax); el.classList.toggle('active', s.complete && s.idx>=min && s.idx<=max); });
+  const rp=$('#reportPreview'); if(rp) rp.textContent=summaryText();
+}
+function summaryText(){ const {out,answered}=scores(); const total=Object.values(out).reduce((a,b)=>a+b,0); const lowest=dims.map(d=>[d.id,out[d.id],d.name]).sort((a,b)=>a[1]-b[1])[0]; const valor=(out.G+out.E)/2, cons=(out.N+out.S)/2, visi=(out.I+out.O)/2, idx=(valor*cons*visi)/80; const lv=levelFor(total,answered===24); return `Resumen Cuaderno G.E.N.I.O.S.\nNombre: ${(state.fields.planPersonName||'')}\nTotal: ${total}/120\nNivel: ${lv?lv.name:'pendiente'}\nG:${out.G} E:${out.E} N:${out.N} I:${out.I} O:${out.O} S:${out.S}\nLetra más baja: ${lowest[0]} · ${lowest[2]} (${lowest[1]}/20)\nCapital Reputacional: ${answered===24?fmt(idx,0)+'/100':'pendiente'}\nConducta 6 semanas: ${(state.fields.decisionBehavior||'')}`; }
+function bind(){
+  document.addEventListener('change', e=>{ if(e.target.matches('input[type="radio"][data-dim]')){ state.scores[`${e.target.dataset.dim}${e.target.dataset.idx}`]=Number(e.target.value); save(); update(); } });
+  document.addEventListener('input', e=>{ if(e.target.classList.contains('js-save')){ state.fields[e.target.dataset.key]=e.target.value; save(); update(); } });
+  $('#btnUseLowest').addEventListener('click',()=>{ const {out}=scores(); const lowest=dims.map(d=>[d.id,out[d.id],d.name]).sort((a,b)=>a[1]-b[1])[0]; $('#decisionLetter').value=`${lowest[0]} · ${lowest[2]}`; state.fields.decisionLetter=$('#decisionLetter').value; save(); toast('Letra más baja aplicada'); });
+  $('#btnCopySummary').addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText(summaryText()); toast('Resumen copiado'); } catch(e){ toast('No se pudo copiar automáticamente'); } });
+  ['#btnCopyReport','#btnCopyReportBottom'].forEach(sel=>{ const btn=$(sel); if(btn) btn.addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText(summaryText()); toast('Reporte copiado'); } catch(e){ toast('No se pudo copiar automáticamente'); } }); });
+  $('#btnPrint').addEventListener('click',()=>window.print()); $('#btnPrintTop').addEventListener('click',()=>window.print()); const printReport=$('#btnPrintReport'); if(printReport) printReport.addEventListener('click',()=>window.print());
+  $('#btnReset').addEventListener('click',()=>{ if(confirm('¿Reiniciar todo el cuaderno?')){ localStorage.removeItem(STORE); location.reload(); } });
+  const links=[...$$('.tab'),...$$('.bottom-btn')]; const sections=links.map(a=>$(a.getAttribute('href'))).filter(Boolean);
+  const obs=new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+en.target.id)); } }); },{rootMargin:'-45% 0px -50% 0px',threshold:0}); sections.forEach(s=>obs.observe(s));
+}
+renderStatic(); restore(); bind(); update();
+</script>
 </body>
 </html>
