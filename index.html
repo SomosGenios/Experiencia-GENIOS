@@ -80,7 +80,7 @@
       <section class="card pad" id="diagnostico">
         <div class="eyebrow">Diagnóstico G.E.N.I.O.S.</div>
         <h2 class="section-title">Tu promedio real</h2>
-        <p class="section-sub">Responde por hechos recientes, no por intención. Si dudas entre dos números, elige el más bajo.</p>
+        <p class="section-sub">Responde por hechos, no por intención. Si dudas entre dos números, elige el más bajo. Busca evidencia reciente, no una versión ideal de ti.</p>
         <div class="context-grid">
           <div class="field"><label for="ctxRole">Rol, proyecto o situación</label><input class="input js-save" data-key="ctxRole" id="ctxRole" placeholder="Ej.: proceso, equipo, cliente, proyecto" /></div>
           <div class="field"><label for="planPersonName">Nombre para el reporte final</label><input class="input js-save" data-key="planPersonName" id="planPersonName" placeholder="Escribe tu nombre" /></div>
@@ -183,7 +183,7 @@
             <div class="field"><label>¿Qué conversación, capacidad, propuesta, límite o movimiento llevo meses postergando?</label><textarea class="js-save" data-key="avoid1"></textarea></div>
             <div class="field"><label>¿Qué emoción intento no sentir al postergarlo?</label><textarea class="js-save" data-key="avoid2"></textarea></div>
             <div class="field"><label>¿Qué costo ya está produciendo la espera?</label><textarea class="js-save" data-key="avoid3"></textarea></div>
-            <div class="field"><label>¿Qué evidencia tendría en 30 días si realmente comenzara?</label><textarea class="js-save" data-key="avoid4"></textarea></div>
+            <div class="field"><label>¿Qué evidencia tendría al cierre de estas seis semanas si realmente hubiera comenzado hoy?</label><textarea class="js-save" data-key="avoid4"></textarea></div>
           </div>
         </details>
         <details class="tool">
@@ -277,47 +277,47 @@
   <div class="toast" id="toast">Guardado</div>
 
 <script>
-const STORE = 'cuadernoGeniosWebMobileV1';
+const STORE = 'cuadernoGeniosWebMobileV2';
 const dims = [
   {id:'G', name:'Generar valor', short:'Pasar de completar tareas a producir decisiones, soluciones o avances que otra persona puede usar.', qs:[
-    'Antes de empezar, defino qué decisión, avance o solución debe facilitar mi entrega.',
-    'Mi trabajo ayuda a otros a decidir, avanzar o resolver con mayor claridad.',
-    'Aporto criterio, no solo datos, tareas o información.',
-    'Puedo nombrar qué cambió para otros gracias a mi trabajo.'
+    'Antes de empezar una entrega, defino qué decisión, avance o solución debe facilitar.',
+    'Mi trabajo permite que otros decidan, avancen o resuelvan con mayor claridad.',
+    'Entrego criterio que ordena, prioriza o destraba el trabajo de otros.',
+    'Puedo mostrar qué cambió para otros gracias a mi trabajo.'
   ]},
   {id:'E', name:'Escuchar para entender', short:'Evitar que una respuesta rápida resuelva el problema equivocado.', qs:[
-    'Escucho para comprender el problema antes de responder.',
+    'No actúo a partir de la primera explicación del problema o la solicitud.',
     'Hago una segunda pregunta antes de proponer una solución.',
-    'Identifico lo que la otra persona dice, necesita y todavía no formula con claridad.',
-    'Confirmo lo que entendí antes de responder, proponer o actuar.'
+    'Detecto la preocupación que todavía no se ha dicho con claridad.',
+    'Confirmo lo que entendí antes de proponer o actuar.'
   ]},
   {id:'N', name:'Nivel de involucramiento', short:'Hacerte cargo del resultado sin volverte salvador.', qs:[
-    'Nombro los riesgos antes de que impacten el resultado.',
-    'Doy el primer paso cuando un tema importante está frenado.',
+    'Nombro los riesgos antes de que afecten el resultado.',
+    'Doy un primer paso concreto cuando un tema importante está frenado.',
     'Me involucro hasta dejar el problema encaminado, sin convertirlo en carga propia.',
-    'Coordino con quien corresponde para avanzar sin duplicar esfuerzos.'
+    'Involucro a quien corresponde para avanzar sin duplicar esfuerzos.'
   ]},
   {id:'I', name:'Intención en el detalle', short:'Cuidar lo que ocurre cuando tu trabajo llega al otro lado.', qs:[
-    'Reviso que mi entrega se entienda sin explicaciones adicionales.',
-    'Anticipo las dudas de quien recibe mi trabajo.',
+    'Reviso que mi entrega pueda entenderse sin explicaciones adicionales.',
+    'Anticipo las dudas principales de quien recibe mi trabajo.',
     'Presento mis entregas con claridad y dejo visible el siguiente paso.',
-    'Mi trabajo puede usarse correctamente aunque yo no esté presente para explicarlo.'
+    'Mi trabajo puede usarse correctamente, aunque yo no esté para explicarlo.'
   ]},
   {id:'O', name:'Obsesión por crecer', short:'Desarrollar antes de necesitarlo la capacidad que tu siguiente etapa va a exigir.', qs:[
     'Identifico qué capacidad debo fortalecer para mi siguiente etapa profesional.',
     'Practico habilidades que aún no domino, aunque implique exponerme a errores.',
-    'Busco feedback o referentes que me ayuden a mejorar lo que necesito aprender.',
-    'Convierto lo aprendido en una mejora visible en mi próxima entrega, reunión o decisión.'
+    'Pido feedback específico sobre la capacidad que necesito desarrollar.',
+    'Convierto lo aprendido en una mejora visible dentro de una entrega, reunión o decisión.'
   ]},
   {id:'S', name:'Sostener la consistencia', short:'Proteger un estándar reconocible incluso en semanas difíciles.', qs:[
-    'Tengo definido qué estándar mínimo voy a proteger cuando la semana se vuelve difícil.',
-    'Hago seguimiento activo, aviso a tiempo y dejo claros los próximos pasos.',
+    'Defino qué estándar mínimo voy a proteger cuando la semana se vuelve difícil.',
+    'Aviso a tiempo cuando algo cambia, se retrasa o puede afectar el resultado.',
     'Mantengo una forma de trabajar confiable incluso bajo presión, urgencia o desorden.',
     'Cuando fallo, me atraso o algo cambia, respondo con responsabilidad y recupero el estándar.'
   ]}
 ];
 const scale = [
-  ['1','Nunca','No aparece en mi conducta reciente.'],['2','Casi nunca','Aparece en casos aislados.'],['3','A veces','Depende del día, del contexto o de la presión.'],['4','Casi siempre','Es parte habitual de mi forma de trabajar.'],['5','Siempre o casi siempre','Es un patrón reconocible en mí.']
+  ['1','Nunca','Sin evidencia'],['2','Rara vez','Un caso aislado'],['3','A veces','Depende del contexto'],['4','Frecuentemente','Es parte de cómo trabajo'],['5','Siempre','Otros ya lo esperan']
 ];
 const levels = [
   {min:24,max:47,name:'Nivel 1 · Talento invisible',text:'Tienes capacidad, pero todavía no se traduce con suficiente claridad en conductas observables. Punto de partida: elige una letra y conviértela en una conducta visible esta semana.'},
