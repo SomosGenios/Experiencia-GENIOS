@@ -1,476 +1,253 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Cuaderno G.E.N.I.O.S. · Reporte y plan de acción</title>
-  <meta name="description" content="Cuaderno web mobile-first para practicar el sistema G.E.N.I.O.S.: diagnóstico, Capital Reputacional, reporte personalizado, herramientas, auditorías y plan de seis semanas." />
-  <style>
-    :root{
-      --bg:#f4f1eb; --paper:#fffdf8; --card:#ffffff; --soft:#fbfaf7;
-      --ink:#172033; --muted:#687086; --line:#ded6c8;
-      --navy:#1c335c; --navy2:#172033; --gold:#b88a3b; --gold2:#f0ddba;
-      --green:#22715c; --red:#a84538; --shadow:0 16px 42px rgba(28,51,92,.13);
-      --radius:22px; --max:1120px;
-      --safe-bottom:env(safe-area-inset-bottom, 0px);
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
-    body.nav-open{overflow:hidden} a{color:inherit;text-decoration:none} button,input,textarea,select{font:inherit} .wrap{width:min(var(--max), calc(100% - 28px));margin:0 auto}.serif{font-family:Georgia,"Times New Roman",serif}.muted{color:var(--muted)}.small{font-size:.88rem}.micro{font-size:.78rem}.gold{color:var(--gold)}.hidden{display:none!important}
-    .hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#141f32 0%,#1c335c 64%,#203c5e 100%);color:white;padding:34px 0 24px;border-radius:0 0 28px 28px}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 18%,rgba(184,138,59,.28),transparent 32%),radial-gradient(circle at 8% 88%,rgba(255,255,255,.08),transparent 28%);pointer-events:none}.hero .wrap{position:relative;z-index:1}.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border-radius:999px;background:rgba(184,138,59,.18);border:1px solid rgba(184,138,59,.35);color:#f0ddba;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem}.badge:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(184,138,59,.22)}
-    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,12vw,5.4rem);line-height:.9;letter-spacing:-.055em;margin:20px 0 14px}h1 em{font-style:normal;color:#f0ddba}.hero p{max-width:760px;color:rgba(255,255,255,.78);font-size:1rem;margin:0 0 20px}.hero-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:20px}.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}.btn:active{transform:translateY(1px)}.btn-primary{background:var(--gold);color:#17120b;box-shadow:0 10px 24px rgba(184,138,59,.28)}.btn-dark{background:var(--navy);color:white}.btn-light{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.18)}.btn-outline{background:white;color:var(--navy);border:1px solid rgba(28,51,92,.18)}.btn-danger{background:#fff0ed;color:var(--red);border:1px solid rgba(168,69,56,.22)}.btn-sm{min-height:38px;padding:8px 12px;font-size:.82rem}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.stat{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);border-radius:16px;padding:11px 8px;text-align:center}.stat b{display:block;color:#f0ddba;font-size:1.35rem;line-height:1}.stat span{display:block;margin-top:3px;color:rgba(255,255,255,.6);font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
-    .topbar{position:sticky;top:0;z-index:50;background:rgba(28,51,92,.97);backdrop-filter:blur(12px);color:white;border-bottom:1px solid rgba(255,255,255,.08)}.topbar-inner{display:flex;align-items:center;gap:10px;padding:9px 0}.tabs{display:flex;gap:6px;overflow:auto;scrollbar-width:none;flex:1}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;padding:7px 11px;border-radius:999px;font-size:.76rem;font-weight:800;color:rgba(255,255,255,.65);border:1px solid transparent}.tab.active{background:rgba(184,138,59,.18);border-color:rgba(184,138,59,.28);color:#f0ddba}.save-pill{display:none;align-items:center;gap:7px;font-size:.75rem;color:#9ee8c9;font-weight:800;white-space:nowrap}.save-pill:before{content:"";width:7px;height:7px;border-radius:50%;background:#7dd9b5}.layout{display:grid;gap:18px;padding:18px 0 96px}.card{background:rgba(255,255,255,.96);border:1px solid rgba(28,51,92,.09);border-radius:var(--radius);box-shadow:0 6px 26px rgba(28,51,92,.06);overflow:hidden}.pad{padding:18px 15px}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:950;margin-bottom:6px}.section-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.65rem,8vw,2.25rem);line-height:1.05;letter-spacing:-.035em;margin:0 0 9px}.section-sub{color:var(--muted);margin:0;font-size:.95rem}.divider{height:1px;background:var(--line);margin:16px 0}.callout{border-left:4px solid var(--gold);background:#fff8e9;border-radius:0 16px 16px 0;padding:12px 13px;color:#463417;font-family:Georgia,"Times New Roman",serif;font-style:italic}.quick-grid{display:grid;gap:8px;margin-top:14px}.quick-item{display:grid;grid-template-columns:42px 1fr;gap:11px;align-items:start;border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px}.letter{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--navy);color:var(--gold);font-family:Georgia,"Times New Roman",serif;font-size:1.45rem;font-weight:900;line-height:1}.quick-item b{display:block;line-height:1.2}.quick-item span{display:block;margin-top:2px;color:var(--muted);font-size:.84rem}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900;color:var(--navy)}.input,textarea,select{width:100%;border:1.5px solid rgba(28,51,92,.14);border-radius:14px;background:#fff;color:var(--ink);padding:12px 13px;outline:0;transition:border .15s ease,box-shadow .15s ease}textarea{min-height:92px;resize:vertical}.input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,138,59,.14)}.context-grid{display:grid;gap:8px;margin-top:12px}
-    .scale-card{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;border:1px solid var(--line);background:var(--soft);border-radius:15px;padding:10px}.scale-num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:950}.scale-card b{font-size:.9rem}.scale-card span{color:var(--muted);font-size:.8rem}.progress-box{display:grid;gap:9px;margin-top:12px}.progress-meta{display:flex;justify-content:space-between;gap:10px;font-size:.83rem;font-weight:850;color:var(--muted)}.progress-track{height:10px;border-radius:99px;background:#ece5da;border:1px solid rgba(28,51,92,.06);overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#d7b86f);transition:width .25s ease}.dim{border:1px solid var(--line);background:white;border-radius:20px;overflow:hidden;margin-top:14px}.dim-head{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;background:var(--navy);color:white;padding:11px 13px}.dim-head .letter{width:33px;height:33px;border-radius:9px;background:rgba(255,255,255,.08);font-size:1.25rem}.dim-head b{font-size:.98rem}.dim-total{font-weight:950;background:rgba(255,255,255,.1);border-radius:999px;padding:6px 10px;font-size:.78rem;color:#f0ddba}.questions{display:grid;gap:11px;padding:13px}.q{border:1px solid #ece4d8;background:#fffdf9;border-radius:16px;padding:12px}.q-top{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}.q-num{width:24px;height:24px;border-radius:8px;background:#f2e8d7;color:#4b3412;display:grid;place-items:center;font-weight:950;font-size:.75rem}.q p{margin:1px 0 10px;font-size:.91rem}.scale-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.score input{position:absolute;opacity:0;pointer-events:none}.score label{display:grid;place-items:center;min-height:44px;border-radius:12px;border:1.5px solid rgba(28,51,92,.13);background:#faf8f4;color:var(--navy);font-weight:950;cursor:pointer}.score input:checked+label{background:var(--navy);border-color:var(--navy);color:white;box-shadow:0 8px 18px rgba(28,51,92,.2)}
-    .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}.kpi{border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px}.kpi span{display:block;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.66rem;font-weight:900}.kpi b{display:block;font-size:1.35rem;line-height:1.05;color:var(--navy);margin-top:5px}.kpi.full{grid-column:1/-1}.level-card{margin-top:12px;border:1px solid rgba(184,138,59,.35);background:#fff8e9;border-radius:18px;padding:14px}.level-card h3{margin:0 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:1.35rem}.bars{display:grid;gap:8px;margin-top:14px}.bar{display:grid;grid-template-columns:26px 1fr 42px;gap:8px;align-items:center}.bar span:first-child{font-weight:950;color:var(--navy)}.bar-rail{height:9px;border-radius:999px;background:#eee6dc;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--navy),var(--gold));transition:width .25s ease}.bar small{text-align:right;color:var(--muted);font-weight:800}.capital-grid{display:grid;gap:8px;margin-top:12px}.capital-note{background:var(--navy);color:white;border-radius:16px;padding:12px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:900}.capital-factor{border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px}.capital-factor span{display:block;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}.capital-factor b{display:block;font-size:1.25rem;color:var(--navy);margin-top:4px}.reading{display:grid;gap:6px;margin-top:10px}.reading-item{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-size:.84rem}.reading-item.active{border-color:rgba(184,138,59,.55);background:#fff8e9}.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#f4ead8;border:1px solid rgba(184,138,59,.3);color:#4b3412;font-weight:900;padding:5px 9px;font-size:.72rem}.accord{display:grid;gap:10px;margin-top:14px}.tool{border:1px solid var(--line);background:white;border-radius:18px;overflow:hidden}.tool summary{list-style:none;display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;padding:13px;cursor:pointer}.tool summary::-webkit-details-marker{display:none}.tool summary .letter{width:38px;height:38px;border-radius:11px}.tool summary b{display:block}.tool summary span{color:var(--muted);font-size:.8rem}.tool summary:after{content:"+";font-size:1.3rem;font-weight:800;color:var(--muted)}.tool[open] summary:after{content:"–"}.tool-body{padding:0 13px 13px;border-top:1px solid var(--line)}.step-list{display:grid;gap:8px;margin:12px 0}.mini-step{display:grid;grid-template-columns:30px 1fr;gap:9px;align-items:start;border:1px solid #eee6dc;border-radius:14px;background:#fffdf9;padding:10px}.mini-step i{font-style:normal;width:30px;height:30px;border-radius:9px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:900}.mini-step b{display:block}.mini-step span{display:block;color:var(--muted);font-size:.82rem;margin-top:1px}.week-list{display:grid;gap:12px;margin-top:14px}.week{border:1px solid var(--line);border-radius:20px;background:white;overflow:hidden}.week-head{background:var(--navy);color:white;padding:12px 14px;display:grid;grid-template-columns:1fr 38px;gap:8px;align-items:center}.week-head small{display:block;color:#d5b675;text-transform:uppercase;font-weight:950;letter-spacing:.08em}.week-head b{font-family:Georgia,"Times New Roman",serif;font-size:1.18rem}.week-head .letter{width:38px;height:38px;background:rgba(255,255,255,.08)}.week-body{padding:13px}.hint{border:1px dashed #d6c8ae;background:#fffaf0;color:#4b3412;border-radius:14px;padding:11px;font-size:.84rem}.two-actions{display:grid;gap:8px;margin-top:12px}.sticky-bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,253,248,.96);backdrop-filter:blur(14px);border-top:1px solid rgba(28,51,92,.1);padding:8px 10px calc(8px + var(--safe-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.bottom-btn{display:grid;place-items:center;gap:2px;border:0;background:transparent;color:var(--muted);font-weight:850;font-size:.65rem;padding:6px 4px;border-radius:14px;min-height:48px}.bottom-btn b{font-size:1.05rem;line-height:1}.bottom-btn.active{background:#f4ead8;color:#4b3412}.toast{position:fixed;left:14px;right:14px;bottom:calc(78px + var(--safe-bottom));z-index:100;background:var(--navy);color:white;border-radius:16px;padding:12px 14px;text-align:center;font-weight:800;box-shadow:var(--shadow);transform:translateY(20px);opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:translateY(0);opacity:1}.desktop-side{display:none}.print-only{display:none}.outcome-grid{display:grid;gap:10px;margin-top:14px}.outcome-card{border:1px solid var(--line);background:linear-gradient(180deg,#fffdf9,#fbfaf7);border-radius:18px;padding:14px}.outcome-card b{display:block;color:var(--navy);margin-bottom:4px}.outcome-card span{display:block;color:var(--muted);font-size:.86rem}.insight-card{margin-top:12px;border:1px solid rgba(28,51,92,.12);background:linear-gradient(135deg,#fbfaf7,#fff8e9);border-radius:18px;padding:14px}.insight-card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.28rem;margin:0 0 6px}.insight-card p{margin:0;color:var(--muted);font-size:.9rem}.dimension-reading-grid{display:grid;gap:8px;margin-top:12px}.dimension-read{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px}.dimension-read strong{display:flex;justify-content:space-between;gap:10px;color:var(--navy);font-size:.9rem}.dimension-read span{display:block;margin-top:4px;color:var(--muted);font-size:.82rem}.report-actions{display:grid;gap:8px;margin-top:12px}.report-preview{white-space:pre-wrap;border:1px solid var(--line);background:#fffdf9;border-radius:16px;padding:14px;color:var(--ink);font-size:.88rem;line-height:1.5;max-height:420px;overflow:auto}.report-note{border:1px dashed #d6c8ae;background:#fffaf0;color:#4b3412;border-radius:14px;padding:11px;font-size:.84rem;margin-top:10px}.factor-reading{display:grid;gap:8px;margin-top:10px}.factor-pill{border:1px solid var(--line);background:white;border-radius:14px;padding:10px}.factor-pill b{display:block;color:var(--navy);font-size:.9rem}.factor-pill span{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
-    @media (min-width:760px){.hero{padding:58px 0 46px;border-radius:0}.hero-actions{display:flex}.hero-stats{max-width:430px}.layout{grid-template-columns:minmax(0,1fr) 340px;align-items:start;gap:22px;padding-bottom:64px}.desktop-side{display:grid;gap:14px;position:sticky;top:62px}.sticky-bottom{display:none}.pad{padding:24px}.save-pill{display:inline-flex}.context-grid,.capital-grid,.two-actions,.outcome-grid,.report-actions,.factor-reading{grid-template-columns:repeat(2,1fr)}.result-grid{grid-template-columns:repeat(4,1fr)}.kpi.full{grid-column:auto}.week-list,.dimension-reading-grid{grid-template-columns:repeat(2,1fr)}.scale-row{max-width:360px;margin-left:auto}.hero p{font-size:1.1rem}.tabs .tab{font-size:.82rem}.quick-grid{grid-template-columns:repeat(2,1fr)}}
-    @media print{.hero,.topbar,.sticky-bottom,.toast,.desktop-side,.no-print{display:none!important}body{background:white}.wrap{width:100%;max-width:none}.layout{display:block;padding:0}.card{box-shadow:none;border-color:#ddd;break-inside:avoid;margin-bottom:12px}.pad{padding:14px}.tool:not([open]) .tool-body{display:block}.score label{min-height:28px}.input,textarea{border-bottom:1px solid #999;border-radius:0}.print-only{display:block}.report-preview{max-height:none;overflow:visible}.outcome-grid,.dimension-reading-grid,.factor-reading{grid-template-columns:1fr 1fr}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Experiencia G.E.N.I.O.S. · Desarrollo profesional guiado</title>
+<meta name="description" content="Experiencia interactiva de SOMOS G.E.N.I.O.S.: observa 24 conductas en una sala real, contrasta una hipótesis y diseña una misión profesional de siete días.">
+<meta name="theme-color" content="#1c335c">
+<style>
+:root{--bg:#f4f1eb;--paper:#fffdf8;--card:#fff;--soft:#fbfaf7;--ink:#172033;--muted:#687086;--line:#ded6c8;--navy:#1c335c;--navy2:#172033;--gold:#b88a3b;--gold2:#f0ddba;--green:#22715c;--red:#a84538;--shadow:0 16px 42px rgba(28,51,92,.11);--radius:22px;--max:1180px;--safe:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 8% 8%,rgba(184,138,59,.08),transparent 25rem),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}button,input,textarea,select{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 28px));margin:auto}.hidden{display:none!important}.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.serif{font-family:Georgia,"Times New Roman",serif}.muted{color:var(--muted)}.small{font-size:.88rem}.micro{font-size:.76rem}
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#141f32,#1c335c 64%,#203c5e);color:#fff;padding:44px 0 34px;border-radius:0 0 30px 30px}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 18%,rgba(184,138,59,.3),transparent 32%),radial-gradient(circle at 8% 90%,rgba(255,255,255,.07),transparent 28%)}.hero .wrap{position:relative}.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border-radius:999px;background:rgba(184,138,59,.18);border:1px solid rgba(184,138,59,.35);color:var(--gold2);font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem}.badge:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(184,138,59,.22)}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.55rem,11vw,5.4rem);line-height:.9;letter-spacing:-.055em;margin:20px 0 14px}h1 em{font-style:normal;color:var(--gold2)}.hero p{max-width:780px;color:rgba(255,255,255,.79);font-size:1.02rem;margin:0}.hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:470px;margin-top:20px}.stat{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);border-radius:16px;padding:12px 8px;text-align:center}.stat b{display:block;color:var(--gold2);font-size:1.45rem;line-height:1}.stat span{display:block;margin-top:4px;color:rgba(255,255,255,.62);font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;transition:.15s}.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}.btn:focus-visible,.tab:focus-visible,.bottom-btn:focus-visible,.mode-btn:focus-visible,.tool-choice:focus-visible,.status-btn:focus-visible,summary:focus-visible{outline:3px solid rgba(184,138,59,.55);outline-offset:3px}.btn-primary{background:var(--gold);color:#17120b;box-shadow:0 10px 24px rgba(184,138,59,.28)}.btn-dark{background:var(--navy);color:#fff}.btn-light{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18)}.btn-outline{background:#fff;color:var(--navy);border:1px solid rgba(28,51,92,.18)}.btn-danger{background:#fff0ed;color:var(--red);border:1px solid rgba(168,69,56,.22)}.btn-sm{min-height:38px;padding:8px 12px;font-size:.82rem}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(28,51,92,.97);backdrop-filter:blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}.topbar-inner{display:flex;align-items:center;gap:10px;padding:9px 0}.tabs{display:flex;gap:6px;overflow:auto;scrollbar-width:none;flex:1}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;padding:7px 11px;border-radius:999px;font-size:.76rem;font-weight:800;color:rgba(255,255,255,.66);border:1px solid transparent}.tab.active{background:rgba(184,138,59,.18);border-color:rgba(184,138,59,.28);color:var(--gold2)}.save-pill{font-size:.74rem;color:#9ee8c9;font-weight:800;white-space:nowrap}
+.layout{display:grid;gap:18px;padding:20px 0 92px}.main{display:grid;gap:18px}.card{background:rgba(255,255,255,.97);border:1px solid rgba(28,51,92,.09);border-radius:var(--radius);box-shadow:0 7px 28px rgba(28,51,92,.06);overflow:hidden}.pad{padding:20px 16px}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:950;margin-bottom:6px}.section-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.65rem,7vw,2.25rem);line-height:1.08;letter-spacing:-.035em;margin:0 0 9px}.section-sub{color:var(--muted);margin:0;font-size:.94rem}.divider{height:1px;background:var(--line);margin:17px 0}.callout{border-left:4px solid var(--gold);background:#fff8e9;border-radius:0 16px 16px 0;padding:13px;color:#463417;font-family:Georgia,"Times New Roman",serif;font-style:italic}.notice{margin-top:14px;border:1px solid rgba(28,51,92,.14);background:#f7f9fc;border-radius:16px;padding:13px;color:#38445c;font-size:.86rem}.notice strong{display:block;color:var(--navy);margin-bottom:3px}.notice-important{border-color:rgba(168,69,56,.25);background:#fff5f2;color:#62372f}
+.outcome-grid,.quick-grid,.context-grid,.result-grid,.tool-grid,.audit-grid,.closure-grid{display:grid;gap:9px;margin-top:14px}.outcome-card,.quick-item,.kpi,.audit-card{border:1px solid var(--line);background:linear-gradient(180deg,#fffdf9,#fbfaf7);border-radius:17px;padding:13px}.outcome-card b,.audit-card b{display:block;color:var(--navy);margin-bottom:4px}.outcome-card span,.audit-card span{display:block;color:var(--muted);font-size:.84rem}.quick-item{display:grid;grid-template-columns:42px 1fr;gap:11px;align-items:start}.letter{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--navy);color:var(--gold2);font-family:Georgia,"Times New Roman",serif;font-size:1.42rem;font-weight:900}.quick-item b{display:block}.quick-item span{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900;color:var(--navy)}.input,textarea,select{width:100%;border:1.5px solid rgba(28,51,92,.14);border-radius:14px;background:#fff;color:var(--ink);padding:12px 13px;outline:0;transition:.15s}textarea{min-height:90px;resize:vertical}.input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,138,59,.14)}
+.scale-grid{display:grid;grid-template-columns:repeat(6,minmax(126px,1fr));gap:8px;overflow-x:auto;padding:2px 0 8px;margin-top:12px}.scale-card{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;border:1px solid var(--line);background:var(--soft);border-radius:14px;padding:10px;min-width:126px}.scale-num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:950}.scale-card b{font-size:.86rem}.scale-card span{color:var(--muted);font-size:.73rem}.progress-box{display:grid;gap:9px;margin-top:12px}.progress-meta{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;font-weight:850;color:var(--muted)}.progress-track{height:10px;border-radius:99px;background:#ece5da;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#d7b86f);transition:.25s}
+.dim{border:1px solid var(--line);background:#fff;border-radius:20px;overflow:hidden;margin-top:14px}.dim-head{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;background:var(--navy);color:#fff;padding:12px 13px}.dim-head .letter{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.08);font-size:1.2rem}.dim-head b{font-size:.98rem}.dim-head small{display:block;color:rgba(255,255,255,.68);font-size:.72rem;margin-top:2px}.dim-total{font-weight:950;background:rgba(255,255,255,.1);border-radius:999px;padding:6px 10px;font-size:.77rem;color:var(--gold2)}.questions{display:grid;gap:11px;padding:13px}.q{border:1px solid #ece4d8;background:#fffdf9;border-radius:16px;padding:12px}.q-top{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}.q-num{width:24px;height:24px;border-radius:8px;background:#f2e8d7;color:#4b3412;display:grid;place-items:center;font-weight:950;font-size:.74rem}.q p{margin:1px 0 10px;font-size:.91rem}.scale-row{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}.score input{position:absolute;opacity:0;pointer-events:none}.score label{display:grid;place-items:center;min-height:43px;border-radius:11px;border:1.5px solid rgba(28,51,92,.13);background:#faf8f4;color:var(--navy);font-weight:950;cursor:pointer;font-size:.84rem}.score input:checked+label{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 8px 18px rgba(28,51,92,.2)}
+.result-grid{grid-template-columns:repeat(2,1fr)}.kpi span{display:block;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.66rem;font-weight:900}.kpi b{display:block;font-size:1.22rem;color:var(--navy);margin-top:5px}.insight{margin-top:12px;border:1px solid rgba(184,138,59,.34);background:#fff8e9;border-radius:18px;padding:14px}.insight h3{font-family:Georgia,"Times New Roman",serif;margin:0 0 6px;font-size:1.28rem}.insight p{margin:0;color:var(--muted);font-size:.89rem}.bars{display:grid;gap:8px;margin-top:14px}.bar{display:grid;grid-template-columns:26px 1fr 56px;gap:8px;align-items:center}.bar>span{font-weight:950;color:var(--navy)}.bar-rail{height:9px;border-radius:999px;background:#eee6dc;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--navy),var(--gold));transition:.25s}.bar small{text-align:right;color:var(--muted);font-weight:800}.dimension-reading-grid{display:grid;gap:8px;margin-top:12px}.dimension-read{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px}.dimension-read strong{display:flex;justify-content:space-between;gap:10px;color:var(--navy);font-size:.89rem}.dimension-read span{display:block;margin-top:4px;color:var(--muted);font-size:.81rem}
+.priority-banner{margin-top:14px;border:1px solid rgba(184,138,59,.38);background:linear-gradient(135deg,#fff8e9,#fffdf8);border-radius:18px;padding:14px}.priority-banner b{color:var(--navy)}.priority-banner p{margin:5px 0 0;color:var(--muted);font-size:.86rem}.two-actions,.report-actions{display:grid;gap:8px;margin-top:12px}
+.tool-grid{grid-template-columns:1fr}.tool{border:1px solid var(--line);background:#fff;border-radius:18px;overflow:hidden}.tool summary{list-style:none;display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:center;padding:13px;cursor:pointer}.tool summary::-webkit-details-marker{display:none}.tool summary:after{content:"+";font-size:1.3rem;font-weight:800;color:var(--muted)}.tool[open] summary:after{content:"–"}.tool summary .letter{width:38px;height:38px;border-radius:11px}.tool summary b{display:block}.tool summary span{color:var(--muted);font-size:.79rem}.tool-body{padding:0 13px 13px;border-top:1px solid var(--line)}.law{margin:12px 0;border-left:4px solid var(--gold);background:#fff8e9;border-radius:0 14px 14px 0;padding:11px;color:#4b3412;font-family:Georgia,"Times New Roman",serif}.key-question{margin:10px 0;border:1px solid rgba(28,51,92,.14);background:#f7f9fc;border-radius:14px;padding:11px;color:var(--navy);font-weight:800}.step-list{display:grid;gap:8px;margin:12px 0}.mini-step{display:grid;grid-template-columns:30px 1fr;gap:9px;align-items:start;border:1px solid #eee6dc;border-radius:14px;background:#fffdf9;padding:10px}.mini-step i{font-style:normal;width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900}.mini-step b{display:block}.mini-step span{display:block;color:var(--muted);font-size:.81rem;margin-top:1px}
+.week-list{display:grid;gap:12px;margin-top:14px}.week{border:1px solid var(--line);border-radius:20px;background:#fff;overflow:hidden}.week-head{background:var(--navy);color:#fff;padding:12px 14px;display:grid;grid-template-columns:1fr 38px;gap:8px;align-items:center}.week-head small{display:block;color:#d5b675;text-transform:uppercase;font-weight:950;letter-spacing:.08em}.week-head b{font-family:Georgia,"Times New Roman",serif;font-size:1.16rem}.week-head .letter{width:38px;height:38px;background:rgba(255,255,255,.08)}.week-body{padding:13px}.week-question{margin:8px 0;border-left:3px solid var(--gold);padding-left:10px;color:#4b3412;font-family:Georgia,"Times New Roman",serif}.week-meta{display:grid;gap:7px;margin:10px 0}.week-meta div{border:1px solid #eee6dc;background:#fffdf9;border-radius:12px;padding:9px;font-size:.81rem}.week-meta b{display:block;color:var(--navy);margin-bottom:2px}
+.report-preview{white-space:pre-wrap;border:1px solid var(--line);background:#fffdf9;border-radius:16px;padding:14px;color:var(--ink);font-size:.86rem;line-height:1.5;max-height:480px;overflow:auto}.desktop-side{display:none}.sticky-bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,253,248,.97);backdrop-filter:blur(14px);border-top:1px solid rgba(28,51,92,.1);padding:8px 8px calc(8px + var(--safe));display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.bottom-btn{display:grid;place-items:center;gap:2px;border-radius:13px;color:var(--muted);font-weight:850;font-size:.64rem;padding:6px 3px;min-height:48px}.bottom-btn b{font-size:1rem}.bottom-btn.active{background:#f4ead8;color:#4b3412}.toast{position:fixed;left:14px;right:14px;bottom:calc(78px + var(--safe));z-index:100;background:var(--navy);color:#fff;border-radius:16px;padding:12px 14px;text-align:center;font-weight:800;box-shadow:var(--shadow);transform:translateY(20px);opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:translateY(0);opacity:1}
+
+.route{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}.route-step{border:1px solid var(--line);background:var(--soft);border-radius:16px;padding:12px;min-width:0}.route-step b{display:block;color:var(--navy);font-size:.85rem}.route-step span{display:block;color:var(--muted);font-size:.74rem;margin-top:3px;line-height:1.35}.route-step.done{background:#eaf5f0;border-color:rgba(34,113,92,.26)}.route-step.active{background:#fff8e9;border-color:rgba(184,138,59,.42)}.route-progress{height:8px;border-radius:99px;background:#ece5da;overflow:hidden;margin-top:12px}.route-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--navy),var(--gold));transition:.25s}.mode-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.mode-btn{border:1px solid var(--line);background:#fff;border-radius:16px;padding:13px;text-align:left;cursor:pointer}.mode-btn b{display:block;color:var(--navy)}.mode-btn span{display:block;color:var(--muted);font-size:.8rem;margin-top:3px}.mode-btn.active{background:#fff8e9;border-color:rgba(184,138,59,.45)}.tool-selector{display:grid;gap:9px;margin-top:14px}.tool-choice{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px;cursor:pointer}.tool-choice:hover,.tool-choice.active{background:#fff8e9;border-color:rgba(184,138,59,.42)}.tool-choice .choice-icon{width:42px;height:42px;border-radius:12px;background:var(--navy);color:var(--gold2);display:grid;place-items:center;font-weight:900}.tool-choice b{display:block;color:var(--navy)}.tool-choice span{display:block;color:var(--muted);font-size:.79rem}.tool-choice i{font-style:normal;color:var(--gold);font-weight:950}.tool-result{margin-top:14px;border:1px solid rgba(184,138,59,.36);background:linear-gradient(135deg,#fff8e9,#fffdf8);border-radius:18px;padding:14px}.tool-result b{display:block;color:var(--navy)}.tool-result p{margin:5px 0 0;color:var(--muted);font-size:.86rem}.tool-close{margin-top:12px;border:1px solid rgba(28,51,92,.13);background:#f7f9fc;border-radius:14px;padding:11px}.tool-close b{display:block;color:var(--navy);margin-bottom:3px}.tool-close span{display:block;color:var(--muted);font-size:.82rem}.deep-fields{margin-top:10px}.deep-fields summary{cursor:pointer;color:var(--navy);font-weight:900;font-size:.84rem}.quick-mode .full-only{display:none!important}.quick-mode .sticky-bottom{grid-template-columns:repeat(3,1fr)}.quick-mode .bottom-btn[href="#semanas"]{display:none}.quick-mode .tool-body .deep-fields{display:none}.quick-mode .sticky-bottom .full-only{display:none!important}.week-status{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.status-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 9px;font-size:.72rem;font-weight:850;cursor:pointer;color:var(--muted)}.status-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}.executive-summary{display:grid;gap:10px;margin-top:14px}.executive-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:13px}.executive-card b{display:block;color:var(--navy);margin-bottom:4px}.executive-card span{display:block;color:var(--muted);font-size:.84rem}.next-move{border:1px solid rgba(184,138,59,.38);background:#fff8e9;border-radius:18px;padding:14px}.next-move b{display:block;color:var(--navy);font-size:1rem}.next-move p{margin:5px 0 0;color:#4b3412;font-family:Georgia,"Times New Roman",serif}@media(max-width:700px){.route{grid-template-columns:1fr 1fr}.mode-switch{grid-template-columns:1fr}.tool-choice{grid-template-columns:38px 1fr}.tool-choice i{display:none}}
+
+@media(min-width:760px){.hero{padding:62px 0 48px;border-radius:0}.layout{grid-template-columns:minmax(0,1fr) 340px;align-items:start;gap:22px;padding-bottom:64px}.desktop-side{display:grid;gap:14px;position:sticky;top:62px}.sticky-bottom{display:none}.pad{padding:24px}.context-grid,.closure-grid,.two-actions,.report-actions,.audit-grid{grid-template-columns:repeat(2,1fr)}.outcome-grid,.quick-grid{grid-template-columns:repeat(2,1fr)}.result-grid{grid-template-columns:repeat(4,1fr)}.week-list{grid-template-columns:repeat(2,1fr)}.hero p{font-size:1.09rem}.save-pill{display:inline}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}@page{size:A4;margin:14mm}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.hero,.topbar,.sticky-bottom,.toast,.desktop-side,.no-print{display:none!important}body{background:#fff}.wrap{width:100%;max-width:none}.layout{display:block;padding:0}.card{box-shadow:none;border-color:#ddd;break-inside:auto;margin-bottom:12px}.pad{padding:14px}.tool:not([open]) .tool-body{display:block}.report-preview{max-height:none;overflow:visible}.week{break-inside:avoid}.input,textarea,select{border-bottom:1px solid #999;border-radius:0}}
+
+/* ── EXPERIENCIA PREMIUM ── */
+body{background:linear-gradient(180deg,#f5f2ec 0,#f7f5f1 38%,#f3f0ea 100%)}
+.experience-dashboard{display:grid;gap:22px;padding:clamp(24px,5vw,48px);margin-top:24px;background:linear-gradient(145deg,#fff,#fbf8f1);border:1px solid rgba(28,51,92,.08);border-radius:30px;box-shadow:0 24px 70px rgba(28,51,92,.09)}
+.dashboard-copy{max-width:720px}.session-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.session-meta span{padding:8px 11px;border-radius:999px;background:#f4efe5;color:#5c4b2d;font-size:.78rem;font-weight:800}
+.progress-message{margin-top:22px;padding:17px 18px;border-left:4px solid var(--gold);background:linear-gradient(90deg,#fff8e9,#fffdf8);border-radius:0 18px 18px 0}.progress-message b,.progress-message span{display:block}.progress-message b{color:var(--navy);font-size:.92rem}.progress-message span{margin-top:3px;color:var(--muted);font-size:.86rem}
+.journey-panel{align-self:stretch}.journey{display:grid;gap:8px;margin-top:14px}.journey-step{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;padding:13px;border-radius:17px;border:1px solid #e9e2d7;background:rgba(255,255,255,.72);transition:.18s}.journey-step:hover{transform:translateX(3px);border-color:rgba(184,138,59,.42)}.journey-step i{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#eee9e0;color:var(--muted);font-style:normal;font-weight:950}.journey-step b,.journey-step span{display:block}.journey-step b{color:var(--navy)}.journey-step span{color:var(--muted);font-size:.78rem;margin-top:2px}.journey-step.active{background:#fff8e9;border-color:rgba(184,138,59,.5)}.journey-step.active i{background:var(--gold);color:#17120b}.journey-step.done{background:#edf7f2;border-color:rgba(34,113,92,.23)}.journey-step.done i{background:var(--green);color:#fff}
+.phase-shell{background:rgba(255,255,255,.96);border:1px solid rgba(28,51,92,.08);border-radius:28px;box-shadow:0 13px 44px rgba(28,51,92,.055);padding:clamp(20px,4vw,34px);scroll-margin-top:76px}.phase-heading{display:flex;align-items:flex-start;gap:15px;margin-bottom:8px}.phase-number{display:grid;place-items:center;flex:0 0 auto;width:48px;height:48px;border-radius:15px;background:linear-gradient(145deg,var(--navy),#294c7f);color:var(--gold2);font-family:Georgia,serif;font-size:1.16rem;font-weight:900}.phase-heading .section-title{margin-bottom:0}
+.coach-note{display:grid;gap:3px;margin:15px 0 22px;padding:15px 17px;border-radius:17px;background:#f7f9fc;border:1px solid rgba(28,51,92,.1)}.coach-note b{color:var(--navy);font-size:.84rem}.coach-note span{color:var(--muted);font-size:.84rem}
+.focus-lab{border-color:rgba(184,138,59,.24);box-shadow:0 18px 55px rgba(184,138,59,.09)}
+.mission-card{margin-top:18px;padding:clamp(18px,4vw,28px);border-radius:24px;background:linear-gradient(145deg,#15243a,#1c335c 68%,#24476e);color:#fff;box-shadow:0 24px 55px rgba(28,51,92,.22)}.mission-kicker{text-transform:uppercase;letter-spacing:.14em;color:var(--gold2);font-size:.72rem;font-weight:950}.mission-grid{display:grid;gap:10px;margin-top:15px}.mission-card .field label{color:#f0ddba}.mission-card .input,.mission-card textarea{background:rgba(255,255,255,.95)}.mission-summary{margin-top:14px;padding:14px 15px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.08);border-radius:17px}.mission-summary b,.mission-summary span{display:block}.mission-summary span{margin-top:3px;color:rgba(255,255,255,.72);font-size:.84rem}
+.executive-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.executive-card{min-height:105px;padding:16px}.next-move{grid-column:1/-1;padding:18px}
+.card,.phase-shell,.experience-dashboard{overflow:clip}.tool{box-shadow:0 5px 18px rgba(28,51,92,.035)}
+@media(min-width:900px){.experience-dashboard{grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);align-items:center}.mission-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:759px){.experience-dashboard{margin-top:14px;border-radius:22px;padding:21px 17px}.phase-shell{border-radius:22px;padding:20px 15px}.phase-heading{gap:11px}.phase-number{width:42px;height:42px;border-radius:13px}.executive-summary{grid-template-columns:1fr}.sticky-bottom{grid-template-columns:repeat(5,1fr)}.bottom-btn{font-size:.57rem}.bottom-btn b{font-size:.9rem}}
+@media print{.experience-dashboard{box-shadow:none;border:1px solid #ddd}.phase-shell,.mission-card{box-shadow:none;break-inside:auto}.journey-panel,.session-meta,.progress-message,.coach-note{display:none!important}.mission-card{background:#fff!important;color:#111!important;border:1px solid #bbb}.mission-card .field label,.mission-kicker{color:#333!important}.mission-summary{background:#fff!important;border-color:#bbb}.mission-summary span{color:#555!important}}
+</style>
 </head>
-<body>
-  <header class="hero" id="inicio">
-    <div class="wrap">
-      <div class="badge">Cuaderno de trabajo</div>
-      <h1>SOMOS<br><em>G·E·N·I·O·S</em></h1>
-      <p>Un cuaderno web para convertir el diagnóstico en acción: mide tus conductas, interpreta tu Capital Reputacional, define una letra de entrada y transforma el resultado en evidencia profesional durante seis semanas.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#diagnostico">Empezar diagnóstico</a>
-        <a class="btn btn-light" href="#seis-semanas">Plan 6 semanas</a>
-        <button class="btn btn-light" id="btnPrintTop" type="button">Guardar / imprimir</button>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><b>24</b><span>conductas</span></div>
-        <div class="stat"><b>6</b><span>dimensiones</span></div>
-        <div class="stat"><b>CR</b><span>Capital Reputacional</span></div>
-      </div>
-    </div>
-  </header>
-
-  <nav class="topbar" aria-label="Navegación">
-    <div class="wrap topbar-inner">
-      <div class="tabs" id="tabs">
-        <a class="tab active" href="#inicio">Inicio</a>
-        <a class="tab" href="#diagnostico">Diagnóstico</a>
-        <a class="tab" href="#resultado">Resultado</a>
-        <a class="tab" href="#reporte">Reporte</a>
-        <a class="tab" href="#herramientas">Herramientas</a>
-        <a class="tab" href="#auditorias">Auditorías</a>
-        <a class="tab" href="#seis-semanas">6 semanas</a>
-        <a class="tab" href="#continuo">Uso continuo</a>
-      </div>
-      <span class="save-pill" id="savePill">Guardado</span>
-    </div>
-  </nav>
-
-  <div class="wrap layout">
-    <main class="main">
-      <section class="card pad" id="como-usarlo">
-        <div class="eyebrow">Antes de empezar</div>
-        <h2 class="section-title">El cuaderno no se lee. Se practica.</h2>
-        <p class="section-sub">Úsalo como una ruta de evidencia: responde, decide una conducta y vuelve al trabajo real. Cada bloque está pensado para avanzar desde celular, sin perderte en páginas largas.</p>
-        <div class="callout" style="margin-top:14px">La pregunta central no es “¿qué entendí?”, sino: <strong>¿qué evidencia voy a dejar?</strong></div>
-        <div class="outcome-grid">
-          <div class="outcome-card"><b>1. Diagnóstico</b><span>Identifica tu promedio real y la dimensión que hoy más limita tu reputación observable.</span></div>
-          <div class="outcome-card"><b>2. Lectura</b><span>Convierte números en una interpretación clara de Valor, Consistencia, Visibilidad y Capital Reputacional.</span></div>
-          <div class="outcome-card"><b>3. Decisión</b><span>Elige una conducta concreta para practicar en una situación profesional real.</span></div>
-          <div class="outcome-card"><b>4. Evidencia</b><span>Registra qué cambió para otros gracias a tu forma de trabajar.</span></div>
-        </div>
-        <div class="divider"></div>
-        <div class="quick-grid" id="lettersOverview"></div>
-      </section>
-
-      <section class="card pad" id="diagnostico">
-        <div class="eyebrow">Diagnóstico G.E.N.I.O.S.</div>
-        <h2 class="section-title">Tu promedio real</h2>
-        <p class="section-sub">Responde por hechos, no por intención. Si dudas entre dos números, elige el más bajo. Busca evidencia reciente, no una versión ideal de ti.</p>
-        <div class="context-grid">
-          <div class="field"><label for="ctxRole">Rol, proyecto o situación</label><input class="input js-save" data-key="ctxRole" id="ctxRole" placeholder="Ej.: proceso, equipo, cliente, proyecto" /></div>
-          <div class="field"><label for="planPersonName">Nombre para el reporte final</label><input class="input js-save" data-key="planPersonName" id="planPersonName" placeholder="Escribe tu nombre" /></div>
-        </div>
-        <div class="divider"></div>
-        <div class="eyebrow">Escala de puntuación</div>
-        <div class="quick-grid" id="scaleGrid"></div>
-        <div class="progress-box">
-          <div class="progress-meta"><span>Avance del diagnóstico</span><span id="progressLabel">0 / 24</span></div>
-          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-        </div>
-        <div id="questionBlocks"></div>
-      </section>
-
-      <section class="card pad" id="resultado">
-        <div class="eyebrow">Resultado en vivo</div>
-        <h2 class="section-title">Tu foto G.E.N.I.O.S.</h2>
-        <p class="section-sub">El total orienta, pero la letra más baja muestra dónde empezar.</p>
-        <div class="result-grid">
-          <div class="kpi"><span>Total</span><b id="totalScore">0 / 120</b></div>
-          <div class="kpi"><span>Respondidas</span><b id="answeredCount">0 / 24</b></div>
-          <div class="kpi"><span>Letra más baja</span><b id="lowestLetter">—</b></div>
-          <div class="kpi"><span>Capital Reputacional</span><b id="capitalIndex">—</b></div>
-        </div>
-        <div class="level-card" id="levelCard">
-          <span class="chip">Completa el diagnóstico</span>
-          <h3>Resultado pendiente</h3>
-          <p class="muted small" id="levelText">Cuando respondas las 24 afirmaciones, aparecerá tu nivel, tu punto de entrada y tu lectura de Capital Reputacional.</p>
-        </div>
-        <div class="insight-card" id="mainInsight"><h3>Lectura pendiente</h3><p>Completa el diagnóstico para recibir una interpretación clara, no solo un puntaje.</p></div>
-        <div class="bars" id="bars"></div>
-        <div class="dimension-reading-grid" id="dimensionReadings"></div>
-        <div class="divider"></div>
-        <h3 class="serif" style="font-size:1.45rem;margin:0 0 8px">Capital Reputacional aproximado</h3>
-        <div class="capital-note">Valor × Consistencia × Visibilidad</div>
-        <div class="capital-grid">
-          <div class="capital-factor"><span>Valor aproximado</span><b id="capValor">— / 20</b></div>
-          <div class="capital-factor"><span>Consistencia aproximada</span><b id="capConsistencia">— / 20</b></div>
-          <div class="capital-factor"><span>Visibilidad aproximada</span><b id="capVisibilidad">— / 20</b></div>
-          <div class="capital-factor"><span>Capital Reputacional bruto</span><b id="capBruto">— / 8.000</b></div>
-        </div>
-        <p class="small muted">El índice /100 resume cómo se combinan Valor, Consistencia y Visibilidad. No es una nota definitiva: es una lectura práctica para decidir qué conducta trabajar primero.</p>
-        <div class="factor-reading" id="factorReading"></div>
-        <div class="reading" id="capitalReading"></div>
-        <div class="report-actions no-print">
-          <button class="btn btn-dark" id="btnCopyReport" type="button">Copiar reporte claro</button>
-          <a class="btn btn-outline" href="#reporte">Ver reporte final</a>
-        </div>
-      </section>
-
-      <section class="card pad" id="compromiso">
-        <div class="eyebrow">Decisión de trabajo</div>
-        <h2 class="section-title">Tu conducta de 6 semanas</h2>
-        <p class="section-sub">El diagnóstico termina cuando eliges una conducta. Practícala en una situación real, deja evidencia y repítela.</p>
-        <div class="field"><label>Mi letra más baja es</label><input class="input js-save" data-key="decisionLetter" id="decisionLetter" placeholder="Se puede completar automáticamente desde el resultado" /></div>
-        <div class="field"><label>La conducta que practicaré durante las próximas 6 semanas</label><textarea class="js-save" data-key="decisionBehavior" placeholder="Ej.: hacer visible el riesgo antes de que impacte el resultado"></textarea></div>
-        <div class="field"><label>Situación real donde se verá</label><textarea class="js-save" data-key="decisionSituation" placeholder="Ej.: reunión semanal con cliente / cierre de terna / entrega de informe"></textarea></div>
-        <div class="field"><label>Evidencia que debería dejar</label><textarea class="js-save" data-key="decisionEvidence" placeholder="Ej.: alguien puede decidir, avanzar o confiar sin perseguirme"></textarea></div>
-        <div class="field"><label>Frase de sala que quiero empezar a construir</label><input class="input js-save" data-key="decisionPhrase" placeholder="Ej.: Con él/ella, esto no se cae." /></div>
-        <div class="two-actions no-print">
-          <button class="btn btn-dark" id="btnUseLowest" type="button">Usar letra más baja</button>
-          <button class="btn btn-outline" id="btnCopySummary" type="button">Copiar resumen</button>
-        </div>
-      </section>
-
-      <section class="card pad" id="reporte">
-        <div class="eyebrow">Reporte final</div>
-        <h2 class="section-title">Tu lectura para volver al trabajo real</h2>
-        <p class="section-sub">Este bloque resume el diagnóstico en lenguaje claro: resultado, Capital Reputacional, fortaleza, letra de entrada y conducta de seis semanas.</p>
-        <div class="report-note">Para que el reporte quede personalizado, escribe tu nombre en el diagnóstico. El contenido se actualiza automáticamente mientras respondes.</div>
-        <div class="report-preview" id="reportPreview">Completa el diagnóstico para generar tu reporte.</div>
-        <div class="report-actions no-print">
-          <button class="btn btn-dark" id="btnCopyReportBottom" type="button">Copiar reporte</button>
-          <button class="btn btn-outline" id="btnPrintReport" type="button">Guardar / imprimir</button>
-        </div>
-      </section>
-
-      <section class="card pad" id="herramientas">
-        <div class="eyebrow">Las seis herramientas</div>
-        <h2 class="section-title">Una herramienta por letra</h2>
-        <p class="section-sub">Úsalas dentro del trabajo real, justo cuando la situación la necesita.</p>
-        <div class="accord" id="tools"></div>
-      </section>
-
-      <section class="card pad" id="auditorias">
-        <div class="eyebrow">Auditorías</div>
-        <h2 class="section-title">Lo que aparece fuera de ti</h2>
-        <p class="section-sub">Tu autopercepción sirve, pero tu reputación vive en la experiencia que otros pueden describir.</p>
-        <details class="tool" open>
-          <summary><span class="letter">1</span><div><b>Auditoría del Capital Reputacional</b><span>Pregunta a tres personas sin dirigir sus respuestas.</span></div></summary>
-          <div class="tool-body">
-            <div class="field"><label>¿Qué diferencia útil experimentas cuando trabajas conmigo?</label><textarea class="js-save" data-key="auditCapital1"></textarea></div>
-            <div class="field"><label>¿Qué sabes que puedes esperar de mí cuando algo se complica?</label><textarea class="js-save" data-key="auditCapital2"></textarea></div>
-            <div class="field"><label>¿Qué parte de mi contribución debería ser más visible, clara o consistente?</label><textarea class="js-save" data-key="auditCapital3"></textarea></div>
-          </div>
-        </details>
-        <details class="tool">
-          <summary><span class="letter">2</span><div><b>Auditoría de la evitación</b><span>No preguntes si trabajas mucho. Pregunta qué decisión estás evitando.</span></div></summary>
-          <div class="tool-body">
-            <div class="field"><label>¿Qué conversación, capacidad, propuesta, límite o movimiento llevo meses postergando?</label><textarea class="js-save" data-key="avoid1"></textarea></div>
-            <div class="field"><label>¿Qué emoción intento no sentir al postergarlo?</label><textarea class="js-save" data-key="avoid2"></textarea></div>
-            <div class="field"><label>¿Qué costo ya está produciendo la espera?</label><textarea class="js-save" data-key="avoid3"></textarea></div>
-            <div class="field"><label>¿Qué evidencia tendría al cierre de estas seis semanas si realmente hubiera comenzado hoy?</label><textarea class="js-save" data-key="avoid4"></textarea></div>
-          </div>
-        </details>
-        <details class="tool">
-          <summary><span class="letter">3</span><div><b>Define tu Sello Profesional</b><span>No inventes una frase. Observa las evidencias que ya existen.</span></div></summary>
-          <div class="tool-body">
-            <div class="field"><label>Ayudo a ___ cuando ___</label><input class="input js-save" data-key="sello1" /></div>
-            <div class="field"><label>Mi forma reconocible de aportar consiste en ___</label><input class="input js-save" data-key="sello2" /></div>
-            <div class="field"><label>Después de mi intervención, queda ___</label><input class="input js-save" data-key="sello3" /></div>
-            <div class="field"><label>¿Qué seguiría funcionando sin que yo estuviera para explicarlo?</label><textarea class="js-save" data-key="ausencia1"></textarea></div>
-            <div class="field"><label>¿Qué criterio, información o decisión existe solo en mi cabeza?</label><textarea class="js-save" data-key="ausencia2"></textarea></div>
-          </div>
-        </details>
-      </section>
-
-      <section class="card pad" id="seis-semanas">
-        <div class="eyebrow">Experimento de seis semanas</div>
-        <h2 class="section-title">Registra evidencia, no esfuerzo</h2>
-        <p class="section-sub">Una letra principal por semana. No midas cuánto pensaste en la conducta: mide qué ocurrió gracias a ella.</p>
-        <div class="context-grid">
-          <div class="field"><label>Durante seis semanas aplicaré el sistema en</label><input class="input js-save" data-key="sixContext" /></div>
-          <div class="field"><label>Quien podrá observar el efecto es</label><input class="input js-save" data-key="sixObserver" /></div>
-        </div>
-        <div class="field"><label>La diferencia que quiero empezar a producir es</label><textarea class="js-save" data-key="sixDifference"></textarea></div>
-        <div class="hint">Reglas: practica dentro del trabajo real, trabaja una conducta principal por semana, registra evidencia y, si rompes el patrón, retómalo dentro de 24 horas.</div>
-        <div class="week-list" id="weeks"></div>
-      </section>
-
-      <section class="card pad" id="continuo">
-        <div class="eyebrow">Uso continuo</div>
-        <h2 class="section-title">Antes de cualquier momento importante</h2>
-        <p class="section-sub">Abre este bloque antes de una reunión, entrega o semana que perdió dirección.</p>
-        <div class="step-list">
-          <div class="mini-step"><i>1</i><div><b>Nombra el resultado</b><span>¿Qué necesita moverse?</span></div></div>
-          <div class="mini-step"><i>2</i><div><b>Identifica la conducta limitante</b><span>¿Qué letra está faltando?</span></div></div>
-          <div class="mini-step"><i>3</i><div><b>Elige una acción mínima visible</b><span>Algo que puedas ejecutar ahora.</span></div></div>
-          <div class="mini-step"><i>4</i><div><b>Decide la evidencia</b><span>¿Qué quedará para otra persona?</span></div></div>
-        </div>
-        <div class="divider"></div>
-        <h3 class="serif" style="font-size:1.35rem;margin:0 0 8px">¿Qué letra activar?</h3>
-        <div class="quick-grid" id="pocketMap"></div>
-        <div class="divider"></div>
-        <h3 class="serif" style="font-size:1.35rem;margin:0 0 8px">Cierre semanal de 5 minutos</h3>
-        <div class="field"><label>La evidencia más útil que dejé fue</label><textarea class="js-save" data-key="weeklyEvidence"></textarea></div>
-        <div class="field"><label>La letra que más protegí fue</label><input class="input js-save" data-key="weeklyLetter" /></div>
-        <div class="field"><label>El factor que apareció después del “pero” fue</label><textarea class="js-save" data-key="weeklyBut"></textarea></div>
-        <div class="field"><label>La conducta que repetiré y dónde la practicaré</label><textarea class="js-save" data-key="weeklyRepeat"></textarea></div>
-        <div class="divider"></div>
-        <h3 class="serif" style="font-size:1.35rem;margin:0 0 8px">Tu primera evidencia</h3>
-        <p class="small muted">No cierres el cuaderno con una intención. Ciérralo con una decisión.</p>
-        <div class="field"><label>Letra que trabajaré</label><input class="input js-save" data-key="firstLetter" /></div>
-        <div class="field"><label>Situación donde la practicaré</label><textarea class="js-save" data-key="firstSituation"></textarea></div>
-        <div class="field"><label>Evidencia que quiero producir</label><textarea class="js-save" data-key="firstEvidence"></textarea></div>
-        <div class="field"><label>Cuándo lo haré</label><input class="input js-save" data-key="firstWhen" /></div>
-      </section>
-
-      <section class="card pad" id="cierre">
-        <div class="eyebrow">Cierre</div>
-        <h2 class="section-title">Sigue construyendo evidencia</h2>
-        <div class="callout">Ser un Genio no es ser extraordinario una vez. Es volverte confiablemente valioso muchas veces.</div>
-        <div class="two-actions no-print">
-          <button class="btn btn-dark" id="btnPrint" type="button">Guardar / imprimir</button>
-          <button class="btn btn-danger" id="btnReset" type="button">Reiniciar cuaderno</button>
-        </div>
-      </section>
-    </main>
-
-    <aside class="desktop-side no-print">
-      <section class="card pad">
-        <div class="eyebrow">Resumen</div>
-        <div class="result-grid" style="grid-template-columns:1fr 1fr">
-          <div class="kpi"><span>Total</span><b id="sideTotal">0</b></div>
-          <div class="kpi"><span>Capital Reputacional</span><b id="sideCapital">—</b></div>
-        </div>
-        <div class="divider"></div>
-        <p class="small muted" id="sideSummary">Completa el diagnóstico para ver tu punto de entrada.</p>
-        <a class="btn btn-primary" style="width:100%;margin-top:10px" href="#resultado">Ver resultado</a>
-      </section>
-      <section class="card pad">
-        <div class="eyebrow">Recordatorio</div>
-        <p class="small">Una letra. Una conducta. Una situación real. Una evidencia nueva.</p>
-      </section>
-    </aside>
+<body><a class="sr-only" href="#dashboard">Saltar al contenido principal</a>
+<noscript><div class="wrap notice notice-important"><strong>JavaScript desactivado</strong>Activa JavaScript para completar, guardar y generar el informe del cuaderno.</div></noscript>
+<header class="hero" id="inicio"><div class="wrap"><div class="badge">Sistema de desarrollo profesional</div><h1>EXPERIENCIA<br><em>G·E·N·I·O·S</em></h1><p>Una sesión guiada para observar cómo trabajas, comprender el patrón que estás dejando y convertir una conducta en evidencia profesional dentro de una sala real.</p><div class="hero-actions"><a class="btn btn-primary" href="#dashboard">Comenzar experiencia</a><a class="btn btn-light" href="#modo-rapido">Resolver algo ahora</a><button type="button" class="btn btn-light" id="printTop">Guardar / imprimir</button></div><div class="hero-stats"><div class="stat"><b>5</b><span>etapas</span></div><div class="stat"><b>24</b><span>conductas</span></div><div class="stat"><b>≈28</b><span>minutos</span></div></div></div></header>
+<nav class="topbar"><div class="wrap topbar-inner"><div class="tabs"><a class="tab active" href="#dashboard">Ruta</a><a class="tab" href="#diagnostico">Descubrir</a><a class="tab" href="#resultado">Comprender</a><a class="tab" href="#contraste">Contrastar</a><a class="tab" href="#mision">Practicar</a><a class="tab" href="#revision">Consolidar</a><a class="tab" href="#reporte">Informe</a></div><span class="save-pill" id="savePill">Guardado</span></div></nav>
+<div class="wrap layout">
+<main class="main" id="contenido-principal">
+<section class="experience-dashboard" id="dashboard">
+  <div class="dashboard-copy">
+    <div class="eyebrow">Tu recorrido</div>
+    <h2 class="section-title">Hoy no vas a calificarte.<br>Vas a observar un patrón.</h2>
+    <p class="section-sub">Trabaja sobre una sola sala profesional y las últimas cuatro semanas. La experiencia termina cuando conviertes una hipótesis en una misión observable.</p>
+    <div class="session-meta"><span>⏱ Aproximadamente 28 minutos</span><span>✓ Datos guardados solo en tu navegador</span></div>
+    <div class="progress-message" id="progressNarrative" aria-live="polite"><b>Antes de comenzar</b><span>Elige una sala real. No necesitas responder perfecto; necesitas responder con evidencia.</span></div>
   </div>
+  <div class="journey-panel">
+    <div class="route-progress"><div class="route-progress-fill" id="routeProgressFill"></div></div>
+    <div class="journey" id="ruta">
+      <a href="#diagnostico" class="journey-step" id="route1"><i>1</i><div><b>Descubrir</b><span>Elegir una sala y observar 24 conductas.</span></div></a>
+      <a href="#resultado" class="journey-step" id="route2"><i>2</i><div><b>Comprender</b><span>Leer las seis conductas sin una nota global.</span></div></a>
+      <a href="#contraste" class="journey-step" id="route3"><i>3</i><div><b>Contrastar</b><span>Convertir el resultado en una hipótesis útil.</span></div></a>
+      <a href="#mision" class="journey-step" id="route4"><i>4</i><div><b>Practicar</b><span>Diseñar una misión de siete días.</span></div></a>
+      <a href="#revision" class="journey-step" id="route5"><i>5</i><div><b>Consolidar</b><span>Registrar qué cambió y qué repetir.</span></div></a>
+    </div>
+  </div>
+</section>
 
-  <nav class="sticky-bottom no-print" aria-label="Navegación móvil">
-    <a class="bottom-btn active" href="#diagnostico"><b>①</b>Diagnóstico</a>
-    <a class="bottom-btn" href="#resultado"><b>②</b>Resultado</a>
-    <a class="bottom-btn" href="#seis-semanas"><b>③</b>6 semanas</a>
-    <a class="bottom-btn" href="#continuo"><b>④</b>Uso</a>
-  </nav>
-  <div class="toast" id="toast">Guardado</div>
+<section class="card pad no-print" id="modo-rapido"><div class="eyebrow">Elige tu recorrido</div><h2 class="section-title">Una experiencia completa o una intervención breve</h2><p class="section-sub">Usa la ruta completa para desarrollar una conducta o entra directamente a una herramienta cuando ya sabes qué necesitas resolver.</p><div class="mode-switch"><button class="mode-btn active" id="modeFull" type="button" aria-pressed="true"><b>Experiencia guiada</b><span>Cinco etapas, misión semanal, herramientas y reporte ejecutivo.</span></button><button class="mode-btn" id="modeQuick" type="button" aria-pressed="false"><b>Intervención breve</b><span>Situación, herramienta, próximo movimiento y cierre.</span></button></div></section><section class="phase-shell" id="diagnostico"><div class="phase-heading"><span class="phase-number">01</span><div><div class="eyebrow">Descubrir</div><h2 class="section-title">Observa una sala real</h2></div></div><div class="coach-note"><b>Si yo fuera tu coach, te preguntaría:</b><span>¿Qué hechos recientes sostienen cada respuesta?</span></div><p class="section-sub">Responde las 24 afirmaciones pensando en un contexto y período concretos. N/O significa que no tuviste información suficiente para observar esa conducta.</p><div class="notice notice-important"><strong>Alcance</strong>Herramienta orientativa de autoobservación. No es una prueba psicométrica, no compara personas y no debe utilizarse como único antecedente para decisiones laborales.</div><div class="notice"><strong>Privacidad</strong>La información se guarda únicamente en este navegador. Puedes exportar un respaldo y eliminar todos los datos con “Reiniciar cuaderno”.</div><div class="context-grid"><div class="field"><label for="room">La sala que observaré</label><input id="room" class="input save" data-key="room" placeholder="Ej.: comité de promoción, reunión semanal con cliente"></div><div class="field"><label for="period">Período observado</label><input id="period" class="input save" data-key="period" placeholder="Ej.: últimas cuatro semanas"></div><div class="field"><label for="stakes">Qué se necesita lograr o decidir</label><textarea id="stakes" class="save" data-key="stakes" placeholder="Resultado esperado, decisión, avance o riesgo relevante"></textarea></div><div class="field"><label for="responsibility">Mi responsabilidad</label><textarea id="responsibility" class="save" data-key="responsibility" placeholder="Qué te corresponde aportar o proteger"></textarea></div><div class="field"><label for="audience">Quién experimenta directamente mi trabajo</label><input id="audience" class="input save" data-key="audience" placeholder="Cliente, equipo, jefatura o contraparte"></div><div class="field"><label for="pressure">Nivel de presión</label><select id="pressure" class="save" data-key="pressure"><option value="">Selecciona</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></div></div><div class="divider"></div><div class="eyebrow">Escala</div><div class="scale-grid" id="scaleGrid"></div><div class="progress-box"><div class="progress-meta"><span>Avance</span><span id="progressLabel">0 / 24</span></div><div class="progress-track" role="progressbar" aria-label="Progreso del mapa" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div></div><div id="questions"></div></section>
 
+<section class="phase-shell" id="resultado"><div class="phase-heading"><span class="phase-number">02</span><div><div class="eyebrow">Comprender</div><h2 class="section-title">Seis conductas. Un patrón contextual.</h2></div></div><div class="coach-note"><b>No busques una etiqueta.</b><span>Busca qué puede anticipar hoy otra persona después de trabajar contigo.</span></div><p class="section-sub">Cada dimensión se interpreta por separado. El mapa orienta una conversación y una práctica; no define tu talento ni tu reputación.</p><div class="result-grid"><div class="kpi"><span>Respondidas</span><b id="answered">0 / 24</b></div><div class="kpi"><span>Comparables</span><b id="comparable">0 / 6</b></div><div class="kpi"><span>Más frecuente</span><b id="strength">—</b></div><div class="kpi"><span>Foco sugerido</span><b id="suggested">—</b></div></div><div class="insight" id="insight"><h3>Lectura en construcción</h3><p>Completa las 24 afirmaciones para identificar una conducta más frecuente y un foco sugerido.</p></div><div class="bars" id="bars"></div><div class="dimension-reading-grid" id="dimensionReadings"></div><div class="notice"><strong>Regla del foco</strong>Considera la conducta con menor resultado válido como hipótesis. Contrástala con su vulnerabilidad bajo presión y el impacto esperado en la sala. Si existe empate o alguna letra pendiente, no elijas automáticamente.</div></section>
+
+<section class="card pad focus-lab" id="foco"><div class="eyebrow">Hipótesis de práctica</div><h2 class="section-title">Traduce el resultado en una conducta observable</h2><p class="section-sub">No elijas una etiqueta. Elige una conducta que pueda aparecer en una situación real y que otra persona pueda describir.</p><div class="field"><label for="focusLetter">Foco de conducta</label><select class="save" data-key="focusLetter" id="focusLetter"><option value="">Elige una letra</option></select></div><div class="field"><label for="focusBehavior">Conducta concreta que practicaré</label><textarea id="focusBehavior" class="save" data-key="focusBehavior" placeholder="Ej.: confirmar el problema antes de proponer una solución"></textarea></div><div class="field"><label for="focusSituation">Próxima situación donde aparecerá</label><textarea id="focusSituation" class="save" data-key="focusSituation"></textarea></div><div class="field"><label for="focusImpact">Qué debería cambiar para otra persona</label><textarea id="focusImpact" class="save" data-key="focusImpact"></textarea></div><div class="field"><label for="focusSignal">Señal externa que buscaré</label><textarea id="focusSignal" class="save" data-key="focusSignal" placeholder="Ej.: la decisión se toma con menos aclaraciones"></textarea></div><div class="priority-banner"><b id="focusBanner">Foco pendiente</b><p>El diagnóstico propone. La sala y el impacto esperado confirman.</p></div><div class="two-actions no-print"><button type="button" class="btn btn-dark" id="useSuggested">Usar foco sugerido</button><a class="btn btn-outline" href="#herramientas">Elegir herramienta</a></div></section>
+
+<section class="phase-shell" id="contraste"><div class="phase-heading"><span class="phase-number">03</span><div><div class="eyebrow">Contrastar</div><h2 class="section-title">No tienes una verdad. Tienes una hipótesis.</h2></div></div><div class="coach-note"><b>Escucha antes de mostrar tu mapa.</b><span>Una escena concreta vale más que una opinión general.</span></div><p class="section-sub">No muestres primero tus resultados. Pide una respuesta y una escena concreta; después confirma o ajusta tu lectura.</p><div class="field"><label for="contrastStrength">¿Qué conducta puedes esperar de mí con mayor seguridad?</label><textarea id="contrastStrength" class="save" data-key="contrastStrength" placeholder="Registra la conducta y una escena concreta"></textarea></div><div class="field"><label for="contrastVulnerable">Cuando aumenta la exigencia, ¿qué conducta me cuesta más sostener?</label><textarea id="contrastVulnerable" class="save" data-key="contrastVulnerable" placeholder="Registra la conducta y una escena"></textarea></div><div class="field"><label for="contrastImpact">¿Qué conducta produciría la mayor diferencia si apareciera con más frecuencia?</label><textarea id="contrastImpact" class="save" data-key="contrastImpact" placeholder="Pide una escena en la que habría cambiado el resultado"></textarea></div><div class="field"><label for="contrastDecision">Mi lectura</label><select id="contrastDecision" class="save" data-key="contrastDecision"><option value="">Selecciona</option><option>Se confirmó</option><option>Necesito ajustarla</option></select></div><div class="notice"><strong>Criterio de decisión</strong>Prioridad = resultado válido + vulnerabilidad bajo presión + impacto en la sala. El mapa sugiere; el contraste confirma o ajusta.</div></section><section class="phase-shell" id="mision">
+  <div class="phase-heading"><span class="phase-number">04</span><div><div class="eyebrow">Practicar</div><h2 class="section-title">Tu misión de siete días</h2></div></div>
+  <p class="section-sub">No intentes cambiar toda tu forma de trabajar. Elige una conducta, una situación y una señal que otra persona pueda observar.</p>
+  <div class="mission-card">
+    <div class="mission-kicker">Misión profesional</div>
+    <div class="mission-grid">
+      <div class="field"><label for="missionRoom">Sala de práctica</label><textarea id="missionRoom" class="save" data-key="missionRoom" placeholder="¿Dónde aparecerá esta conducta?"></textarea></div>
+      <div class="field"><label for="missionTrigger">Cuando ocurra...</label><textarea id="missionTrigger" class="save" data-key="missionTrigger" placeholder="¿Qué señal o situación activará tu conducta?"></textarea></div>
+      <div class="field"><label for="missionAction">Haré...</label><textarea id="missionAction" class="save" data-key="missionAction" placeholder="Describe una acción observable, no una intención."></textarea></div>
+      <div class="field"><label for="missionEvidence">Sabré que apareció cuando...</label><textarea id="missionEvidence" class="save" data-key="missionEvidence" placeholder="¿Qué podrá hacer, decidir o anticipar otra persona?"></textarea></div>
+      <div class="field"><label for="missionDate">Fecha de revisión</label><input id="missionDate" type="date" class="input save" data-key="missionDate"></div>
+      <div class="field"><label for="missionObserver">Persona de contraste</label><input id="missionObserver" class="input save" data-key="missionObserver" placeholder="Quién podrá observar la conducta"></div>
+    </div>
+    <div class="mission-summary" id="missionSummary"><b>Tu misión todavía está en construcción.</b><span>Confirma un foco y completa los cuatro campos esenciales.</span></div>
+  </div>
+</section><section class="card pad" id="selector-herramienta"><div class="eyebrow">Apoyo de práctica</div><h2 class="section-title">Elige la herramienta que tu misión necesita</h2><p class="section-sub">Elige la situación que más se parece a tu desafío. El cuaderno sugerirá la herramienta más útil.</p><div class="tool-selector" id="toolSelector"></div><div class="tool-result" id="toolRecommendation"><b>Selecciona una situación</b><p>Aquí aparecerá una recomendación concreta y un enlace directo a la herramienta.</p></div></section><section class="card pad" id="herramientas"><div class="eyebrow">Biblioteca de intervención</div><h2 class="section-title">Una herramienta, una situación, un próximo movimiento</h2><p class="section-sub">Cada herramienta conserva la lógica, la ley, la pregunta clave y la aplicación práctica desarrolladas en el libro.</p><div class="tool-grid" id="tools"></div></section>
+
+<section class="card pad full-only" id="auditorias"><div class="eyebrow">Auditorías complementarias</div><h2 class="section-title">Reputación, límites y decisiones</h2><p class="section-sub">Estas herramientas no calculan Capital Reputacional. Ayudan a interpretar patrones, evitar deformaciones y decidir dónde poner tu nombre.</p><div class="tool-grid" id="audits"></div></section>
+
+<section class="card pad full-only" id="semanas"><div class="eyebrow">Ruta avanzada opcional</div><h2 class="section-title">Consolida una conducta durante seis semanas</h2><p class="section-sub">Actívala después de completar tu primera misión de siete días. No son seis objetivos: son seis lentes para fortalecer una sola conducta.</p><div class="priority-banner"><b id="weekFocus">Foco pendiente</b><p id="weekBehavior">Confirma primero la conducta observable que practicarás.</p></div><div class="context-grid"><div class="field"><label for="sixContext">Terreno de práctica</label><input id="sixContext" class="input save" data-key="sixContext"></div><div class="field"><label for="observer">Persona para contraste</label><input id="observer" class="input save" data-key="observer" placeholder="Alguien que haya trabajado contigo recientemente"></div></div><div class="week-list" id="weeks"></div></section>
+
+<section class="phase-shell full-only" id="revision"><div class="phase-heading"><span class="phase-number">05</span><div><div class="eyebrow">Consolidar</div><h2 class="section-title">La práctica termina cuando puedes nombrar la evidencia</h2></div></div><div class="coach-note"><b>No preguntes solo si lo hiciste.</b><span>Pregunta qué cambió para otra persona y qué conducta merece repetirse.</span></div><div class="field"><label for="reviewSituation">Situación observada</label><textarea id="reviewSituation" class="save" data-key="reviewSituation"></textarea></div><div class="field"><label for="reviewBehavior">Conducta que apareció</label><textarea id="reviewBehavior" class="save" data-key="reviewBehavior"></textarea></div><div class="field"><label for="reviewImpact">Qué pudo hacer, decidir o anticipar otra persona</label><textarea id="reviewImpact" class="save" data-key="reviewImpact"></textarea></div><div class="field"><label for="reviewAdjustment">Qué debo repetir, ajustar o detener</label><textarea id="reviewAdjustment" class="save" data-key="reviewAdjustment"></textarea></div><div class="field"><label for="reviewNext">Próxima situación</label><textarea id="reviewNext" class="save" data-key="reviewNext"></textarea></div></section>
+
+<section class="card pad" id="reporte"><div class="eyebrow">Diagnóstico ejecutivo</div><h2 class="section-title">Tu lectura para volver a la sala</h2><p class="section-sub">Una síntesis profesional de la sala observada, la hipótesis central, la conducta prioritaria y el próximo movimiento.</p><div class="executive-summary" id="executiveSummary"><div class="executive-card"><b>Tu sala</b><span id="execRoom">Pendiente</span></div><div class="executive-card"><b>Conducta más frecuente</b><span id="execStrength">Pendiente</span></div><div class="executive-card"><b>Foco confirmado</b><span id="execFocus">Pendiente</span></div><div class="executive-card"><b>Herramienta recomendada</b><span id="execTool">Pendiente</span></div><div class="executive-card"><b>Hipótesis principal</b><span id="execHypothesis">Pendiente</span></div><div class="executive-card"><b>Riesgo a observar</b><span id="execRisk">Pendiente</span></div><div class="next-move"><b>Tu próximo movimiento</b><p id="execNext">Completa el mapa y confirma un foco.</p></div></div><div class="divider"></div><div class="report-preview" id="report">Completa el mapa para generar el informe.</div><div class="report-actions no-print"><button type="button" class="btn btn-dark" id="copyReport">Copiar informe</button><button type="button" class="btn btn-outline" id="printReport">Guardar / imprimir</button><button type="button" class="btn btn-outline" id="exportBackup">Exportar respaldo</button><button type="button" class="btn btn-outline" id="importBackup">Importar respaldo</button><input id="backupFile" type="file" accept="application/json,.json" class="hidden"></div></section>
+
+<section class="card pad" id="cierre"><div class="eyebrow">Cierre de la experiencia</div><h2 class="section-title">Tu nombre vuelve a la sala con la evidencia que construyes</h2><div class="callout">La reputación profesional no se declara: se prueba mediante conductas que otros pueden observar, recordar y volver a pedir.</div><div class="two-actions no-print"><button type="button" class="btn btn-dark" id="printBottom">Guardar / imprimir</button><button type="button" class="btn btn-danger" id="reset">Reiniciar cuaderno</button></div></section>
+</main>
+<aside class="desktop-side no-print"><section class="card pad"><div class="eyebrow">Resumen</div><div class="result-grid" style="grid-template-columns:1fr 1fr"><div class="kpi"><span>Avance</span><b id="sideProgress">0/24</b></div><div class="kpi"><span>Foco</span><b id="sideFocus">—</b></div></div><div class="divider"></div><p class="small muted" id="sideSummary">Elige una sala y completa el mapa.</p><a class="btn btn-primary" style="width:100%;margin-top:10px" href="#resultado">Ver lectura</a></section><section class="card pad"><div class="eyebrow">Pregunta guía</div><p class="small">¿Qué puede anticipar otra persona sobre mí a partir de una conducta que ya observó?</p></section></aside>
+</div>
+<nav class="sticky-bottom no-print"><a class="bottom-btn active" href="#diagnostico"><b>①</b>Descubrir</a><a class="bottom-btn" href="#resultado"><b>②</b>Comprender</a><a class="bottom-btn" href="#contraste"><b>③</b>Contrastar</a><a class="bottom-btn" href="#mision"><b>④</b>Practicar</a><a class="bottom-btn full-only" href="#revision"><b>⑤</b>Consolidar</a></nav>
+<div class="toast" id="toast" role="status" aria-live="polite">Guardado</div>
 <script>
-const STORE = 'cuadernoGeniosWebMobileV2';
-const dims = [
-  {id:'G', name:'Generar valor', short:'Pasar de completar tareas a producir decisiones, soluciones o avances que otra persona puede usar.', qs:[
-    'Antes de empezar una entrega, defino qué decisión, avance o solución debe facilitar.',
-    'Mi trabajo permite que otros decidan, avancen o resuelvan con mayor claridad.',
-    'Entrego criterio que ordena, prioriza o destraba el trabajo de otros.',
-    'Puedo mostrar qué cambió para otros gracias a mi trabajo.'
-  ]},
-  {id:'E', name:'Escuchar para entender', short:'Evitar que una respuesta rápida resuelva el problema equivocado.', qs:[
-    'No actúo a partir de la primera explicación del problema o la solicitud.',
-    'Hago una segunda pregunta antes de proponer una solución.',
-    'Detecto la preocupación que todavía no se ha dicho con claridad.',
-    'Confirmo lo que entendí antes de proponer o actuar.'
-  ]},
-  {id:'N', name:'Nivel de involucramiento', short:'Hacerte cargo del resultado sin volverte salvador.', qs:[
-    'Nombro los riesgos antes de que afecten el resultado.',
-    'Doy un primer paso concreto cuando un tema importante está frenado.',
-    'Me involucro hasta dejar el problema encaminado, sin convertirlo en carga propia.',
-    'Involucro a quien corresponde para avanzar sin duplicar esfuerzos.'
-  ]},
-  {id:'I', name:'Intención en el detalle', short:'Cuidar lo que ocurre cuando tu trabajo llega al otro lado.', qs:[
-    'Reviso que mi entrega pueda entenderse sin explicaciones adicionales.',
-    'Anticipo las dudas principales de quien recibe mi trabajo.',
-    'Presento mis entregas con claridad y dejo visible el siguiente paso.',
-    'Mi trabajo puede usarse correctamente, aunque yo no esté para explicarlo.'
-  ]},
-  {id:'O', name:'Obsesión por crecer', short:'Desarrollar antes de necesitarlo la capacidad que tu siguiente etapa va a exigir.', qs:[
-    'Identifico qué capacidad debo fortalecer para mi siguiente etapa profesional.',
-    'Practico habilidades que aún no domino, aunque implique exponerme a errores.',
-    'Pido feedback específico sobre la capacidad que necesito desarrollar.',
-    'Convierto lo aprendido en una mejora visible dentro de una entrega, reunión o decisión.'
-  ]},
-  {id:'S', name:'Sostener la consistencia', short:'Proteger un estándar reconocible incluso en semanas difíciles.', qs:[
-    'Defino qué estándar mínimo voy a proteger cuando la semana se vuelve difícil.',
-    'Aviso a tiempo cuando algo cambia, se retrasa o puede afectar el resultado.',
-    'Mantengo una forma de trabajar confiable incluso bajo presión, urgencia o desorden.',
-    'Cuando fallo, me atraso o algo cambia, respondo con responsabilidad y recupero el estándar.'
-  ]}
+const STORE='experienciaGeniosPremiumV1';
+const dimensions=[
+{id:'G',name:'Generar valor',chapter:'Capítulo 2',short:'Producir una diferencia útil que permita decidir, avanzar o evitar un error.',questions:[
+'Antes de empezar, defino qué decisión, avance o resultado debe facilitar mi trabajo.',
+'Identifico qué impide avanzar y enfoco allí mi aporte.',
+'Cuando tengo información suficiente, planteo una recomendación o un siguiente paso claro.',
+'Al terminar, compruebo qué cambió para otra persona gracias a mi trabajo.']},
+{id:'E',name:'Escuchar para entender',chapter:'Capítulo 3',short:'Comprender el problema correcto antes de intentar resolverlo.',questions:[
+'Antes de responder, aclaro qué resultado necesita conseguir la otra persona.',
+'Cuando detecto más de una interpretación posible, pregunto antes de proponer.',
+'Compruebo si lo que me están pidiendo responde al problema que necesita resolverse.',
+'Antes de actuar, confirmo que compartimos la misma comprensión del problema.']},
+{id:'N',name:'Nivel de involucramiento',chapter:'Capítulo 4',short:'Proteger el resultado sin absorber responsabilidades que corresponden a otros.',questions:[
+'Hago visible un riesgo relevante antes de que afecte el resultado.',
+'Cuando algo importante no avanza, propongo el movimiento mínimo necesario.',
+'Involucro a quien tiene la responsabilidad, la información o la autoridad necesaria.',
+'Confirmo quién continuará y cuál será el siguiente paso, sin absorber el asunto.']},
+{id:'I',name:'Intención en el detalle',chapter:'Capítulo 5',short:'Diseñar entregas que puedan comprenderse y utilizarse sin depender de tu explicación.',questions:[
+'Organizo la entrega según lo que la otra persona necesita decidir o hacer.',
+'Dejo visibles la conclusión, los riesgos relevantes y el siguiente paso.',
+'Antes de entregar, identifico y reduzco posibles dudas, errores o trabajo adicional.',
+'Compruebo que mi trabajo pueda comprenderse y utilizarse sin depender de mi explicación.']},
+{id:'O',name:'Obsesión por crecer',chapter:'Capítulo 6',short:'Practicar hoy la capacidad que tu siguiente etapa profesional exigirá.',questions:[
+'Identifico la capacidad que necesitaré para responder a un próximo desafío profesional.',
+'Traduzco esa capacidad en una conducta concreta que puedo practicar.',
+'Practico esa conducta en situaciones reales antes de que una oportunidad dependa de ella.',
+'Pido retroalimentación específica y la utilizo para ajustar mi siguiente intento.']},
+{id:'S',name:'Sostener la consistencia',chapter:'Capítulo 7',short:'Proteger un estándar reconocible y recuperarlo cuando se rompe.',questions:[
+'Sostengo mis estándares mínimos incluso cuando aumenta la presión.',
+'Aviso a tiempo cuando un compromiso está en riesgo.',
+'Cuando incumplo, reconozco lo ocurrido y establezco un nuevo compromiso claro.',
+'Después de fallar, reparo lo posible y sostengo el seguimiento hasta recuperar el estándar.']}
 ];
-const scale = [
-  ['1','Nunca','Sin evidencia'],['2','Rara vez','Un caso aislado'],['3','A veces','Depende del contexto'],['4','Frecuentemente','Es parte de cómo trabajo'],['5','Siempre','Otros ya lo esperan']
+const scale=[['1','No apareció','Sin evidencia en el período'],['2','Apareció una vez','Señal aislada'],['3','Apareció algunas veces','De manera irregular'],['4','Apareció en la mayoría','De las oportunidades relevantes'],['5','Apareció consistentemente','En situaciones comparables'],['NO','N/O','No hubo oportunidad suficiente']];
+const tools=[
+{id:'G',title:'Mapa de Valor',desc:'Conecta una tarea con la decisión y el efecto que otra persona necesita.',law:'Tu trabajo genera valor cuando deja a otra persona mejor posicionada para decidir, avanzar o evitar un error.',question:'¿Qué debe poder hacer alguien gracias a lo que estoy a punto de entregar?',steps:[['Receptor','¿Quién utilizará este trabajo?'],['Decisión','¿Qué necesita resolver, elegir o destrabar?'],['Fricción','¿Qué le impide avanzar con claridad?'],['Aporte','¿Qué movimiento debe producir mi intervención?'],['Evidencia','¿Qué observaré si realmente fue útil?'],['Trabajo evitado','¿Qué esfuerzo evitaré que el receptor tenga que hacer?']]},
+{id:'E',title:'La Segunda Pregunta',desc:'Comprueba contenido, intención y tensión antes de proponer.',law:'Una respuesta rápida demuestra lo que sabes. Una pregunta precisa evita que ese conocimiento trabaje para el problema equivocado.',question:'¿Qué necesito comprender antes de intentar resolver?',steps:[['Contenido','¿Qué se dijo literalmente?'],['Intención','¿Qué resultado intenta conseguir la otra persona?'],['Tensión','¿Qué preocupación o consecuencia todavía no está formulada?'],['Segunda pregunta','¿Qué pregunta puede abrir el problema real?'],['Confirmación','Lo que entiendo es que el problema visible es ___, pero necesitamos resolver ___. ¿Es correcto?']]},
+{id:'N',title:'Cinco movimientos para devolver responsabilidad',desc:'Hace visible un riesgo, mueve lo necesario y devuelve la responsabilidad.',law:'Involucrarte con criterio significa proteger el resultado sin convertirte en dueño de todo lo que lo amenaza.',question:'¿Qué necesita el resultado de mí en este momento?',steps:[['Nombrar','Describe el riesgo sin dramatizar ni atribuir intenciones.'],['Proponer','Ofrece el siguiente movimiento mínimo.'],['Involucrar','Lleva el asunto a quien posee información, responsabilidad o autoridad.'],['Confirmar','Define quién continuará y cuál es el siguiente paso.'],['Soltar','No sigas absorbiendo lo que ya quedó correctamente asignado.']]},
+{id:'I',title:'Prueba de Treinta Segundos + Prueba de Ausencia',desc:'Protege la jerarquía, la comprensión, el uso y la autonomía.',law:'El detalle importa cuando reduce la fricción que otra persona necesita superar para comprender, decidir o actuar.',question:'¿Esto puede comprenderse y utilizarse sin que yo esté para explicarlo?',steps:[['Treinta segundos','¿Qué importa, qué se decide, qué riesgo existe y qué sigue?'],['Comprensión','¿El criterio se entiende sin mi explicación?'],['Uso','¿El material puede utilizarse correctamente?'],['Límites','¿Quedan visibles supuestos, riesgos y condiciones?'],['Continuidad','¿La próxima acción y su responsable están claros?']]},
+{id:'O',title:'Ciclo O',desc:'Convierte una brecha futura en conducta, práctica y evidencia.',law:'Crecer no es acumular aprendizaje. Es practicar antes de que una oportunidad dependa de esa capacidad.',question:'¿Qué capacidad necesito desarrollar antes de que limite mi siguiente etapa?',steps:[['Detectar','Identifica la brecha que puede limitar tu siguiente desafío.'],['Traducir','Convierte la capacidad en una conducta observable.'],['Practicar','Ponla a prueba en una situación real.'],['Contrastar','Pide retroalimentación específica.'],['Repetir','Ajusta y vuelve a practicar hasta dejar evidencia.']]},
+{id:'S',title:'Protocolo de Recuperación',desc:'Responde después de romper un estándar y recupera previsibilidad.',law:'La consistencia no es no fallar. Es hacer reconocible tu estándar y recuperar la confianza cuando lo rompes.',question:'¿Qué estándar puedo sostener incluso cuando las condiciones no son ideales?',steps:[['Reconocer','Nombra lo ocurrido sin excusas.'],['Comunicar','Avisa el impacto y el riesgo a tiempo.'],['Reparar','Corrige lo posible de inmediato.'],['Redefinir','Establece un compromiso nuevo y claro.'],['Recuperar','Sostén el seguimiento hasta volver al estándar.']]}
 ];
-const levels = [
-  {min:24,max:47,name:'Nivel 1 · Talento invisible',text:'Tienes capacidad, pero todavía no se traduce con suficiente claridad en conductas observables. Punto de partida: elige una letra y conviértela en una conducta visible esta semana.'},
-  {min:48,max:71,name:'Nivel 2 · Profesional cumplidor',text:'Respondes, avanzas y probablemente haces bien varias cosas, pero tu reputación todavía depende demasiado del contexto. Punto de partida: trabaja la letra más baja hasta que deje de aparecer solo en buenos días.'},
-  {min:72,max:95,name:'Nivel 3 · Profesional confiable',text:'Tu forma de trabajar ya empieza a construir expectativa. Otros pueden reconocer valor, responsabilidad o claridad. Punto de partida: no intentes mejorar todo; protege tu letra más débil.'},
-  {min:96,max:111,name:'Nivel 4 · Referente en construcción',text:'Tu nombre ya empieza a significar algo concreto. Hay señales que se repiten y una reputación que comienza a sostener decisiones. Punto de partida: define qué conducta quieres que otros asocien con tu nombre.'},
-  {min:112,max:120,name:'Nivel 5 · Genio en movimiento',text:'Tu forma de trabajar muestra un patrón fuerte de valor, consistencia y visibilidad. Punto de partida: evita la complacencia y convierte tu letra menos sólida en tu siguiente estándar.'}
+const audits=[
+{id:'D',title:'Día imperfecto de un Genio',desc:'Observa qué conducta aparece, cuál desaparece y qué costo deja cuando todo compite.',law:'Un día no define una reputación, pero revela qué conducta aparece cuando todo compite.',question:'¿Qué conducta desaparece primero cuando la presión aumenta?',steps:[['Presión','¿Qué cambió o compitió por tu atención?'],['Conducta visible','¿Qué letra apareció?'],['Conducta ausente','¿Cuál desapareció?'],['Costo','¿Qué experimentaron otros?'],['Recuperación','¿Qué movimiento mínimo harás en la próxima interacción?']]},
+{id:'M',title:'Microvalentía profesional',desc:'Elige una conducta pequeña y proporcional para que el miedo no decida por ti.',law:'La microvalentía no garantiza que tengas razón. Impide que el miedo decida siempre por ti.',question:'¿Qué conversación, límite o propuesta estoy evitando por miedo a equivocarme o incomodar?',steps:[['Situación','¿Dónde existe una consecuencia real?'],['Conducta segura','¿Qué harías por reflejo para evitar exposición?'],['Microvalentía','¿Qué conducta pequeña y proporcional elegirás?'],['Límite','¿Qué no necesitas exagerar ni prometer?'],['Momento','¿Cuándo la ejecutarás?']]},
+{id:'C',title:'Auditoría cualitativa del Capital Reputacional',desc:'Interpreta Valor × Consistencia × Visibilidad sin convertirlo en un índice.',law:'Un factor débil limita la confianza total, pero la fórmula es una lente conceptual, no una escala matemática.',question:'¿Qué parte del valor producido puede recordarse y asociarse con claridad a tu nombre?',steps:[['Valor','¿Qué decisión, avance o reducción de riesgo hiciste posible?'],['Consistencia','¿En qué situaciones diferentes apareció una conducta parecida?'],['Visibilidad','¿Quién pudo observar el efecto y asociarlo correctamente?'],['Debilidad','¿Qué factor está limitando el patrón?'],['Movimiento','¿Qué conducta concreta fortalecerá ese factor?']]},
+{id:'P',title:'Sello Profesional y antisello',desc:'Define la expectativa específica que tu nombre activa y el “pero” que la limita.',law:'Tu sello no es lo que quieres que otros digan. Es la conducta específica que ya pueden esperar y defender con pruebas.',question:'¿Qué hago más fácil para otros y qué “pero” todavía acompaña esa expectativa?',steps:[['Sello','Conmigo, las personas pueden esperar ___, especialmente cuando ___.'],['Antisello','No quiero seguir activando la expectativa de que ___.'],['Prueba de presión','¿Qué situación demuestra el sello bajo tensión?'],['Prueba de entrega','¿Qué decisión o entrega demuestra el efecto?'],['Prueba relacional','¿Qué interacción confirma cómo se siente trabajar contigo?']]},
+{id:'F',title:'Filtro de la Oportunidad',desc:'Decide qué responsabilidad aceptar y qué expectativa reforzará tu nombre.',law:'Cada oportunidad que aceptas enseña a otros qué pueden seguir esperando de ti.',question:'¿Qué aprenderán otros a esperar de mí si digo que sí?',steps:[['Dirección','Si sale bien, ¿fortalece la trayectoria que quiero construir?'],['Resultado','¿Por qué resultado concreto responderé?'],['Expansión','¿Amplía criterio, capacidad o autonomía?'],['Condiciones','¿Qué información, autoridad, tiempo o apoyo necesito?'],['Costo','¿Qué estándar, relación o compromiso podría deteriorarse?'],['Decisión','Aceptar, negociar, postergar o rechazar.']]},
+{id:'R',title:'Registro de evidencia profesional',desc:'Distingue actividad de una diferencia que otros pueden reconstruir.',law:'La evidencia fuerte permite reconstruir la situación, la conducta y el efecto.',question:'¿Qué cambió para alguien gracias a mi trabajo?',steps:[['Situación','¿Qué estaba ocurriendo?'],['Conducta','¿Qué hiciste de manera observable?'],['Efecto','¿Qué cambió para otra persona?'],['Expectativa','Si se repitiera, ¿qué podrían empezar a esperar?']]}
 ];
-const capitalReadings = [
-  {min:0,max:25,title:'Capital Reputacional débil',text:'Hay capacidad, pero la evidencia no aparece con suficiente fuerza, repetición o visibilidad.'},
-  {min:26,max:50,title:'Capital Reputacional en formación',text:'Hay señales valiosas, pero todavía no forman un patrón suficientemente claro.'},
-  {min:51,max:75,title:'Capital Reputacional funcionando',text:'Tu forma de trabajar ya empieza a dejar una expectativa reconocible.'},
-  {min:76,max:100,title:'Capital Reputacional fuerte',text:'Tu nombre empieza a significar algo concreto para otros. El desafío es sostener el estándar.'}
+const selectorOptions=[{id:'decision',icon:'G',title:'Tengo una entrega o una decisión importante',desc:'Necesito facilitar una decisión, avance o resultado.',tool:'G'},{id:'problem',icon:'E',title:'No estoy seguro de entender el problema',desc:'Hay más de una interpretación o una tensión poco clara.',tool:'E'},{id:'stuck',icon:'N',title:'Un tema importante no avanza',desc:'Necesito moverlo sin absorber toda la responsabilidad.',tool:'N'},{id:'clarity',icon:'I',title:'Mi entrega puede generar dudas o retrabajo',desc:'Necesito que pueda comprenderse y utilizarse sin mí.',tool:'I'},{id:'growth',icon:'O',title:'Necesito desarrollar una capacidad futura',desc:'Quiero practicar antes de que una oportunidad dependa de ella.',tool:'O'},{id:'recovery',icon:'S',title:'Incumplí o mi estándar bajó',desc:'Necesito reparar, redefinir y recuperar previsibilidad.',tool:'S'},{id:'fear',icon:'M',title:'Estoy evitando una conversación o propuesta',desc:'Necesito una microvalentía profesional proporcional.',tool:'M'},{id:'opportunity',icon:'F',title:'Debo decidir si aceptar una oportunidad',desc:'Necesito evaluar dirección, condiciones, expansión y costo.',tool:'F'}];
+const weeks=[
+{n:1,id:'G',focus:'Efecto útil',question:'¿Qué debe cambiar gracias a mi trabajo?',practice:'Define el receptor, la decisión, la fricción y el efecto antes de actuar.',signal:'La otra persona puede decidir, avanzar o evitar un error con menos esfuerzo.'},
+{n:2,id:'E',focus:'Problema correcto',question:'¿Qué necesito comprender antes de intentar resolver?',practice:'Haz una Segunda Pregunta y confirma la comprensión antes de proponer.',signal:'Aparece un criterio, una necesidad o una tensión que antes no estaba visible.'},
+{n:3,id:'N',focus:'Movimiento sin absorción',question:'¿Qué necesita el resultado de mí en este momento?',practice:'Nombra el riesgo, propone el movimiento mínimo e involucra a quien corresponde.',signal:'El asunto avanza con responsabilidad clara y sin depender por completo de ti.'},
+{n:4,id:'I',focus:'Autonomía',question:'¿Esto puede utilizarse sin que yo lo explique?',practice:'Aplica las pruebas de Treinta Segundos y Ausencia.',signal:'La entrega puede comprenderse y usarse sin aclaraciones posteriores.'},
+{n:5,id:'O',focus:'Capacidad futura',question:'¿Qué capacidad debo practicar antes de necesitarla?',practice:'Traduce una capacidad en conducta, practica, pide retroalimentación y repite.',signal:'Existe una evidencia nueva de la capacidad, no solo aprendizaje acumulado.'},
+{n:6,id:'S',focus:'Estándar recuperable',question:'¿Qué mínimo sostendré cuando aumente la presión?',practice:'Define un estándar mínimo y aplica el Protocolo de Recuperación si se rompe.',signal:'Otros pueden anticipar tu forma de responder incluso en una semana imperfecta.'}
 ];
-const tools = [
-  {id:'G', title:'Mapa de Valor', desc:'Antes de tocar el documento, define qué debería poder hacer otra persona al recibirlo.', fields:[['Receptor','¿Quién usará esto?'],['Decisión','¿Qué debe poder decidir, resolver o destrabar?'],['Fricción','¿Qué le impide avanzar con claridad?'],['Aporte','¿Qué cambio produces?'],['Evidencia','¿Cómo sabrás que fue útil?']]},
-  {id:'E', title:'La segunda pregunta', desc:'Antes de proponer una solución, haz una pausa, formula una segunda pregunta y comprueba lo que entendiste.', fields:[['Con quién / sobre qué','Contexto de la conversación'],['Mi primera pregunta','¿Qué pregunté primero?'],['Mi segunda pregunta','¿Qué pregunta abrió el problema real?'],['Tensión no dicha','Intención, prioridad o tensión que apareció'],['Comprobación','Lo que estoy entendiendo es ___. ¿Es correcto?']]},
-  {id:'N', title:'Involucramiento con criterio', desc:'No ignores, no dramatices y tampoco absorbas: ayuda a que el sistema reaccione.', fields:[['Comprueba','¿La persona responsable ya conoce la situación?'],['Haz visible','Describe el hecho y su impacto.'],['Activa','¿Quién debe participar y cuál es el primer paso?'],['Contribuye','¿Qué puedes aportar desde tu rol?'],['Cierra el ciclo','Responsable, siguiente paso y revisión.']]},
-  {id:'I', title:'Prueba de Ausencia', desc:'Antes de enviar, revisa si tu entrega funciona cuando tú no estás.', fields:[['Comprensión','¿Se entiende sin que yo lo explique?'],['Decisión','¿Muestra primero lo que permite decidir?'],['Uso','¿Permite decidir, actuar o avanzar?'],['Fricción','¿Reduce preguntas innecesarias?'],['Ausencia','¿Puede sostenerse si yo no estoy presente?']]},
-  {id:'O', title:'Ciclo O', desc:'Premia convertir aprendizaje en conducta visible.', fields:[['Brecha','¿Qué todavía no puedo ejecutar al nivel requerido?'],['Conducta','¿Qué comportamiento demostraría esa capacidad?'],['Práctica','¿Cómo y cuándo la practicaré en condiciones reales?'],['Retroalimentación','¿A quién le pediré una señal externa concreta?'],['Repetición','¿Dónde volveré a practicarla hasta que se reconozca?']]},
-  {id:'S', title:'Estándar mínimo', desc:'Define la parte de tu forma de trabajar que no desaparece cuando estás cansado o bajo presión.', fields:[['Responsabilidad','¿Qué responsabilidad protegeré?'],['Máximo','¿Cómo se ve cuando todo acompaña?'],['Estándar','¿Cómo se ve en un día normal?'],['Mínimo no negociable','¿Qué sostendré en una semana difícil?'],['Recuperación','Si fallo, ¿cómo recupero el patrón en 24 horas?']]}
-];
-const weeks = [
-  {n:1,id:'G',title:'Generar valor',conduct:'Antes de una entrega importante, define en una frase qué decisión, solución o avance debe facilitar.',example:'Alguien pudo decidir, comprender o avanzar con menos fricción.'},
-  {n:2,id:'E',title:'Escuchar para entender',conduct:'En una conversación donde sueles responder rápido, formula una segunda pregunta y verifica lo que entendiste antes de proponer.',example:'Apareció información que cambió tu respuesta o tu interpretación del problema.'},
-  {n:3,id:'N',title:'Nivel de involucramiento',conduct:'Frente a un riesgo sin dueño que afecta el resultado, hazlo visible, propón un primer paso e involucra a quien corresponde.',example:'El problema pasó de observación a conversación, decisión o acción.'},
-  {n:4,id:'I',title:'Intención en el detalle',conduct:'Revisa tu entrega más importante desde el lugar de quien la usará: orientación, decisión, fricción y confianza.',example:'El receptor pudo comprender y actuar sin reconstruir el contexto.'},
-  {n:5,id:'O',title:'Obsesión por crecer',conduct:'Practica una capacidad ligada a una brecha de valor, pide retroalimentación específica y aplícala en una situación real.',example:'Hiciste algo que antes evitabas o no podías hacer.'},
-  {n:6,id:'S',title:'Sostener la consistencia',conduct:'Elige una responsabilidad que se deteriora con el cansancio; define tu mínimo y comunica riesgos a tiempo.',example:'Otros pudieron anticipar cómo responderías aun en condiciones no ideales.'}
-];
-const pocket = [
-  ['G','Si no está claro qué debe cambiar.'],['E','Si todavía no comprendes la necesidad.'],['N','Si el resultado está inmóvil.'],['I','Si la entrega generará fricción.'],['O','Si una capacidad limita tu aporte.'],['S','Si el patrón depende de tu energía.']
-];
-let state = JSON.parse(localStorage.getItem(STORE) || '{}');
-state.scores = state.scores || {}; state.fields = state.fields || {};
-const $ = (s,root=document)=>root.querySelector(s); const $$=(s,root=document)=>Array.from(root.querySelectorAll(s));
-function esc(str){return String(str||'').replace(/[&<>'"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));}
-function save(){localStorage.setItem(STORE, JSON.stringify(state)); $('#savePill').textContent='Guardado';}
-function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),1800);}
-function renderStatic(){
-  $('#lettersOverview').innerHTML = dims.map(d=>`<div class="quick-item"><span class="letter">${d.id}</span><div><b>${d.name}</b><span>${d.short}</span></div></div>`).join('');
-  $('#scaleGrid').innerHTML = scale.map(s=>`<div class="scale-card"><span class="scale-num">${s[0]}</span><div><b>${s[1]}</b><br><span>${s[2]}</span></div></div>`).join('');
-  $('#questionBlocks').innerHTML = dims.map(d=>`<div class="dim" id="dim-${d.id}"><div class="dim-head"><span class="letter">${d.id}</span><div><b>${d.name}</b></div><span class="dim-total" id="total-${d.id}">0 / 20</span></div><div class="questions">${d.qs.map((q,i)=>`<div class="q"><div class="q-top"><span class="q-num">${i+1}</span><p>${esc(q)}</p></div><div class="scale-row">${[1,2,3,4,5].map(n=>`<span class="score"><input type="radio" name="${d.id}-${i}" id="${d.id}-${i}-${n}" data-dim="${d.id}" data-idx="${i}" value="${n}"><label for="${d.id}-${i}-${n}">${n}</label></span>`).join('')}</div></div>`).join('')}</div></div>`).join('');
-  $('#bars').innerHTML = dims.map(d=>`<div class="bar"><span>${d.id}</span><div class="bar-rail"><div class="bar-fill" id="bar-${d.id}"></div></div><small id="barVal-${d.id}">0/20</small></div>`).join('');
-  $('#capitalReading').innerHTML = capitalReadings.map(r=>`<div class="reading-item" data-cap-min="${r.min}" data-cap-max="${r.max}"><b>${r.min}–${r.max} · ${r.title}</b><br><span class="muted">${r.text}</span></div>`).join('');
-  $('#tools').innerHTML = tools.map((t,idx)=>`<details class="tool" ${idx===0?'open':''}><summary><span class="letter">${t.id}</span><div><b>${t.title}</b><span>${t.desc}</span></div></summary><div class="tool-body"><div class="step-list">${t.fields.map((f,i)=>`<div class="mini-step"><i>${i+1}</i><div><b>${esc(f[0])}</b><span>${esc(f[1])}</span></div></div>`).join('')}</div>${t.fields.map((f,i)=>`<div class="field"><label>${esc(f[0])}</label><textarea class="js-save" data-key="tool-${t.id}-${i}" placeholder="${esc(f[1])}"></textarea></div>`).join('')}</div></details>`).join('');
-  $('#weeks').innerHTML = weeks.map(w=>`<article class="week"><div class="week-head"><div><small>Semana ${w.n}</small><b>${w.title}</b></div><span class="letter">${w.id}</span></div><div class="week-body"><p class="small"><strong>Conducta:</strong> ${esc(w.conduct)}</p><p class="micro muted"><strong>Ejemplo de evidencia:</strong> ${esc(w.example)}</p><div class="field"><label>Situación real</label><textarea class="js-save" data-key="week-${w.n}-situation"></textarea></div><div class="field"><label>Conducta que practiqué</label><textarea class="js-save" data-key="week-${w.n}-behavior"></textarea></div><div class="field"><label>Evidencia producida</label><textarea class="js-save" data-key="week-${w.n}-evidence"></textarea></div><div class="field"><label>Próxima repetición</label><textarea class="js-save" data-key="week-${w.n}-next"></textarea></div></div></article>`).join('');
-  $('#pocketMap').innerHTML = pocket.map(p=>`<div class="quick-item"><span class="letter">${p[0]}</span><div><b>${dims.find(d=>d.id===p[0]).name}</b><span>${p[1]}</span></div></div>`).join('');
+const validAnswerKeys=new Set(dimensions.flatMap(d=>d.questions.map((_,i)=>`${d.id}${i}`)));const validAnswerValues=new Set(['1','2','3','4','5','NO']);function normalizeState(raw){const safe={answers:{},fields:{}};if(raw&&typeof raw==='object'){if(raw.answers&&typeof raw.answers==='object')for(const [k,v] of Object.entries(raw.answers)){if(validAnswerKeys.has(k)&&validAnswerValues.has(String(v)))safe.answers[k]=String(v)}if(raw.fields&&typeof raw.fields==='object')for(const [k,v] of Object.entries(raw.fields)){if(typeof k==='string'&&k.length<100&&(typeof v==='string'||typeof v==='number'||typeof v==='boolean'))safe.fields[k]=String(v).slice(0,10000)}}return safe}let state;try{state=normalizeState(JSON.parse(localStorage.getItem(STORE)||'{}'))}catch(e){state=normalizeState({});setTimeout(()=>{const p=document.getElementById('savePill');if(p)p.textContent='Almacenamiento limitado'},0)}
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state));$('#savePill').textContent='Guardado';return true}catch(e){$('#savePill').textContent='Sin guardar';return false}}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2200)}
+function dimName(id){const d=dimensions.find(x=>x.id===id);return d?`${d.id} · ${d.name}`:'Pendiente'}
+function snapshot(){const scores=[];let answered=0;dimensions.forEach(d=>{let sum=0,count=0,no=0;d.questions.forEach((_,i)=>{const v=state.answers[`${d.id}${i}`];if(v!==undefined){answered++;if(v==='NO')no++;else{sum+=Number(v);count++}}});const comparable=count===4&&no===0;scores.push({...d,sum,count,no,comparable,average:comparable?sum/4:null})});const comparable=scores.filter(x=>x.comparable).sort((a,b)=>a.average-b.average);const lowest=comparable[0]||null,highest=comparable.at(-1)||null;const lowestTies=lowest?comparable.filter(x=>Math.abs(x.average-lowest.average)<.001):[];const highestTies=highest?comparable.filter(x=>Math.abs(x.average-highest.average)<.001):[];return{scores,answered,comparable,lowest,highest,lowestTies,highestTies,complete:answered===24}}
+function band(d){if(!d.comparable)return['Pendiente','La letra incluye N/O o respuestas incompletas; no debe interpretarse todavía.'];if(d.sum<=8)return['Ocasional','Aparece poco o de manera aislada.'];if(d.sum<=12)return['Intermitente','Aparece a veces, pero todavía no se sostiene.'];if(d.sum<=16)return['Frecuente','Aparece con regularidad, aunque no siempre.'];return['Consistente','Aparece de forma confiable en situaciones comparables.']}
+function render(){
+ $('#overview').innerHTML=dimensions.map(d=>`<div class="quick-item"><span class="letter">${d.id}</span><div><b>${d.name}</b><span>${d.short}</span></div></div>`).join('');
+ $('#scaleGrid').innerHTML=scale.map(x=>`<div class="scale-card"><span class="scale-num">${x[0]}</span><div><b>${x[1]}</b><span>${x[2]}</span></div></div>`).join('');
+ $('#focusLetter').innerHTML='<option value="">Elige una letra</option>'+dimensions.map(d=>`<option value="${d.id}">${d.id} · ${d.name}</option>`).join('');
+ $('#questions').innerHTML=dimensions.map(d=>`<section class="dim"><div class="dim-head"><span class="letter">${d.id}</span><div><b>${d.name}</b><small>${d.chapter} · ${d.short}</small></div><span class="dim-total" id="total-${d.id}">Pendiente</span></div><div class="questions">${d.questions.map((q,i)=>`<div class="q"><div class="q-top"><span class="q-num">${i+1}</span><p>${esc(q)}</p></div><div class="scale-row">${scale.map(s=>`<span class="score"><input type="radio" id="${d.id}${i}-${s[0]}" name="${d.id}${i}" data-key="${d.id}${i}" value="${s[0]}"><label for="${d.id}${i}-${s[0]}">${s[0]}</label></span>`).join('')}</div></div>`).join('')}</div></section>`).join('');
+ const renderTool=t=>`<details class="tool" id="tool-${t.id}"><summary><span class="letter">${t.id}</span><div><b>${t.title}</b><span>${t.desc}</span></div></summary><div class="tool-body"><div class="law">${t.law}</div><div class="key-question">${t.question}</div><div class="step-list">${t.steps.map((s,i)=>`<div class="mini-step"><i>${i+1}</i><div><b>${s[0]}</b><span>${s[1]}</span></div></div>`).join('')}</div><div class="field"><label for="tool-${t.id}-0">${t.steps[0][0]}</label><textarea id="tool-${t.id}-0" class="save tool-input" data-tool="${t.id}" data-key="tool-${t.id}-0" placeholder="${esc(t.steps[0][1])}"></textarea></div><div class="field"><label for="tool-${t.id}-1">${t.steps[1][0]}</label><textarea id="tool-${t.id}-1" class="save tool-input" data-tool="${t.id}" data-key="tool-${t.id}-1" placeholder="${esc(t.steps[1][1])}"></textarea></div><div class="field"><label for="tool-${t.id}-next">Mi próximo movimiento</label><textarea id="tool-${t.id}-next" class="save tool-input" data-tool="${t.id}" data-key="tool-${t.id}-next" placeholder="Escribe una acción observable, concreta y próxima."></textarea></div><details class="deep-fields"><summary>Profundizar con los demás campos</summary>${t.steps.slice(2).map((s,i)=>`<div class="field"><label for="tool-${t.id}-${i+2}">${s[0]}</label><textarea id="tool-${t.id}-${i+2}" class="save tool-input" data-tool="${t.id}" data-key="tool-${t.id}-${i+2}" placeholder="${esc(s[1])}"></textarea></div>`).join('')}</details><div class="tool-close"><b>Cierre automático</b><span id="close-${t.id}">Completa los campos esenciales para construir una síntesis.</span></div></div></details>`;
+ $('#toolSelector').innerHTML=selectorOptions.map(o=>`<button class="tool-choice" type="button" aria-pressed="false" data-choice="${o.id}" data-tool="${o.tool}"><span class="choice-icon">${o.icon}</span><span><b>${o.title}</b><span>${o.desc}</span></span><i>→</i></button>`).join('');$('#tools').innerHTML=tools.map(renderTool).join('');
+ $('#audits').innerHTML=audits.map(renderTool).join('');
+ $('#weeks').innerHTML=weeks.map(w=>`<article class="week"><div class="week-head"><div><small>Semana ${w.n} · ${w.focus}</small><b>${dimensions.find(d=>d.id===w.id).name}</b></div><span class="letter">${w.id}</span></div><div class="week-body"><div class="week-question">${w.question}</div><div class="week-status" data-week="${w.n}"><button type="button" class="status-btn" aria-pressed="false" data-status="Pendiente">Pendiente</button><button type="button" class="status-btn" aria-pressed="false" data-status="Practicada">Practicada</button><button type="button" class="status-btn" aria-pressed="false" data-status="Revisada">Revisada</button></div><div class="week-meta"><div><b>Práctica</b>${w.practice}</div><div><b>Señal a observar</b>${w.signal}</div></div><div class="field"><label>Situación real de esta semana</label><textarea class="save" data-key="week-${w.n}-situation"></textarea></div><div class="field"><label>Cómo usaré esta lente para fortalecer mi foco</label><textarea class="save" data-key="week-${w.n}-connection"></textarea></div><div class="field"><label>Qué hice de forma observable</label><textarea class="save" data-key="week-${w.n}-behavior"></textarea></div><div class="field"><label>Qué cambió para otra persona</label><textarea class="save" data-key="week-${w.n}-impact"></textarea></div><div class="field"><label>Segunda situación y ajuste</label><textarea class="save" data-key="week-${w.n}-next"></textarea></div></div></article>`).join('');
 }
-function restore(){
-  $$('input[type="radio"]').forEach(r=>{ const k=`${r.dataset.dim}${r.dataset.idx}`; if(String(state.scores[k])===r.value) r.checked=true; });
-  $$('.js-save').forEach(el=>{ const k=el.dataset.key; if(state.fields[k]!==undefined) el.value=state.fields[k]; });
-}
-function scores(){
-  const out={}, missing=[]; dims.forEach(d=>{ out[d.id]=0; d.qs.forEach((_,i)=>{ const v=Number(state.scores[`${d.id}${i}`]||0); out[d.id]+=v; if(!v) missing.push(`${d.id}${i}`); }); }); return {out, answered:24-missing.length};
-}
-function levelFor(total, complete){ if(!complete) return null; return levels.find(l=>total>=l.min && total<=l.max) || null; }
-function fmt(n,dec=0){ if(!Number.isFinite(n)) return '—'; return n.toLocaleString('es-CL',{maximumFractionDigits:dec,minimumFractionDigits:dec}); }
-function dimBand(score){
-  if(score>=18) return {name:'Fuerte', text:'Conducta muy reconocible. El desafío es sostenerla y usarla como sello profesional.'};
-  if(score>=14) return {name:'Sólida', text:'Ya aparece con frecuencia. Falta convertirla en un patrón más visible y consistente.'};
-  if(score>=9) return {name:'En desarrollo', text:'Existe intención y algunas señales, pero todavía depende demasiado del contexto.'};
-  return {name:'Prioritaria', text:'Hoy deja poca evidencia. Conviene trabajarla con una conducta simple y repetible.'};
-}
-function factorText(name, value){
-  if(value>=17) return `${name}: fuerte y reconocible.`;
-  if(value>=13) return `${name}: saludable, pero todavía puede ganar claridad.`;
-  if(value>=9) return `${name}: en formación; necesita más repetición observable.`;
-  return `${name}: prioridad de trabajo; hoy aparece con poca fuerza.`;
-}
-function getSnapshot(){
-  const {out,answered}=scores();
-  const total=Object.values(out).reduce((a,b)=>a+b,0);
-  const complete=answered===24;
-  const sorted=dims.map(d=>[d.id,out[d.id],d.name,d.short]).sort((a,b)=>a[1]-b[1] || a[0].localeCompare(b[0]));
-  const lowest=sorted[0];
-  const highest=[...sorted].sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]))[0];
-  const valor=(out.G+out.E)/2, cons=(out.N+out.S)/2, visi=(out.I+out.O)/2, bruto=valor*cons*visi, idx=bruto/80;
-  const lv=levelFor(total,complete);
-  const cap=capitalReadings.find(r=>idx>=r.min && idx<=r.max) || capitalReadings[0];
-  return {out,answered,total,complete,sorted,lowest,highest,valor,cons,visi,bruto,idx,lv,cap};
-}
-function summaryText(){
-  const s=getSnapshot(); const name=(state.fields.planPersonName||'Sin nombre registrado').trim()||'Sin nombre registrado'; const role=(state.fields.ctxRole||'Sin rol, proyecto o situación registrado').trim()||'Sin rol, proyecto o situación registrado';
-  const levelName=s.lv?s.lv.name:'pendiente'; const levelText=s.lv?s.lv.text:'Completa las 24 respuestas para obtener una lectura cerrada.';
-  return `REPORTE CUADERNO G.E.N.I.O.S.
+function restore(){$$('input[type=radio]').forEach(x=>{if(String(state.answers[x.dataset.key])===x.value)x.checked=true});$$('.save').forEach(x=>{if(state.fields[x.dataset.key]!==undefined)x.value=state.fields[x.dataset.key]})}
+function reportText(){const s=snapshot(),f=state.fields,focus=f.focusLetter?dimName(f.focusLetter):'Pendiente';return`EXPERIENCIA G.E.N.I.O.S. · INFORME EJECUTIVO
 
-Nombre: ${name}
-Contexto: ${role}
+SALA OBSERVADA
+Sala: ${f.room||'Pendiente'}
+Período: ${f.period||'Pendiente'}
+Qué se necesita lograr o decidir: ${f.stakes||'Pendiente'}
+Mi responsabilidad: ${f.responsibility||'Pendiente'}
+Personas que experimentaron mi trabajo: ${f.audience||'Pendiente'}
+Nivel de presión: ${f.pressure||'Pendiente'}
 
-1. Resultado general
-Total: ${s.total}/120
-Nivel: ${levelName}
-${levelText}
+MAPA G.E.N.I.O.S.
+${s.scores.map(d=>`${d.id} · ${d.name}: ${d.comparable?`${d.sum}/20 · ${band(d)[0]}`:statusLabel(d)}${d.no?` · ${d.no} respuesta(s) N/O`:''}`).join('\n')}
 
-2. Capital Reputacional aproximado
-Fórmula: Valor × Consistencia × Visibilidad
-Valor: ${fmt(s.valor,1)}/20
-Consistencia: ${fmt(s.cons,1)}/20
-Visibilidad: ${fmt(s.visi,1)}/20
-Capital Reputacional: ${s.complete?fmt(s.idx,0)+'/100':'pendiente'}
-Lectura: ${s.complete?s.cap.title + '. ' + s.cap.text:'Completa el diagnóstico para activar esta lectura.'}
+LECTURA
+Conducta(s) más frecuente(s): ${s.highest?(s.highestTies.length>1?s.highestTies.map(x=>dimName(x.id)).join(' / '):dimName(s.highest.id)):'Pendiente'}
+Foco(s) sugerido(s): ${s.lowest?(s.lowestTies.length>1?s.lowestTies.map(x=>dimName(x.id)).join(' / '):dimName(s.lowest.id)):'Pendiente'}
+Nota: el menor resultado inicia la reflexión; la relevancia para la sala confirma o ajusta el foco.
 
-3. Fortaleza principal
-${s.highest[0]} · ${s.highest[2]} (${s.highest[1]}/20)
-Esta dimensión muestra dónde ya existe más evidencia a favor de tu reputación profesional.
+FOCO CONFIRMADO
+Letra: ${focus}
+Conducta observable: ${f.focusBehavior||'Pendiente'}
+Próxima situación: ${f.focusSituation||'Pendiente'}
+Impacto esperado: ${f.focusImpact||'Pendiente'}
+Señal externa: ${f.focusSignal||'Pendiente'}
 
-4. Letra de entrada
-${s.lowest[0]} · ${s.lowest[2]} (${s.lowest[1]}/20)
-Esta es la dimensión que conviene trabajar primero, porque puede elevar tu resultado completo con mayor rapidez.
+CONTRASTE
+Conducta esperable: ${f.contrastStrength||'Pendiente'}
+Conducta vulnerable bajo presión: ${f.contrastVulnerable||'Pendiente'}
+Conducta de mayor impacto: ${f.contrastImpact||'Pendiente'}
+Decisión: ${f.contrastDecision||'Pendiente'}
 
-5. Lectura por dimensión
-${dims.map(d=>`${d.id} · ${d.name}: ${s.out[d.id]}/20 · ${dimBand(s.out[d.id]).name}`).join('\n')}
+MISIÓN DE SIETE DÍAS
+Sala de práctica: ${f.missionRoom||'Pendiente'}
+Señal activadora: ${f.missionTrigger||'Pendiente'}
+Acción observable: ${f.missionAction||'Pendiente'}
+Evidencia esperada: ${f.missionEvidence||'Pendiente'}
+Fecha de revisión: ${f.missionDate||'Pendiente'}
+Persona de contraste: ${f.missionObserver||'Pendiente'}
 
-6. Decisión de seis semanas
-Conducta elegida: ${(state.fields.decisionBehavior||'Pendiente').trim()||'Pendiente'}
-Situación real: ${(state.fields.decisionSituation||'Pendiente').trim()||'Pendiente'}
-Evidencia esperada: ${(state.fields.decisionEvidence||'Pendiente').trim()||'Pendiente'}
-Frase de sala: ${(state.fields.decisionPhrase||'Pendiente').trim()||'Pendiente'}
+REVISIÓN
+Situación: ${f.reviewSituation||'Pendiente'}
+Conducta: ${f.reviewBehavior||'Pendiente'}
+Cambio para otra persona: ${f.reviewImpact||'Pendiente'}
+Ajuste: ${f.reviewAdjustment||'Pendiente'}
+Próxima situación: ${f.reviewNext||'Pendiente'}
 
-Cierre
-No trabajes todo al mismo tiempo. Elige una letra, una conducta, una situación real y una evidencia observable.`;
-}
-function update(){
-  const s=getSnapshot();
-  $('#progressLabel').textContent = `${s.answered} / 24`; $('#answeredCount').textContent = `${s.answered} / 24`; $('#progressFill').style.width = `${s.answered/24*100}%`;
-  $('#totalScore').textContent = `${s.total} / 120`; $('#sideTotal').textContent = s.total;
-  dims.forEach(d=>{ $(`#total-${d.id}`).textContent = `${s.out[d.id]} / 20`; $(`#bar-${d.id}`).style.width = `${s.out[d.id]/20*100}%`; $(`#barVal-${d.id}`).textContent = `${s.out[d.id]}/20`; });
-  $('#lowestLetter').textContent = s.answered ? `${s.lowest[0]} (${s.lowest[1]}/20)` : '—';
-  const card=$('#levelCard');
-  if(s.lv){ card.innerHTML = `<span class="chip">${s.total} / 120</span><h3>${s.lv.name}</h3><p class="muted small">${s.lv.text}</p>`; $('#sideSummary').textContent = `${s.lv.name}. Punto de entrada: ${s.lowest[0]} · ${s.lowest[2]}.`; }
-  else { card.innerHTML = `<span class="chip">Completa el diagnóstico</span><h3>Resultado pendiente</h3><p class="muted small">Cuando respondas las 24 afirmaciones, aparecerá tu nivel, tu punto de entrada y tu lectura de Capital Reputacional.</p>`; $('#sideSummary').textContent = 'Completa el diagnóstico para ver tu punto de entrada.'; }
-  $('#mainInsight').innerHTML = s.complete ? `<h3>Lectura principal</h3><p>Tu fortaleza más visible hoy es <strong>${s.highest[0]} · ${s.highest[2]}</strong>. Tu letra de entrada es <strong>${s.lowest[0]} · ${s.lowest[2]}</strong>: trabajarla primero puede hacer que tu reputación sea más clara, repetible y fácil de reconocer.</p>` : `<h3>Lectura en construcción</h3><p>Has respondido ${s.answered} de 24 afirmaciones. Completa el diagnóstico para obtener una lectura final con fortaleza, punto de entrada y Capital Reputacional.</p>`;
-  $('#dimensionReadings').innerHTML = dims.map(d=>{ const b=dimBand(s.out[d.id]); return `<div class="dimension-read"><strong><span>${d.id} · ${d.name}</span><span>${s.out[d.id]}/20</span></strong><span><b>${b.name}:</b> ${b.text}</span></div>`; }).join('');
-  $('#capValor').textContent = `${fmt(s.valor,1)} / 20`; $('#capConsistencia').textContent = `${fmt(s.cons,1)} / 20`; $('#capVisibilidad').textContent = `${fmt(s.visi,1)} / 20`; $('#capBruto').textContent = `${fmt(s.bruto,0)} / 8.000`;
-  $('#capitalIndex').textContent = s.complete ? `${fmt(s.idx,0)} / 100` : '—'; $('#sideCapital').textContent = s.complete ? `${fmt(s.idx,0)}` : '—';
-  $('#factorReading').innerHTML = `<div class="factor-pill"><b>${factorText('Valor',s.valor)}</b><span>Surge de G + E: valor creado y calidad de escucha.</span></div><div class="factor-pill"><b>${factorText('Consistencia',s.cons)}</b><span>Surge de N + S: involucramiento y estándar sostenido.</span></div><div class="factor-pill"><b>${factorText('Visibilidad',s.visi)}</b><span>Surge de I + O: detalle observable y crecimiento aplicado.</span></div><div class="factor-pill"><b>Capital Reputacional: ${s.complete?fmt(s.idx,0)+'/100':'pendiente'}</b><span>${s.complete?s.cap.title + ': ' + s.cap.text:'Completa el diagnóstico para activar esta lectura.'}</span></div>`;
-  $$('.reading-item').forEach(el=>{ const min=Number(el.dataset.capMin), max=Number(el.dataset.capMax); el.classList.toggle('active', s.complete && s.idx>=min && s.idx<=max); });
-  const rp=$('#reportPreview'); if(rp) rp.textContent=summaryText();
-}
-function summaryText(){ const {out,answered}=scores(); const total=Object.values(out).reduce((a,b)=>a+b,0); const lowest=dims.map(d=>[d.id,out[d.id],d.name]).sort((a,b)=>a[1]-b[1])[0]; const valor=(out.G+out.E)/2, cons=(out.N+out.S)/2, visi=(out.I+out.O)/2, idx=(valor*cons*visi)/80; const lv=levelFor(total,answered===24); return `Resumen Cuaderno G.E.N.I.O.S.\nNombre: ${(state.fields.planPersonName||'')}\nTotal: ${total}/120\nNivel: ${lv?lv.name:'pendiente'}\nG:${out.G} E:${out.E} N:${out.N} I:${out.I} O:${out.O} S:${out.S}\nLetra más baja: ${lowest[0]} · ${lowest[2]} (${lowest[1]}/20)\nCapital Reputacional: ${answered===24?fmt(idx,0)+'/100':'pendiente'}\nConducta 6 semanas: ${(state.fields.decisionBehavior||'')}`; }
-function bind(){
-  document.addEventListener('change', e=>{ if(e.target.matches('input[type="radio"][data-dim]')){ state.scores[`${e.target.dataset.dim}${e.target.dataset.idx}`]=Number(e.target.value); save(); update(); } });
-  document.addEventListener('input', e=>{ if(e.target.classList.contains('js-save')){ state.fields[e.target.dataset.key]=e.target.value; save(); update(); } });
-  $('#btnUseLowest').addEventListener('click',()=>{ const {out}=scores(); const lowest=dims.map(d=>[d.id,out[d.id],d.name]).sort((a,b)=>a[1]-b[1])[0]; $('#decisionLetter').value=`${lowest[0]} · ${lowest[2]}`; state.fields.decisionLetter=$('#decisionLetter').value; save(); toast('Letra más baja aplicada'); });
-  $('#btnCopySummary').addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText(summaryText()); toast('Resumen copiado'); } catch(e){ toast('No se pudo copiar automáticamente'); } });
-  ['#btnCopyReport','#btnCopyReportBottom'].forEach(sel=>{ const btn=$(sel); if(btn) btn.addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText(summaryText()); toast('Reporte copiado'); } catch(e){ toast('No se pudo copiar automáticamente'); } }); });
-  $('#btnPrint').addEventListener('click',()=>window.print()); $('#btnPrintTop').addEventListener('click',()=>window.print()); const printReport=$('#btnPrintReport'); if(printReport) printReport.addEventListener('click',()=>window.print());
-  $('#btnReset').addEventListener('click',()=>{ if(confirm('¿Reiniciar todo el cuaderno?')){ localStorage.removeItem(STORE); location.reload(); } });
-  const links=[...$$('.tab'),...$$('.bottom-btn')]; const sections=links.map(a=>$(a.getAttribute('href'))).filter(Boolean);
-  const obs=new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+en.target.id)); } }); },{rootMargin:'-45% 0px -50% 0px',threshold:0}); sections.forEach(s=>obs.observe(s));
-}
-renderStatic(); restore(); bind(); update();
+ALCANCE
+Herramienta orientativa de autoobservación. No es una prueba psicométrica, no compara personas y no mide Capital Reputacional. La Fórmula Valor × Consistencia × Visibilidad se utiliza como lente cualitativa.`}
+function selectedTool(){return state.fields.selectedTool||''}
+function toolById(id){return [...tools,...audits].find(t=>t.id===id)}
+function toolClosure(id){const t=toolById(id);if(!t)return '';const first=state.fields[`tool-${id}-0`]||'';const second=state.fields[`tool-${id}-1`]||'';const next=state.fields[`tool-${id}-next`]||'';if(!first&&!second&&!next)return 'Completa los campos esenciales para construir una síntesis.';const map={G:`Tu entrega debe facilitar: ${second||'una decisión o avance concreto'}. Próximo movimiento: ${next||'por definir'}.`,E:`Antes de proponer, necesitas confirmar: ${second||'el resultado o problema real'}. Próximo movimiento: ${next||'por definir'}.`,N:`El riesgo o bloqueo es: ${first||'por definir'}. Movimiento mínimo: ${next||second||'por definir'}.`,I:`La entrega debe permitir: ${second||'comprender y actuar sin explicación adicional'}. Próximo ajuste: ${next||'por definir'}.`,O:`La capacidad a desarrollar es: ${first||'por definir'}. Práctica siguiente: ${next||second||'por definir'}.`,S:`Lo ocurrido requiere: ${second||'un compromiso nuevo y claro'}. Recuperación: ${next||'por definir'}.`,M:`La situación evitada es: ${first||'por definir'}. Microvalentía: ${next||second||'por definir'}.`,F:`La oportunidad debe evaluarse por: ${second||'resultado y condiciones'}. Decisión siguiente: ${next||'por definir'}.`,D:`La presión reveló: ${second||'una conducta que conviene observar'}. Próximo ajuste: ${next||'por definir'}.`,C:`El factor a fortalecer es: ${second||'por definir'}. Movimiento: ${next||'por definir'}.`,P:`La expectativa a construir es: ${first||'por definir'}. Próximo movimiento: ${next||'por definir'}.`,R:`La situación muestra: ${second||'una conducta observable'}. Próximo registro: ${next||'por definir'}.`};return map[id]||`Próximo movimiento: ${next||'por definir'}.`}
+function routeState(){const s=snapshot(),f=state.fields;const discover=!!f.room&&s.answered===24;const understand=s.comparable.length>0;const contrast=!!f.contrastStrength&&!!f.contrastVulnerable&&!!f.contrastImpact;const practice=!!f.focusLetter&&!!f.focusBehavior&&!!f.missionRoom&&!!f.missionAction&&!!f.missionEvidence;const consolidate=!!f.reviewImpact&&!!f.reviewAdjustment;return[discover,understand,contrast,practice,consolidate]}
+function updateRoute(){const r=routeState();const current=r.findIndex(x=>!x);r.forEach((done,i)=>{const el=$(`#route${i+1}`);if(!el)return;el.classList.toggle('done',done);el.classList.toggle('active',i===current)});$('#routeProgressFill').style.width=`${r.filter(Boolean).length/5*100}%`;const messages=[['Antes de comenzar','Elige una sala real. No necesitas responder perfecto; necesitas responder con evidencia.'],['Ya elegiste la sala','Ahora observa qué conductas aparecieron realmente durante las últimas cuatro semanas.'],['Empieza a aparecer un patrón','Lee cada letra por separado. No conviertas el mapa en una nota global.'],['Tienes una hipótesis','Contrástala con alguien que haya trabajado contigo recientemente.'],['Tu misión está definida','Practica durante siete días y busca una señal observable en la experiencia de otra persona.'],['Has cerrado el ciclo','Ya no tienes solo una intención: tienes evidencia para repetir, ajustar o consolidar.']];const idx=r.filter(Boolean).length;const box=$('#progressNarrative');if(box)box.innerHTML=`<b>${messages[idx][0]}</b><span>${messages[idx][1]}</span>`}
+function updateToolClosures(){[...tools,...audits].forEach(t=>{const el=$(`#close-${t.id}`);if(el)el.textContent=toolClosure(t.id)})}
+function update(){const s=snapshot();$('#progressLabel').textContent=`${s.answered} / 24`;$('#answered').textContent=`${s.answered} / 24`;$('#sideProgress').textContent=`${s.answered}/24`;$('#progressFill').style.width=`${s.answered/24*100}%`;$('#progressTrack').setAttribute('aria-valuenow',String(s.answered));$('#comparable').textContent=`${s.comparable.length} / 6`;$('#strength').textContent=s.highest?(s.highestTies.length>1?s.highestTies.map(x=>x.id).join(' / '):s.highest.id):'—';$('#suggested').textContent=s.lowest?(s.lowestTies.length>1?s.lowestTies.map(x=>x.id).join(' / '):s.lowest.id):'—';dimensions.forEach(d=>{const x=s.scores.find(v=>v.id===d.id);const label=x.comparable?`${x.sum} / 20`:(x.no>0?'N/O · Pendiente':(x.count>0?'Incompleta':'Pendiente'));$(`#total-${d.id}`).textContent=label});$('#bars').innerHTML=s.scores.map(d=>`<div class="bar"><span>${d.id}</span><div class="bar-rail"><div class="bar-fill" style="width:${d.comparable?d.sum/20*100:0}%"></div></div><small>${statusLabel(d)}</small></div>`).join('');$('#dimensionReadings').innerHTML=s.scores.map(d=>{const b=band(d);return`<div class="dimension-read"><strong><span>${d.id} · ${d.name}</span><span>${statusLabel(d)}</span></strong><span><b>${b[0]}:</b> ${b[1]}</span></div>`}).join('');
+ if(s.complete&&s.lowest&&s.highest){const lowText=s.lowestTies.length>1?s.lowestTies.map(x=>x.id).join(', '):s.lowest.id;const highText=s.highestTies.length>1?s.highestTies.map(x=>x.id).join(', '):s.highest.id;$('#insight').innerHTML=`<h3>Tu mapa muestra patrones para contrastar</h3><p><strong>Mayor frecuencia:</strong> ${highText}. <strong>Foco sugerido:</strong> ${lowText}. ${s.lowestTies.length>1?'Existe empate: no elijas por orden ni por una diferencia inexistente. Contrasta qué conducta produciría el mayor impacto en la sala.':'El resultado menor inicia la reflexión; la vulnerabilidad bajo presión y el impacto en la sala confirman o ajustan la prioridad.'}</p>`;$('#sideSummary').textContent=`Mayor frecuencia: ${highText}. Foco sugerido: ${lowText}.`}else if(s.complete&&!s.lowest){$('#insight').innerHTML='<h3>Mapa completo, lectura pendiente</h3><p>Las respuestas incluyen N/O en todas las letras o no permiten comparar resultados. No elijas una prioridad por puntaje: reúne evidencia adicional y vuelve a observar la sala.</p>';$('#sideSummary').textContent='Mapa completo, pero sin letras comparables.'}else{$('#insight').innerHTML=`<h3>Lectura en construcción</h3><p>Has respondido ${s.answered} de 24 afirmaciones.</p>`;$('#sideSummary').textContent='Completa el mapa para construir la lectura.'}
+ const useSuggested=$('#useSuggested');if(useSuggested){const canSuggest=s.complete&&!!s.lowest&&s.lowestTies.length===1;useSuggested.disabled=!canSuggest;useSuggested.title=canSuggest?'Aplicar el foco sugerido como hipótesis':(s.lowestTies.length>1?'Hay un empate: contrasta antes de elegir':'Completa el mapa y obtén un foco válido');}const focus=state.fields.focusLetter;$('#focusBanner').textContent=focus?`Foco confirmado: ${dimName(focus)}`:'Foco pendiente';$('#weekFocus').textContent=focus?`Foco: ${dimName(focus)}`:'Foco pendiente';$('#weekBehavior').textContent=state.fields.focusBehavior||'Confirma primero la conducta observable que practicarás.';$('#sideFocus').textContent=focus||'—';$('#report').textContent=reportText();const selected=selectedTool(),tool=toolById(selected);$('#execRoom').textContent=state.fields.room||'Pendiente';$('#execStrength').textContent=s.highest?(s.highestTies.length>1?s.highestTies.map(x=>dimName(x.id)).join(' / '):dimName(s.highest.id)):'Pendiente';$('#execFocus').textContent=state.fields.focusLetter?dimName(state.fields.focusLetter):'Pendiente';$('#execTool').textContent=tool?tool.title:'Pendiente';const focusName=state.fields.focusLetter?dimName(state.fields.focusLetter):'Pendiente';const hyp=$('#execHypothesis'),risk=$('#execRisk');if(hyp)hyp.textContent=state.fields.contrastImpact||(`Fortalecer ${focusName} podría producir una diferencia relevante en la sala observada.`);if(risk)risk.textContent=state.fields.contrastVulnerable||'Pendiente de contraste bajo presión';const ms=$('#missionSummary');if(ms){const ready=state.fields.missionRoom&&state.fields.missionAction&&state.fields.missionEvidence;ms.innerHTML=ready?`<b>Misión definida</b><span>En ${esc(state.fields.missionRoom)}, ${esc(state.fields.missionAction)}. Buscarás como evidencia: ${esc(state.fields.missionEvidence)}.</span>`:'<b>Tu misión todavía está en construcción.</b><span>Confirma un foco y completa los campos esenciales.</span>';}$('#execNext').textContent=(selected&&state.fields[`tool-${selected}-next`])||state.fields.focusSituation||'Completa el mapa y confirma un foco.';updateRoute();updateToolClosures();$$('.status-btn').forEach(btn=>{const active=state.fields[`weekStatus-${btn.parentElement.dataset.week}`]===btn.dataset.status;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active))})}
+async function copyText(text){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return true}const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok}catch(e){return false}}
+function setPressed(group,active){group.forEach(el=>el.setAttribute('aria-pressed',String(el===active)))}
+function bind(){$('#modeFull').onclick=()=>{document.body.classList.remove('quick-mode');state.fields.mode='full';$('#modeFull').classList.add('active');$('#modeQuick').classList.remove('active');setPressed([$('#modeFull'),$('#modeQuick')],$('#modeFull'));save();toast('Recorrido completo activado')};$('#modeQuick').onclick=()=>{document.body.classList.add('quick-mode');state.fields.mode='quick';$('#modeQuick').classList.add('active');$('#modeFull').classList.remove('active');setPressed([$('#modeFull'),$('#modeQuick')],$('#modeQuick'));setPressed([$('#modeFull'),$('#modeQuick')],$('#modeQuick'));save();toast('Modo rápido activado')};$('#toolSelector').addEventListener('click',e=>{const b=e.target.closest('.tool-choice');if(!b)return;$$('.tool-choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');setPressed($$('.tool-choice'),b);state.fields.selectedTool=b.dataset.tool;save();const t=toolById(b.dataset.tool);$('#toolRecommendation').innerHTML=`<b>${t.title}</b><p>${t.desc} <a href="#tool-${t.id}" style="color:var(--navy);font-weight:900">Abrir herramienta →</a></p>`;update()});document.addEventListener('click',e=>{const b=e.target.closest('.status-btn');if(!b)return;state.fields[`weekStatus-${b.parentElement.dataset.week}`]=b.dataset.status;setPressed($$('.status-btn',b.parentElement),b);save();update()});document.addEventListener('change',e=>{if(e.target.matches('input[type=radio][data-key]')){state.answers[e.target.dataset.key]=e.target.value;save();update()}if(e.target.classList.contains('save')){state.fields[e.target.dataset.key]=e.target.value;save();update()}});document.addEventListener('input',e=>{if(e.target.classList.contains('save')){state.fields[e.target.dataset.key]=e.target.value;save();update()}});$('#useSuggested').onclick=()=>{const s=snapshot();if(!s.complete||!s.lowest){toast('Completa las 24 afirmaciones primero.');return}if(s.lowestTies.length>1){toast(`Existe empate entre ${s.lowestTies.map(x=>x.id).join(', ')}. Contrasta antes de elegir.`);return}state.fields.focusLetter=s.lowest.id;$('#focusLetter').value=s.lowest.id;save();update();toast(`${dimName(s.lowest.id)} aplicado como hipótesis de foco.`)};$('#exportBackup').onclick=()=>{const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cuaderno-genios-respaldo.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);toast('Respaldo exportado')};$('#importBackup').onclick=()=>$('#backupFile').click();$('#backupFile').onchange=async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;try{if(file.size>2_000_000)throw new Error('Archivo demasiado grande');const parsed=JSON.parse(await file.text());state=normalizeState(parsed.state||parsed);save();location.reload()}catch(err){toast('El respaldo no es válido')}finally{e.target.value=''}};$('#copyReport').onclick=async()=>{toast(await copyText(reportText())?'Informe copiado':'No se pudo copiar automáticamente')};['printTop','printReport','printBottom'].forEach(id=>$('#'+id).onclick=()=>window.print());$('#reset').onclick=()=>{if(confirm('¿Reiniciar todo el cuaderno?')){localStorage.removeItem(STORE);location.reload()}};const links=[...$$('.tab'),...$$('.bottom-btn')],sections=links.map(a=>$(a.getAttribute('href'))).filter(Boolean);const obs=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>{const active=a.getAttribute('href')==='#'+en.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current')})}),{rootMargin:'-45% 0px -50% 0px',threshold:0});sections.forEach(s=>obs.observe(s))}
+render();restore();bind();if(state.fields.mode==='quick'){document.body.classList.add('quick-mode');$('#modeQuick').classList.add('active');$('#modeFull').classList.remove('active');setPressed([$('#modeFull'),$('#modeQuick')],$('#modeQuick'))}if(state.fields.selectedTool){const b=$(`.tool-choice[data-tool="${state.fields.selectedTool}"]`);if(b){b.classList.add('active');setPressed($$('.tool-choice'),b);const t=toolById(state.fields.selectedTool);$('#toolRecommendation').innerHTML=`<b>${t.title}</b><p>${t.desc} <a href="#tool-${t.id}" style="color:var(--navy);font-weight:900">Abrir herramienta →</a></p>`}}update();save();
 </script>
-</body>
-</html>
+</body></html>
